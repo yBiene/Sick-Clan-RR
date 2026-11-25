@@ -1,4 +1,4 @@
-import { createFeatures } from './features.js?v=0.3';
+import { createFeatures } from './features.js?v=0.4';
 const URL='https://piklnvlswdwxpmnpliwn.supabase.co';
 const KEY='sb_publishable_8fA_DM-Yw5qWqzXNQn-YLA_MWtxpoS6';
 const $=id=>document.getElementById(id);
@@ -37,12 +37,24 @@ const configs={
  'Herstellungsrezepte':['recipe',{title:'Erzeugnis',quantity:['Ausgabemenge','number'],cost:['Materialkosten $','number'],minutes:['Produktionsdauer Minuten','number'],price:['Verkaufspreis $','number'],note:['Zutaten und Mengen','textarea']}],
  'Systemeinstellungen':['setting',{title:'Einstellung',note:'Wert'}]
 };
-const groups={Start:['Dashboard'],Persönlich:['Mein Profil','Meine Basis','Meine Plantage','Mein Skilltree','Mein Inventar','Meine Wunschliste'],Clan:['Mitglieder','Gemeinsame Forschung','Clan-Lager','Clan-Finanzen','Aufgabenverwaltung','Schwarzes Brett','Clan-Ziele','Clan-Spezialisierungen','Fuhrparkverwaltung'],Kommunikation:['Clan-Chat','Private Nachrichten','Benachrichtigungen'],Handel:['Handelsplatz','Leihsystem','Preisvergleich'],Aktivitäten:['Überfallplanung','Stadtkarte','Schlüsselübersicht','Timer-Zentrale','Beuterechner'],Wiki:['Waffen','Munition','Ausrüstung','Gegenstände','Fahrzeuge','Basis & Einrichtung','Produktion','Forschungsdatenbank','Herstellungsrechner','Herstellungsrezepte'],Verwaltung:['Accountverwaltung','Rollen & Rechte','Spieldaten bearbeiten','Änderungsverlauf','Systemeinstellungen','Datensicherung','Fehler- und Verbesserungsvorschläge','Update- und Versionsübersicht']};
+const groups={Start:['Dashboard','Herstellungsrechner'],Persönlich:['Mein Profil','Meine Basis','Meine Plantage','Mein Skilltree','Meine Wunschliste'],Clan:['Mitglieder','Gemeinsame Forschung','Clan-Finanzen','Schwarzes Brett','Einstellen'],Kommunikation:['Clan-Chat','Private Nachrichten','Benachrichtigungen'],Aktivitäten:['Stadtkarte','Schlüsselübersicht'],Wiki:['Waffen','Munition','Ausrüstung','Gegenstände','Fahrzeuge','Basis & Einrichtung','Produktion','Händler & Kontakte','Forschungsdatenbank'],Verwaltung:['Rollen & Rechte','Spieldaten bearbeiten','Änderungsverlauf','Datensicherung','Fehler- und Verbesserungsvorschläge','Update- und Versionsübersicht']};
+const removedPages=new Set(['Mein Inventar','Clan-Lager','Clan-Ziele','Clan-Spezialisierungen','Fuhrparkverwaltung','Aufgabenverwaltung','Handelsplatz','Leihsystem','Preisvergleich','Beuterechner','Timer-Zentrale','Überfallplanung','Herstellungsrezepte','Systemeinstellungen']);
 function navigation(){
- $('nav').innerHTML=Object.entries(groups).filter(([g])=>g!=='Verwaltung'||leader()).map(([group,names])=>`<details ${(group==='Start'||(group==='Persönlich'&&window.innerWidth>800))?'open':''}><summary>${esc(group)}</summary>${names.map(n=>`<button data-page="${esc(n)}">${esc(n)}</button>`).join('')}</details>`).join('');
+ $('nav').innerHTML=Object.entries(groups).filter(([g])=>g!=='Verwaltung'||leader()).map(([group,names])=>`<details ${(group==='Start'||(group==='Persönlich'&&window.innerWidth>800))?'open':''}><summary>${esc(group)}</summary>${names.filter(n=>n!=='Einstellen'||leader()).map(n=>`<button data-page="${esc(n)}">${esc(n)}</button>`).join('')}</details>`).join('');
  $('nav').onclick=e=>{const b=e.target.closest('[data-page]');if(b){go(b.dataset.page);if(window.innerWidth<=800){b.closest('details').open=false;$('heading').scrollIntoView({behavior:'auto',block:'start'});}}};
- $('session').innerHTML=`<small>${esc(me.name)} · ${esc(me.role)}</small> <button id="logout">Abmelden</button>`;
- $('logout').onclick=()=>guarded(async()=>{await features.disablePush().catch(()=>{});await api('/auth/v1/logout','POST',{});sessionStorage.removeItem('sick-session');session=null;me=null;records=[];members=[];$('app').hidden=true;$('login').hidden=false;$('session').replaceChildren();status('Abgemeldet.');});
+ $('session').innerHTML='<div class="header-clock"><span id="current-date"></span><strong id="current-time"></strong></div><div class="header-server"><small>Server-Ende</small><span id="server-date"></span><strong id="server-remaining"></strong></div>';
+ updateHeader();
+}
+async function logout(){await features.disablePush().catch(()=>{});await api('/auth/v1/logout','POST',{});sessionStorage.removeItem('sick-session');session=null;me=null;records=[];members=[];$('app').hidden=true;$('login').hidden=false;$('session').replaceChildren();status('Abgemeldet.');}
+function updateHeader(){
+ if(!me||!$('current-date'))return;
+ const now=new Date();$('current-date').textContent=new Intl.DateTimeFormat('de-DE',{timeZone:'Europe/Berlin',day:'2-digit',month:'2-digit',year:'numeric'}).format(now);$('current-time').textContent=new Intl.DateTimeFormat('de-DE',{timeZone:'Europe/Berlin',hour:'2-digit',minute:'2-digit',second:'2-digit'}).format(now);
+ const value=rows('setting').find(r=>r.title==='server:end')?.data.server_end_at;
+ const candidate=value?new Date(value):null;const end=candidate&&!Number.isNaN(candidate.getTime())?candidate:null;
+ $('server-date').textContent=end&&!Number.isNaN(end.getTime())?new Intl.DateTimeFormat('de-DE',{timeZone:'Europe/Berlin',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}).format(end):'Noch nicht eingestellt';
+ const seconds=end?Math.max(0,Math.floor((end-now)/1000)):null;
+ $('server-remaining').textContent=seconds===null?'':seconds===0?'Server beendet':Math.floor(seconds/86400)+' T '+Math.floor(seconds%86400/3600)+' Std '+Math.floor(seconds%3600/60)+' Min '+seconds%60+' Sek';
+
 }
 const own=r=>r.owner_id===me.id;
 const canEdit=r=>own(r)||(leader()&&!['message','notification'].includes(r.kind));
@@ -76,6 +88,7 @@ async function reload(){members=await api('/rest/v1/profiles?select=*&order=name
 function go(name){location.hash=encodeURIComponent(name);if(current===name)guarded(()=>page(name));}
 window.addEventListener('hashchange',()=>guarded(()=>page(decodeURIComponent(location.hash.slice(1))||'Dashboard')));
 async function page(name){
+ if(removedPages.has(name))name='Dashboard';if(name==='Accountverwaltung')name='Einstellen';
  const sequence=++pageSequence;current=name;status('');$('heading').textContent=name;
  document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
  features.cleanup();const c=$('content');c.oninput=null;c.replaceChildren();
@@ -89,28 +102,43 @@ async function page(name){
  }
  if(['Clan-Chat','Private Nachrichten'].includes(name))return features.chatPage(name,c);
  if(name==='Benachrichtigungen')return features.notificationsPage(c);
- if(name==='Accountverwaltung')return accountPage(c);
+ if(name==='Einstellen')return settingsPage(c);
  if(name==='Datensicherung')return features.backupPage(c);
  if(name==='Stadtkarte')return features.mapPage(c);
+ if(name==='Schlüsselübersicht')return features.keysPage(c);
  if(name==='Herstellungsrechner')return craftPage(c);
  if(name==='Beuterechner')return lootPage(c);
  if(name==='Rollen & Rechte'){
-  c.innerHTML='<div class="panel tablewrap"><table><tr><th>Aktion</th><th>Mitglied</th><th>Stellvertreter</th><th>Leitung</th></tr><tr><td>Eigene Daten, Chat, Handel, Planung</td><td>Ja</td><td>Ja</td><td>Ja</td></tr><tr><td>Clan-Lager, Kasse, Einstellungen führen</td><td>Lesen</td><td>Ja</td><td>Ja</td></tr><tr><td>Mitgliedskonten anlegen und sperren</td><td>—</td><td>Ja</td><td>Ja</td></tr><tr><td>Leitungsrollen vergeben</td><td>—</td><td>—</td><td>Ja</td></tr><tr><td>Private Nachrichten</td><td colspan="3">Ausschließlich Absender und Empfänger</td></tr></table><p>Die Berechtigungen werden zusätzlich in der Datenbank und Accountfunktion geprüft.</p></div>';return;
+  c.innerHTML='<div class="panel tablewrap"><table><tr><th>Aktion</th><th>Mitglied</th><th>Stellvertreter</th><th>Leitung</th></tr><tr><td>Eigene Daten, Forschung und Chat</td><td>Ja</td><td>Ja</td><td>Ja</td></tr><tr><td>Kasse und Server-Einstellungen führen</td><td>Lesen</td><td>Ja</td><td>Ja</td></tr><tr><td>Mitgliedskonten anlegen und sperren</td><td>—</td><td>Ja</td><td>Ja</td></tr><tr><td>Leitungsrollen vergeben</td><td>—</td><td>—</td><td>Ja</td></tr><tr><td>Private Nachrichten</td><td colspan="3">Ausschließlich Absender und Empfänger</td></tr></table><p>Die Berechtigungen werden zusätzlich in der Datenbank und Accountfunktion geprüft.</p></div>';return;
  }
  if(name==='Änderungsverlauf'){
   if(!leader())throw Error('Clan-Leitung erforderlich');const data=await api('/rest/v1/clan_audit?select=*&order=created_at.desc&limit=100');if(sequence!==pageSequence)return;
   c.innerHTML='<div class="panel tablewrap"><table><tr><th>Zeit</th><th>Mitglied</th><th>Aktion</th><th>Eintrag</th></tr>'+data.map(r=>`<tr><td>${date(r.created_at)}</td><td>${esc(memberName(r.actor))}</td><td>${esc(r.action)}</td><td>${esc(r.entity)}</td></tr>`).join('')+'</table></div>';return;
  }
  if(name==='Update- und Versionsübersicht'){
-  c.innerHTML='<div class="panel"><h2>Version 0.3 · 25.11.2026</h2><p>Deutsche Spieldaten, interaktive Karten, grafischer Forschungsbaum, automatische Chats mit Bildern und Lesebestätigungen, Pushmeldungen und Wiederherstellung gemeinsamer Claneinträge.</p><p>Spieldatenstand und Quellen stehen bei den jeweiligen Einträgen. Spielupdates können Preise verändern.</p></div>';return;
+  c.innerHTML='<div class="panel"><h2>Version 0.4 · 25.11.2026</h2><p>Neues ROB-RUN-Dashboard mit SICK-Logo, Datum und Uhrzeit sowie einstellbarem Server-Ende. Vereinfachte Navigation, 33 Raubschlüssel mit Kartenverknüpfung, überarbeitete Wiki-Kategorien und Accountverwaltung unter Clan → Einstellen.</p><p>Spieldatenstand und Quellen stehen bei den jeweiligen Einträgen. Spielupdates können Preise verändern.</p></div>';return;
  }
  if(name==='Spieldaten bearbeiten'){return editCatalog(c);}
  return catalogPage(name,c);
 }
 function dashboard(c){
- const balance=rows('finance').reduce((s,r)=>s+Number(r.data.income||0)-Number(r.data.expense||0),0);
- const low=rows('storage').filter(r=>Number(r.data.quantity)<Number(r.data.minimum));
- c.innerHTML=`<div class="panel"><small>CLANÜBERSICHT</small><h2>Willkommen, ${esc(me.name)}.</h2><p>${esc(me.settlement||'Siedlung im Profil eintragen')} · ${esc(me.specialization||me.role)}</p></div><div class="grid">${[[members.filter(m=>m.active).length,'Aktive Mitglieder'],[rows('task').filter(r=>r.data.state!=='Erledigt').length,'Offene Aufgaben'],[money(balance),'Clan-Kasse'],[low.length,'Lagerwarnungen']].map(([n,l])=>`<div class="panel stat"><small>${l}</small><strong>${esc(n)}</strong></div>`).join('')}</div><div class="grid"><div class="panel"><h2>Aktuelle Mitteilungen</h2>${rows('board').slice(0,4).map(r=>`<p><strong>${esc(r.title)}</strong><br>${esc(r.data.note)}</p>`).join('')||'<p>Neue Mitteilungen kannst du am Schwarzen Brett veröffentlichen.</p>'}</div><div class="panel"><h2>Mindestbestand</h2>${low.map(r=>`<p>${esc(r.title)} · ${esc(r.data.quantity)} / ${esc(r.data.minimum)}</p>`).join('')||'<p>Alle erfassten Mindestbestände sind gedeckt.</p>'}</div></div>`;
+ const balance=rows('finance').reduce((sum,r)=>sum+Number(r.data.income||0)-Number(r.data.expense||0),0);
+ c.innerHTML=`<figure class="dashboard-hero"><img src="assets/rob-run-dashboard.jpg" alt="Offizielles ROB-RUN-Spielmotiv"><figcaption><span class="sick-emblem">S</span><strong>SICK</strong><span>CLAN</span></figcaption></figure><div class="grid"><div class="panel stat"><small>Aktive Mitglieder</small><strong>${members.filter(m=>m.active).length}</strong></div><div class="panel stat"><small>Clan-Kasse</small><strong>${money(balance)}</strong></div></div><div class="panel"><h2>Schwarzes Brett</h2>${rows('board').slice(0,4).map(r=>`<p><strong>${esc(r.title)}</strong><br>${esc(r.data.note)}</p>`).join('')||'<p>Aktuell gibt es keine Mitteilungen.</p>'}</div>`;
+}
+function settingsPage(c){
+ if(!leader())throw Error('Clan-Leitung erforderlich');
+ const currentEnd=rows('setting').find(r=>r.title==='server:end');
+ c.innerHTML='<h2>Serverlaufzeit</h2>'+formHTML({server_end_at:['Server-Ende · deine Ortszeit','datetime-local']},{server_end_at:currentEnd?.data.server_end_at||''},'Server-Ende speichern')+'<section id="clan-accounts"></section>';
+ bindForm(c.querySelector('form'),async fd=>{
+  const value=fd.get('server_end_at');if(!value)throw Error('Bitte einen Endzeitpunkt auswählen.');
+  const end=new Date(value);if(Number.isNaN(end.getTime()))throw Error('Ungültiger Endzeitpunkt.');
+  const id='ca3c4392-8c7f-4fc5-b5c9-c04b00621007';
+  const data={server_end_at:end.toISOString()};
+  if(currentEnd)await api('/rest/v1/clan_records?id=eq.'+currentEnd.id,'PATCH',{data});
+  else{await api('/rest/v1/clan_records?on_conflict=id','POST',{id,kind:'setting',title:'server:end',data},'return=representation,resolution=ignore-duplicates');await api('/rest/v1/clan_records?id=eq.'+id,'PATCH',{data});}
+  await loadRecords();updateHeader();status('Server-Ende gespeichert.');
+ });
+ accountPage($('clan-accounts'));
 }
 function recordPage(name,c){
  const [kind,fields]=configs[name];let editing=null;
@@ -151,6 +179,7 @@ function profilePage(name,c){
  c.innerHTML=formHTML(fields,me);
  bindForm(c.querySelector('form'),async fd=>{const result=await api('/rest/v1/profiles?id=eq.'+me.id,'PATCH',Object.fromEntries(fd));if(!result?.length)throw Error('Keine Änderung gespeichert');me=result[0];status('Profil gespeichert.');});
  if(name==='Mein Profil'){
+  const signout=document.createElement('button');signout.textContent='Abmelden';signout.onclick=()=>guarded(logout);c.append(signout);
   const section=document.createElement('div');section.innerHTML=formHTML({password:['Neues Passwort','password']},{},'Passwort ändern');c.append(section);
   bindForm(section.querySelector('form'),async fd=>{const password=fd.get('password');if(password.length<6)throw Error('Mindestens 6 Zeichen erforderlich');await api('/auth/v1/user','PUT',{password});section.querySelector('form').reset();status('Passwort geändert.');});
  }
@@ -159,7 +188,7 @@ function accountPage(c){
  if(!leader())throw Error('Clan-Leitung erforderlich');
  const roles=me.role==='Leitung'?['Mitglied','Stellvertreter','Leitung']:['Mitglied'];
  c.innerHTML='<h2>Account anlegen</h2>'+formHTML({username:'Benutzername',name:'Spielername',password:['Startpasswort','password'],role:['Rolle',roles]},{},'Account anlegen')+'<div id="accounts" class="grid"></div>';
- bindForm(c.querySelector('form'),async fd=>{const d=Object.fromEntries(fd);await api('/functions/v1/clan-admin','POST',{action:'create',...d});c.querySelector('form').reset();await reload();await page('Accountverwaltung');const credentials=document.createElement('div');credentials.className='panel';credentials.innerHTML='<h2>Account angelegt</h2><p>Benutzer · '+esc(d.username.toLowerCase())+'</p><button>Zugangsdaten kopieren</button>';credentials.querySelector('button').onclick=()=>guarded(async()=>{await navigator.clipboard.writeText('Webseite '+location.origin+location.pathname+'\nBenutzer '+d.username.toLowerCase()+'\nPasswort '+d.password);status('Zugangsdaten kopiert.');});c.prepend(credentials);status('Account angelegt. Über die Schaltfläche kannst du die Zugangsdaten kopieren.');});
+ bindForm(c.querySelector('form'),async fd=>{const d=Object.fromEntries(fd);await api('/functions/v1/clan-admin','POST',{action:'create',...d});c.querySelector('form').reset();await reload();await page('Einstellen');const credentials=document.createElement('div');credentials.className='panel';credentials.innerHTML='<h2>Account angelegt</h2><p>Benutzer · '+esc(d.username.toLowerCase())+'</p><button>Zugangsdaten kopieren</button>';credentials.querySelector('button').onclick=()=>guarded(async()=>{await navigator.clipboard.writeText('Webseite '+location.origin+location.pathname+'\nBenutzer '+d.username.toLowerCase()+'\nPasswort '+d.password);status('Zugangsdaten kopiert.');});($('clan-accounts')||c).prepend(credentials);status('Account angelegt. Über die Schaltfläche kannst du die Zugangsdaten kopieren.');});
  for(const p of members){const card=document.createElement('div');card.className='panel';card.innerHTML=`<h2>${esc(p.name)}</h2><p>Benutzer · ${esc(p.username||p.name)}</p><p>${esc(p.role)} · ${p.active?'Aktiv':'Gesperrt'}</p><button data-copy-user="${esc(p.username||p.name)}">Benutzernamen kopieren</button>`;card.querySelector('[data-copy-user]').onclick=()=>guarded(async()=>{await navigator.clipboard.writeText(p.username||p.name);status('Benutzername kopiert.');});
   if(p.id!==me.id&&p.id!=='4b9bbb2e-630f-40d9-ab38-761ce9aa57d8'&&(me.role==='Leitung'||p.role==='Mitglied')){
    const form=document.createElement('div');form.innerHTML=formHTML({name:'Spielername',role:['Rolle',roles]},p,'Account speichern');card.append(form);
@@ -174,29 +203,29 @@ function showImage(src){$('largeimage').src=src;$('viewer').showModal();}
 $('closeviewer').onclick=()=>$('viewer').close();
 let recipes=[];
 function craftPage(c){
- c.innerHTML='<div class="panel"><h2>Tausch- und Herstellungsrechner</h2><p>Zutaten aus den veröffentlichten Spielrezepten. Zusätzliche eigene Produktionsrezepte verwaltest du unter Herstellungsrezepte.</p></div><label>Ziel<select id="recipe"></select></label>'+field('amount',['Anzahl','number'],1)+'<div id="ingredients" class="panel"></div>';
+ c.innerHTML='<div class="panel"><h2>Tausch- und Herstellungsrechner</h2><p>Zutaten aus den veröffentlichten Spielrezepten. Wähle ein Ziel und die benötigte Menge.</p></div><label>Ziel<select id="recipe"></select></label>'+field('amount',['Anzahl','number'],1)+'<div id="ingredients" class="panel"></div>';
  $('recipe').innerHTML=recipes.map((r,i)=>`<option value="${i}">${esc(catalog.find(c=>c.id===r.out.id)?.name||r.out.nameEn||r.out.id)}</option>`).join('');
  function draw(){const r=recipes[Number($('recipe').value)];const n=Number(c.querySelector('[name=amount]').value);if(!r||!(n>0)){ $('ingredients').textContent='Positive Menge eingeben.';return;}$('ingredients').innerHTML='<h2>Benötigte Zutaten</h2>'+r.in.map(v=>`<p>${esc(v.amount*n)} × ${esc(v.nameEn||catalog.find(c=>c.id===v.id)?.name||v.id)}</p>`).join('');}
  c.oninput=draw;draw();
- const ownRecipes=rows('recipe');if(ownRecipes.length){const p=document.createElement('div');p.className='grid';p.innerHTML=ownRecipes.map(r=>`<div class="panel"><h2>${esc(r.title)}</h2><p>${esc(r.data.note)}</p><p>Gewinn je Durchgang · ${money(Number(r.data.price)*Number(r.data.quantity)-Number(r.data.cost))}</p><p>Dauer · ${esc(r.data.minutes)} Minuten</p></div>`).join('');c.append(p);}
+
 }
 function lootPage(c){
  c.innerHTML=formHTML({item:['Gegenstand',catalog.filter(x=>x.price!=null).map(x=>[x.id,x.name+' · '+x.rarity+' · '+money(x.price)])],quantity:['Anzahl','number'],bonus:['Verkaufsbonus %','number'],team:['Teamgröße','number']},{quantity:1,bonus:0,team:1},'Berechnen')+'<div id="lootresult" class="panel"></div>';
  bindForm(c.querySelector('form'),async fd=>{const d=Object.fromEntries(fd),item=catalog.find(x=>x.id===d.item);if(!Number.isInteger(Number(d.team))||Number(d.team)<1||!Number.isInteger(Number(d.quantity))||Number(d.quantity)<0)throw Error('Menge und Teamgröße prüfen');const total=item.price*Number(d.quantity)*(1+Number(d.bonus)/100);$('lootresult').innerHTML=`<h2>${money(total)}</h2><p>Pro Person · ${money(total/Number(d.team))}</p><p>Basiswert aus dem Spielkatalog. Der eingegebene Verkaufsbonus wird zusätzlich angewendet.</p>`;});
 }
-const categories={Waffen:['Weapons'],Munition:['Ammo'],Ausrüstung:['Armor','Medicine','Grenades'],Gegenstände:[],Fahrzeuge:['Vehicles','Car upgrades'],'Basis & Einrichtung':['Furniture & objects','Home & plot','Plot buildings','Security'],Produktion:['Laboratory','Workbenches & upgrades'],Schlüsselübersicht:['Keys','Breaching tools','Documents']};
+const categories={Waffen:['Weapons'],Munition:['Ammo'],Ausrüstung:['Armor','Medicine','Grenades','Weapon maintenance','Breaching tools','Tools'],Gegenstände:['Valuables','Cargo','Cumulative items','Misc','Keys'],Fahrzeuge:['Vehicles','Car upgrades'],'Basis & Einrichtung':['Furniture & objects','Home & plot','Plot buildings','Security','Documents'],Produktion:['Laboratory','Workbenches & upgrades'],'Händler & Kontakte':['NPC']};
 function catalogPage(name,c){
  const allowed=categories[name];if(!allowed){c.innerHTML='<div class="panel"><p>Bereich nicht gefunden.</p></div>';return;}
  c.innerHTML='<div class="toolbar"><input id="catalogsearch" type="search" aria-label="Katalog durchsuchen" placeholder="Name, Kategorie oder Fundort"><select id="catalogsort" aria-label="Sortierung"><option value="name">Name</option><option value="price">Preis aufsteigend</option></select></div><p id="catalogcount"></p><div id="cataloggrid" class="grid"></div><button id="more">Weitere anzeigen</button>';
  let visible=36;
- function draw(){const q=$('catalogsearch').value.toLowerCase();let found=catalog.filter(x=>(!allowed.length||allowed.includes(x.categoryOriginal||x.category))&&(x.name+' '+(x.nameOriginal||'')+' '+x.category+' '+x.places.join(' ')).toLowerCase().includes(q));found.sort($('catalogsort').value==='price'?((a,b)=>(a.price??Infinity)-(b.price??Infinity)):((a,b)=>a.name.localeCompare(b.name)));
- $('catalogcount').textContent=found.length+' Gegenstände · Spielstand 0.7.0';$('cataloggrid').innerHTML=found.slice(0,visible).map(x=>`<div class="panel card">${x.sprite?`<div role="img" aria-label="${esc(x.name)}" class="gameicon" style="background-image:url(${esc(x.image)});background-position:-${x.sprite.x}px -${x.sprite.y}px"></div>`:''}<h2>${esc(x.name)}</h2><span class="pill">${esc(x.rarity||x.category)}</span>${x.price!=null?`<p>${money(x.price)} · Katalogwert</p>`:''}${x.stats?`<p>${esc(x.stats.rpm)} Schuss/min · Magazin ${esc(x.stats.magazine)}</p>`:''}${x.places.length?`<p>${esc(x.places.join(', '))}</p>`:''}<a href="${esc(x.source)}" target="_blank" rel="noopener">Spielwert und Quelle</a></div>`).join('');$('more').hidden=visible>=found.length;
+ function draw(){const q=$('catalogsearch').value.toLowerCase();let found=catalog.filter(x=>(!allowed.length||allowed.includes(x.wikiCategory||x.categoryOriginal||x.category))&&(x.name+' '+(x.nameOriginal||'')+' '+x.category+' '+x.places.join(' ')).toLowerCase().includes(q));found.sort($('catalogsort').value==='price'?((a,b)=>(a.price??Infinity)-(b.price??Infinity)):((a,b)=>a.name.localeCompare(b.name)));
+ $('catalogcount').textContent=found.length+' Gegenstände · Spielstand 0.7.0';$('cataloggrid').innerHTML=found.slice(0,visible).map(x=>`<div class="panel card">${x.sprite?`<div role="img" aria-label="${esc(x.name)}" class="gameicon" style="background-image:url(${esc(x.image)});background-position:-${x.sprite.x}px -${x.sprite.y}px"></div>`:''}<h2>${esc(x.name)}</h2><span class="pill">${esc(x.rarity||x.category)}</span>${x.price!=null?`<p>${money(x.price)} · Katalogwert</p>`:''}${!x.sprite?'<p class="muted">Die Quelle enthält kein Einzelbild.</p>':''}${x.stats?`<p>${esc(x.stats.rpm)} Schuss/min · Magazin ${esc(x.stats.magazine)}</p>`:''}${x.places.length?`<p>${esc(x.places.join(', '))}</p>`:''}<a href="${esc(x.source)}" target="_blank" rel="noopener">Spielwert und Quelle</a></div>`).join('');$('more').hidden=visible>=found.length;
  }
  $('catalogsearch').oninput=()=>{visible=36;draw();};$('catalogsort').onchange=draw;$('more').onclick=()=>{visible+=36;draw();};draw();
 }
-$('search').oninput=()=>{const q=$('search').value.trim().toLowerCase();if(!q){guarded(()=>page(current));return;}$('heading').textContent='Suchergebnisse';const results=[...members.filter(p=>p.name.toLowerCase().includes(q)).map(p=>({title:p.name,detail:p.specialization,page:'Mitglieder'})),...records.filter(r=>(r.title+' '+JSON.stringify(r.data)).toLowerCase().includes(q)).map(r=>({title:r.title,detail:r.data.note,page:Object.entries(configs).find(([,v])=>v[0]===r.kind)?.[0]||'Dashboard'})),...catalog.filter(x=>(x.name+' '+(x.nameOriginal||'')).toLowerCase().includes(q)).slice(0,30).map(x=>({title:x.name,detail:x.price==null?x.category:money(x.price),page:'Gegenstände'}))];$('content').innerHTML='<div class="grid">'+results.slice(0,60).map(r=>`<div class="panel"><h2>${esc(r.title)}</h2><p>${esc(r.detail)}</p><button data-result="${esc(r.page)}">Öffnen</button></div>`).join('')+'</div>';$('content').querySelectorAll('[data-result]').forEach(b=>b.onclick=()=>{$('search').value='';go(b.dataset.result);});};
+$('search').oninput=()=>{const q=$('search').value.trim().toLowerCase();if(!q){guarded(()=>page(current));return;}$('heading').textContent='Suchergebnisse';const results=[...members.filter(p=>p.name.toLowerCase().includes(q)).map(p=>({title:p.name,detail:p.specialization,page:'Mitglieder'})),...records.filter(r=>!['inventory','task','storage','goal','specialization','vehicle','trade','loan','raid','timer','price','recipe'].includes(r.kind)&&(r.title+' '+JSON.stringify(r.data)).toLowerCase().includes(q)).map(r=>({title:r.title,detail:r.data.note,page:Object.entries(configs).find(([,v])=>v[0]===r.kind)?.[0]||'Dashboard'})),...catalog.filter(x=>(x.name+' '+(x.nameOriginal||'')).toLowerCase().includes(q)).slice(0,30).map(x=>({title:x.name,detail:x.price==null?x.category:money(x.price),page:Object.entries(categories).find(([,allowed])=>allowed.includes(x.wikiCategory||x.categoryOriginal||x.category))?.[0]||'Gegenstände'}))];$('content').innerHTML='<div class="grid">'+results.slice(0,60).map(r=>`<div class="panel"><h2>${esc(r.title)}</h2><p>${esc(r.detail)}</p><button data-result="${esc(r.page)}">Öffnen</button></div>`).join('')+'</div>';$('content').querySelectorAll('[data-result]').forEach(b=>b.onclick=()=>{$('search').value='';go(b.dataset.result);});};
 $('refresh').onclick=()=>guarded(async()=>{await reload();await page(current);status('Aktualisiert.');});
-setInterval(()=>{document.querySelectorAll('.countdown').forEach(e=>{const sec=Math.max(0,Math.floor((new Date(e.dataset.end)-Date.now())/1000));e.textContent=sec?Math.floor(sec/3600)+' h '+Math.floor(sec%3600/60)+' min '+sec%60+' s':'Timer abgelaufen';});},1000);
+setInterval(()=>{updateHeader();document.querySelectorAll('.countdown').forEach(e=>{const sec=Math.max(0,Math.floor((new Date(e.dataset.end)-Date.now())/1000));e.textContent=sec?Math.floor(sec/3600)+' h '+Math.floor(sec%3600/60)+' min '+sec%60+' s':'Timer abgelaufen';});},1000);
 async function enter(){
  const profiles=await api('/rest/v1/profiles?select=*');me=profiles.find(p=>p.id===session.user.id);if(!me?.active)throw Error('Account ist nicht freigeschaltet.');members=profiles;
  await loadRecords();
@@ -205,7 +234,7 @@ async function enter(){
 }
 $('login').onsubmit=e=>{e.preventDefault();guarded(async()=>{const b=e.target.querySelector('button');b.disabled=true;try{const username=e.target.username.value.trim().toLowerCase();session=await api('/auth/v1/token?grant_type=password','POST',{email:username+'@sick-clan.invalid',password:e.target.password.value});sessionStorage.setItem('sick-session',JSON.stringify(session));await enter();e.target.reset();}finally{b.disabled=false;}});};
 const features=createFeatures({ $,esc,api,guarded,saveRecord,loadRecords,money,memberName,own,showImage,status,
- get currentPage(){return current;},reload,get me(){return me;},get records(){return records;},get members(){return members;},get research(){return research;},get places(){return places;},get catalog(){return catalog;},get session(){return session;},url:URL,key:KEY });
+ go,get currentPage(){return current;},reload,get me(){return me;},get records(){return records;},get members(){return members;},get research(){return research;},get places(){return places;},get catalog(){return catalog;},get session(){return session;},url:URL,key:KEY });
 try{session=JSON.parse(sessionStorage.getItem('sick-session'));if(session)await enter();}catch(e){session=null;sessionStorage.removeItem('sick-session');status(e.message);}
 function editCatalog(c){
  if(!leader())throw Error('Clan-Leitung erforderlich');

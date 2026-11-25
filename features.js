@@ -1,6 +1,7 @@
 export function createFeatures(context) {
  const { esc, api, guarded, saveRecord, loadRecords, money, memberName, own, showImage } = context;
  const $ = selector => selector.startsWith('#') ? document.querySelector(selector) : context.$(selector);
+ let pendingMapTarget=null;
  let refreshChat = null;
  let refreshNotifications = null;
  let renderGeneration = 0;
@@ -263,13 +264,15 @@ export function createFeatures(context) {
   draw();
  }
  async function mapPage(container) {
-  const [world, city] = await Promise.all(['map-world', 'map-city'].map(async file => {
-   const response = await fetch('data/' + file + '.json');
+  const generation=renderGeneration;
+  container.innerHTML='<div class="panel" role="status">Karte wird geladen …</div>';
+  const [world, city, robberyKeys] = await Promise.all(['map-world', 'map-city', 'robbery-keys'].map(async file => {
+   const response = await fetch('data/' + file + '.json?v=0.4',{cache:'no-cache'});
    if (!response.ok) throw Error('Kartendaten konnten nicht geladen werden.');
    return response.json();
   }));
-  if (!container.isConnected || context.currentPage!=='Stadtkarte') return;
-  container.innerHTML = `<div class="panel"><div class="toolbar"><select id="map-view" aria-label="Kartenansicht"><option value="city">Looty Bay · Stadtkoordinaten</option><option value="world">Weltkarte · Original-Spielbild</option></select><input id="map-search" type="search" placeholder="Ort, Fund oder Schlüssel suchen" aria-label="Karte durchsuchen"><select id="map-type" aria-label="Ortsart"><option value="all">Alle Orte</option><option value="building">Gebäude</option><option value="poi">Fundorte und Dienste</option></select></div><p id="map-description"></p></div><div class="map-tools"><button id="map-plus" aria-label="Karte vergrößern">+</button><button id="map-minus" aria-label="Karte verkleinern">−</button><button id="map-home">Gesamtansicht</button></div><div id="map-viewport" class="interactive-map" tabindex="0" aria-label="Interaktive Karte. Ziehen zum Verschieben, Mausrad zum Zoomen."><div id="map-canvas" class="map-canvas"></div></div><div id="map-info" class="panel"></div><div id="map-results" class="map-results"></div><p class="muted" id="map-source"></p>`;
+  if (!container.isConnected || generation!==renderGeneration || context.currentPage!=='Stadtkarte') return;
+  container.innerHTML = `<div class="panel"><div class="toolbar"><select id="map-view" aria-label="Kartenansicht"><option value="world">Weltkarte · Original-Spielbild</option><option value="city">Looty Bay · Stadtkoordinaten</option></select><input id="map-search" type="search" placeholder="Ort, Fund oder Schlüssel suchen" aria-label="Karte durchsuchen"><select id="map-type" aria-label="Ortsart"><option value="all">Alle Orte</option><option value="building">Gebäude</option><option value="poi">Fundorte und Dienste</option></select></div><p id="map-description"></p></div><div class="map-tools"><button id="map-plus" aria-label="Karte vergrößern">+</button><button id="map-minus" aria-label="Karte verkleinern">−</button><button id="map-home">Gesamtansicht</button></div><div id="map-viewport" class="interactive-map" tabindex="0" aria-label="Interaktive Karte. Ziehen zum Verschieben, Mausrad zum Zoomen."><div id="map-canvas" class="map-canvas"></div></div><div id="map-info" class="panel"></div><div id="map-results" class="map-results"></div><p class="muted" id="map-source"></p>`;
   const viewport = $('#map-viewport');
   const canvas = $('#map-canvas');
   let scale = 1;
@@ -279,6 +282,7 @@ export function createFeatures(context) {
   let height = 900;
   let points = [];
   let drag = null;
+  let targetToCenter=null;
   const buildings = city.buildings.map(p => ({ ...p, key: 'building-' + p.id, type: 'building' }));
   const cityPoints = [...buildings, ...city.pois.map(p => ({ ...p, key: 'poi-' + p.id, type: 'poi' }))];
   function location(point) {
@@ -305,7 +309,7 @@ export function createFeatures(context) {
    if (center) { scale = Math.max(scale, 1); panX = viewport.clientWidth / 2 - x * scale; panY = viewport.clientHeight / 2 - y * scale; transform(); }
    const loot = (point.lootIds || []).map(id => context.catalog.find(item => item.id === id)).filter(Boolean);
    const photo=point.type==='building'&&city.buildings.filter(p=>p.name===point.name).length===1?context.places.find(p=>p.name===point.name):null;
-   const keys = (point.keyIds || []).map(id => context.catalog.find(item => item.id === id)).filter(Boolean);
+   const keys = (point.keyIds || []).map(id => robberyKeys.find(item => item.id === id)||context.catalog.find(item => item.id === id)).filter(Boolean);
    $('#map-info').innerHTML = `<h2>${esc(point.name)}</h2>${photo?.image?`<button class="original-place-image"><img src="${esc(photo.image)}" alt="Spielansicht ${esc(point.name)}"></button>`:''}<p>${esc(point.categoryName || (point.type === 'poi' ? 'Fundort / Dienst' : 'Distrikt'))}</p>${point.z !== undefined ? `<small>Spielkoordinaten · X ${point.x} · Z ${point.z}</small>` : '<small>Markierung der Beschriftung im offiziellen Spielbild</small>'}${loot.length ? '<h3>Mögliche Beute</h3><div class="loot-strip">' + loot.map(item => `<div>${icon(item)}<span>${esc(item.name)}</span>${item.price != null ? '<small>' + money(item.price) + '</small>' : ''}</div>`).join('') + '</div>' : ''}${keys.length ? '<h3>Schlüssel</h3><p>' + keys.map(item => esc(item.name)).join(', ') + '</p>' : ''}`;
    if(photo?.image)$('#map-info .original-place-image').onclick=()=>showImage(photo.image);
   }
@@ -319,7 +323,7 @@ export function createFeatures(context) {
    const query = $('#map-search').value.toLowerCase();
    points = (isWorld ? world.points.map(p => ({ ...p, key: p.id })) : cityPoints).filter(p => {
     const kind = $('#map-type').value;
-    const associated = [...(p.lootIds || []), ...(p.keyIds || [])].map(id => context.catalog.find(item => item.id === id)?.name || '').join(' ');
+    const associated = [...(p.lootIds || []), ...(p.keyIds || [])].map(id => robberyKeys.find(item => item.id === id)?.name || context.catalog.find(item => item.id === id)?.name || '').join(' ');
     return (isWorld || kind === 'all' || p.type === kind) && (p.name + ' ' + (p.nameOriginal || '') + ' ' + associated).toLowerCase().includes(query);
    });
    canvas.innerHTML = (isWorld ? `<img class="original-map" src="${world.image}" alt="Offizielle ROB-RUN-Weltkarte">` : `<div class="district-labels">${city.districts.map(p => { const [x,y] = location(p); return `<span style="left:${x}px;top:${y}px">${esc(p.name)}</span>`; }).join('')}</div>`) + points.map(p => { const [x,y] = location(p); return `<button class="map-marker ${p.type || 'district'}" style="left:${x}px;top:${y}px" data-map-id="${esc(p.key)}" aria-label="${esc(p.name)}" title="${esc(p.name)}">${p.type === 'poi' ? '•' : p.name.slice(0,1)}</button>`; }).join('');
@@ -329,20 +333,23 @@ export function createFeatures(context) {
    for (const button of container.querySelectorAll('[data-map-id]')) button.onclick = () => show(points.find(p => p.key === button.dataset.mapId), button.closest('#map-results') !== null);
    if (reset) { home(); $('#map-info').innerHTML = '<p>Wähle einen Ort auf der Karte oder in der Liste.</p>'; }
   }
-  $('#map-view').onchange = () => draw(true);
+  $('#map-view').onchange = () => {targetToCenter=null;draw(true);};
   $('#map-type').onchange = () => draw();
   $('#map-search').oninput = () => draw();
   $('#map-plus').onclick = () => zoom(1.35);
   $('#map-minus').onclick = () => zoom(1 / 1.35);
-  $('#map-home').onclick = home;
+  $('#map-home').onclick=()=>{targetToCenter=null;home();};
   viewport.onwheel = event => { event.preventDefault(); const rect = viewport.getBoundingClientRect(); zoom(event.deltaY < 0 ? 1.15 : 1 / 1.15, event.clientX - rect.left, event.clientY - rect.top); };
   viewport.onpointerdown = event => { if (event.target.closest('button')) return; drag = { x: event.clientX, y: event.clientY, panX, panY }; viewport.setPointerCapture(event.pointerId); };
   viewport.onpointermove = event => { if (!drag) return; panX = drag.panX + event.clientX - drag.x; panY = drag.panY + event.clientY - drag.y; transform(); };
   viewport.onpointerup = viewport.onpointercancel = () => { drag = null; };
   viewport.onkeydown = event => { const offsets = { ArrowLeft:[40,0],ArrowRight:[-40,0],ArrowUp:[0,40],ArrowDown:[0,-40] }; if (!offsets[event.key]) return; event.preventDefault(); panX += offsets[event.key][0]; panY += offsets[event.key][1]; transform(); };
-  observer = new ResizeObserver(home);
+  observer = new ResizeObserver(()=>{home();if(targetToCenter)show(targetToCenter,true);});
   observer.observe(viewport);
   draw(true);
+  if(pendingMapTarget){const target=cityPoints.find(point=>point.id===pendingMapTarget);pendingMapTarget=null;if(target){targetToCenter=target;$('#map-view').value='city';draw(true);requestAnimationFrame(()=>show(target,true));}}
+  const image=canvas.querySelector('.original-map');if(image)image.onerror=()=>{$('#map-description').textContent='Das Kartenbild konnte nicht geladen werden. Bitte Gesamtansicht oder Stadtkoordinaten auswählen.';};
+  if($('#map-view').value==='world')requestAnimationFrame(home);
  }
  async function disablePush() {
   if (!('serviceWorker' in navigator)) return;
@@ -428,5 +435,23 @@ export function createFeatures(context) {
   });};
   drawTables();calculate();
  }
- return { cleanup, chatPage, backupPage, researchPage, mapPage, notificationsPage, disablePush, farmPage, icon };
+ async function keysPage(container){
+  const generation=renderGeneration;
+  container.innerHTML='<div class="panel" role="status">Raubschlüssel werden geladen …</div>';
+  const response=await fetch('data/robbery-keys.json?v=0.4',{cache:'no-cache'});
+  if(!response.ok)throw Error('Die Schlüsselübersicht konnte nicht geladen werden.');
+  const keys=await response.json();
+  if(generation!==renderGeneration)return;
+  container.innerHTML='<div class="panel"><h2>Schlüssel zum Ausrauben</h2><p>Tür- und Tresorschlüssel sowie Zugangskarten mit belegter Gebäudezuordnung.</p><input id="key-search" type="search" aria-label="Schlüssel oder Ort suchen" placeholder="Schlüssel, Gebäude oder Stadtteil"></div><div id="key-list" class="grid"></div>';
+  function draw(){
+   const query=$('#key-search').value.toLowerCase();
+   $('#key-list').innerHTML=keys.filter(key=>(key.name+' '+key.locations.map(p=>p.name+' '+p.district).join(' ')).toLowerCase().includes(query)).map(key=>{
+    const generic=context.catalog.find(item=>item.id===(key.id.startsWith('safe_')?'safe_key_1':key.id.startsWith('room_')?'room_key_1':'vip_key_1'));
+    return `<div class="panel card">${icon(generic)}<small>Schlüsseltyp</small><h2>${esc(key.name)}</h2>${key.locations.map(place=>`<p><strong>${esc(place.name)}</strong><br>Spielkoordinaten · X ${place.x} · Z ${place.z}</p><button data-key-place="${esc(place.id)}">Ort auf der Karte zeigen</button>`).join('')}<p><a href="${esc(key.source)}" target="_blank" rel="noopener">Zuordnung aus den Spieldaten</a></p></div>`;
+   }).join('')||'<div class="panel">Keine passenden Schlüssel gefunden.</div>';
+   container.querySelectorAll('[data-key-place]').forEach(button=>button.onclick=()=>{pendingMapTarget=button.dataset.keyPlace;context.go('Stadtkarte');});
+  }
+  $('#key-search').oninput=draw;draw();
+ }
+ return { cleanup, chatPage, backupPage, researchPage, mapPage, keysPage, notificationsPage, disablePush, farmPage, icon };
 }

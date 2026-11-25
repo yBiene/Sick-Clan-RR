@@ -1,4 +1,4 @@
-# Sick-Clan-RR 0.3
+# Sick-Clan-RR 0.4
 
 Stand 25. November 2026
 
@@ -12,13 +12,13 @@ Der Katalog umfasst 563 Quellen-Datensätze. Ein ausdrücklich unbekannter techn
 
 ## Funktionen
 
-- Profile, Basisdaten, Inventar, Wunschlisten und Clanmitglieder.
+- Profile, Basisdaten, Wunschlisten und Clanmitglieder. Dashboard mit offiziellem ROB-RUN-Motiv und SICK-Logo. Kopfzeile mit Datum, Berliner Uhrzeit und gemeinsam einstellbarem Server-Ende samt Countdown. Abmelden unter Mein Profil.
 - Pflanzenrechner mit mehreren Anbautischen, Pflanzenraritäten, individueller Ausrüstung, Käuferstufe, Ernteintervall und eigenen gemessenen Zykluszeiten. Ältere gespeicherte Pflanzendaten werden weiter unterstützt.
 - Grafischer Forschungsbaum mit 171 Freischaltungen, 142 echten Voraussetzungen und persönlichem beziehungsweise gemeinsamem Fortschritt.
 - Interaktive interne Weltkarte und Stadtansicht mit 29 Gebäuden und 144 Fundorten oder Diensten. Suche, Filter, Verschieben, Zoom, Tastatursteuerung, Beute- und Schlüsselangaben.
-- Lager mit Mindestbeständen, Kasse, Aufgaben, Brett, Ziele, Spezialisierungen und Fuhrpark.
+- Clan-Kasse und Schwarzes Brett. Einstellen im Clan-Bereich bündelt Server-Endzeit und Accountverwaltung für die Leitung.
 - Gruppenchat und private Nachrichten mit automatischer Aktualisierung, Bildnachrichten und Lesebestätigungen. Private Bilder sind ausschließlich für Beteiligte zugänglich. Bilder bis 1 MB und insgesamt 256 Bilder im Clan-Bucket begrenzen den Speicherbedarf.
-- Handelsplatz, Leihen, Überfallplanung, Timer, Preisvergleich, Herstellungs- und Beuterechner.
+- Herstellungsrechner direkt unter Dashboard. 33 belegte Raubschlüssel mit Gebäuden, tatsächlichen Koordinaten und Schaltfläche zur Kartenposition. Die Datenquelle enthält 14 Tresorschlüssel, 13 Raumschlüssel und sechs Zugangskarten mit konkreter Gebäudezuordnung. Schlüssel ohne belegte Zuordnung werden nicht als gesicherte Raubschlüssel aufgeführt.
 - Globale Suche mit deutschen und ursprünglichen Spielnamen, quellengebundene Spielwertkorrekturen und Änderungsprotokoll.
 - Serverseitige Accountanlage, Rollenverwaltung, Sperrung, Passwortzurücksetzung und Kopieren neu angelegter Zugangsdaten.
 - JSON-Sicherung einschließlich zugänglicher Bilder. Leitung kann gemeinsame Claneinträge mit ursprünglichen Eigentümern wiederherstellen. Private Nachrichten bleiben ihren jeweiligen Eigentümern vorbehalten. Datenbankimport erfolgt atomar und überspringt vorhandene IDs.
@@ -28,11 +28,15 @@ Der Katalog umfasst 563 Quellen-Datensätze. Ein ausdrücklich unbekannter techn
 
 Die Backend-Prüfung umfasst Anmeldung, Accountanlage, Rollenrechte, CRUD in sämtlichen 20 Mitgliedsmodulen, alle drei Leitungsmodulen, Schutz privater Nachrichten und Bilder, Lesebestätigungen, Wiederherstellung ursprünglicher Eigentümer, wiederholten Import, Sperrung und Push-Authentifizierung. Zusätzliche Tests prüfen Bildpfadschutz und atomare Rollbacks. Alle 37 Live-Prüfungen haben bestanden.
 
-Alle 45 Ansichten wurden im Browser geöffnet. Alle 45 mobilen Ansichten wurden bei 375 beziehungsweise 390 CSS-Pixeln ohne horizontalen Seitenüberlauf und ohne angezeigte Anwendungsfehler geprüft. Interaktionen für Pflanzenberechnung und Speicherung, mehrere Tische, lange Chatnachrichten, Forschungsfortschritt sowie Kartenfilter und Beutedetails wurden zusätzlich geprüft. Browserprüfungen der angemeldeten Oberfläche verwenden isolierte Testantworten. Die Datenbank- und Rechteprüfungen laufen gesondert gegen das produktive Supabase-Projekt mit temporären Testkonten, die anschließend entfernt werden.
+Für Version 0.3 wurden alle 45 damaligen Ansichten im Browser geöffnet. Die damaligen 45 mobilen Ansichten wurden bei 375 beziehungsweise 390 CSS-Pixeln ohne horizontalen Seitenüberlauf und ohne angezeigte Anwendungsfehler geprüft. Interaktionen für Pflanzenberechnung und Speicherung, mehrere Tische, lange Chatnachrichten, Forschungsfortschritt sowie Kartenfilter und Beutedetails wurden zusätzlich geprüft. Browserprüfungen der angemeldeten Oberfläche verwenden isolierte Testantworten. Die Datenbank- und Rechteprüfungen laufen gesondert gegen das produktive Supabase-Projekt mit temporären Testkonten, die anschließend entfernt werden.
+
+Version 0.4 wurde gezielt mit isolierten Browser-Testantworten geprüft. Dashboard-Originalbild, reduzierte Navigation, Server-Ende speichern und Countdown, Accountformular, 33 Schlüssel und deren Kartenverknüpfung, Original-Weltbild sowie mobile Dashboard- und Waffenansicht wurden geprüft. Bei 375 CSS-Pixeln trat in diesen mobilen Ansichten kein horizontaler Überlauf auf. Alle 46 Waffeneinträge sind von Zubehör getrennt. NPC-Datensätze stehen unter Händler & Kontakte. Originalpreise und Bildzuordnungen sind unverändert. Bestehende Backend-Rechte und Accountfunktionen wurden durch diese Oberflächenänderung nicht verändert.
+
+Inventar, Lager, Aufgaben, Ziele, Spezialisierungen, Fuhrpark, Handel, Leihen, Preisvergleich, Überfallplanung, Timer, Beuterechner und eigene Herstellungsrezepte sind aus Navigation und Suche entfernt; alte direkte Routen führen zum Dashboard. Gespeicherte Daten bleiben für die Datensicherung erhalten.
 
 ## Quellenentscheidungen und Grenzen
 
-Die Stadtansicht stellt tatsächliche Spielkoordinaten dar. Der verfügbare Datensatz enthält keine nachweislich frei nutzbare vollständige Stadtgrafik oder Straßenverläufe. Die interne Original-Weltkarte und die Koordinatenkarte sind eigenständig bedienbar.
+Die Stadtansicht stellt tatsächliche Spielkoordinaten dar. Der verfügbare Datensatz enthält keine nachweislich frei nutzbare vollständige Stadtgrafik oder Straßenverläufe. Die interne Original-Weltkarte und die Koordinatenkarte sind eigenständig bedienbar. Die Weltkarte wird als sichtbares Originalbild zuerst geöffnet; verknüpfte Schlüssel öffnen die Stadtkoordinaten am zugehörigen Gebäude. Die Schlüsselbilder zeigen ausdrücklich den originalen Schlüsseltyp, da der verfügbare Inventarkatalog kein einzelnes Bild für jede Nummer enthält.
 
 Pflanzenzeiten werden mit der mehrfach als im Spiel gemessen beschriebenen Communityformel berechnet. 60 Minuten Grundzeit geteilt durch die Summe aus 1 und den Ausrüstungsboni ergeben 40 Minuten mit allen drei Upgrades. Eine andere, ausdrücklich ungemessene Interpretation des Spielcodes ergibt 30 Minuten. Eine offizielle Bestätigung fehlt. Eigene Messzeiten können pro Tisch verwendet werden.
 

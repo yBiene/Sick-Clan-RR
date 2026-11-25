@@ -1,0 +1,518 @@
+[
+  {
+    "id": "vip_key_3",
+    "name": "Schlüsselkarte 3",
+    "nameOriginal": "Keycard",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "Cottage_02",
+        "name": "Landhaus",
+        "x": -251.5,
+        "z": 540.5,
+        "district": "dormitory"
+      }
+    ]
+  },
+  {
+    "id": "vip_key_6",
+    "name": "Schlüsselkarte 6",
+    "nameOriginal": "Keycard",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "Gallery",
+        "name": "Kunstgalerie",
+        "x": -11.1,
+        "z": -119.4,
+        "district": "central"
+      }
+    ]
+  },
+  {
+    "id": "vip_key_2",
+    "name": "Schlüsselkarte 2",
+    "nameOriginal": "Basement Key #2",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "PoliceStation",
+        "name": "Polizeiwache",
+        "x": -64.8,
+        "z": -1.5,
+        "district": "central"
+      }
+    ]
+  },
+  {
+    "id": "vip_key_4",
+    "name": "Ausweiskarte 4",
+    "nameOriginal": "ID Card",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "PoliceStation",
+        "name": "Polizeiwache",
+        "x": -64.8,
+        "z": -1.5,
+        "district": "central"
+      }
+    ]
+  },
+  {
+    "id": "safe_key_1",
+    "name": "Tresorschlüssel 1",
+    "nameOriginal": "Safe Key #1",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "Hotel_01",
+        "name": "Seasons Hotel",
+        "x": -283.8,
+        "z": -28.9,
+        "district": "resort"
+      }
+    ]
+  },
+  {
+    "id": "room_key_12",
+    "name": "Zimmerschlüssel 12",
+    "nameOriginal": "Room Key #12",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "Hotel_01",
+        "name": "Seasons Hotel",
+        "x": -283.8,
+        "z": -28.9,
+        "district": "resort"
+      },
+      {
+        "id": "Hotel_02",
+        "name": "Reef Hotel",
+        "x": -369.2,
+        "z": -30.4,
+        "district": "resort"
+      }
+    ]
+  },
+  {
+    "id": "safe_key_14",
+    "name": "Tresorschlüssel 14",
+    "nameOriginal": "Safe Key #14",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "Cottage_05",
+        "name": "Landhaus",
+        "x": -263.1,
+        "z": 465.7,
+        "district": "dormitory"
+      },
+      {
+        "id": "Cottage_03",
+        "name": "Luxuslandhaus",
+        "x": -304.9,
+        "z": 538.1,
+        "district": "dormitory"
+      }
+    ]
+  },
+  {
+    "id": "safe_key_4",
+    "name": "Tresorschlüssel 4",
+    "nameOriginal": "Safe Key #4",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "MiniMarket_02",
+        "name": "Minimarkt",
+        "x": 505.4,
+        "z": 270.2,
+        "district": "business"
+      }
+    ]
+  },
+  {
+    "id": "room_key_10",
+    "name": "Zimmerschlüssel 10",
+    "nameOriginal": "Room Key #10",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "MiniMarket_02",
+        "name": "Minimarkt",
+        "x": 505.4,
+        "z": 270.2,
+        "district": "business"
+      },
+      {
+        "id": "MiniMarket_03",
+        "name": "Minimarkt",
+        "x": 462.4,
+        "z": 102.7,
+        "district": "business"
+      }
+    ]
+  },
+  {
+    "id": "vip_key_1",
+    "name": "Schlüsselkarte 1",
+    "nameOriginal": "Keycard",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "GrandHotel",
+        "name": "Grand Hotel",
+        "x": -338.4,
+        "z": 219,
+        "district": "resort"
+      }
+    ]
+  },
+  {
+    "id": "safe_key_12",
+    "name": "Tresorschlüssel 12",
+    "nameOriginal": "Safe Key #12",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "GasStation",
+        "name": "Tankstelle",
+        "x": 239.7,
+        "z": 124,
+        "district": "business"
+      }
+    ]
+  },
+  {
+    "id": "room_key_5",
+    "name": "Zimmerschlüssel 5",
+    "nameOriginal": "Room Key #5",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "GasStation",
+        "name": "Tankstelle",
+        "x": 239.7,
+        "z": 124,
+        "district": "business"
+      }
+    ]
+  },
+  {
+    "id": "room_key_6",
+    "name": "Zimmerschlüssel 6",
+    "nameOriginal": "Room Key #6",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "GasStation",
+        "name": "Tankstelle",
+        "x": 239.7,
+        "z": 124,
+        "district": "business"
+      }
+    ]
+  },
+  {
+    "id": "safe_key_9",
+    "name": "Tresorschlüssel 9",
+    "nameOriginal": "Safe Key #9",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "MiniMarket_01",
+        "name": "Minimarkt",
+        "x": -390.6,
+        "z": 89.5,
+        "district": "resort"
+      }
+    ]
+  },
+  {
+    "id": "room_key_11",
+    "name": "Zimmerschlüssel 11",
+    "nameOriginal": "Room Key #11",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "MiniMarket_01",
+        "name": "Minimarkt",
+        "x": -390.6,
+        "z": 89.5,
+        "district": "resort"
+      }
+    ]
+  },
+  {
+    "id": "safe_key_7",
+    "name": "Tresorschlüssel 7",
+    "nameOriginal": "Safe Key #7",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "Cottage_01",
+        "name": "Aristokratenvilla",
+        "x": -369.1,
+        "z": 500.9,
+        "district": "dormitory"
+      }
+    ]
+  },
+  {
+    "id": "room_key_1",
+    "name": "Zimmerschlüssel 1",
+    "nameOriginal": "Room Key #1",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "WeaponShop_01",
+        "name": "Waffenladen West",
+        "x": -316.6,
+        "z": 38.1,
+        "district": "resort"
+      }
+    ]
+  },
+  {
+    "id": "safe_key_10",
+    "name": "Tresorschlüssel 10",
+    "nameOriginal": "Safe Key #10",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "Pharmacy_02",
+        "name": "Apotheke",
+        "x": 364.8,
+        "z": 107.3,
+        "district": "business"
+      }
+    ]
+  },
+  {
+    "id": "room_key_8",
+    "name": "Zimmerschlüssel 8",
+    "nameOriginal": "Room Key #8",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "Pharmacy_02",
+        "name": "Apotheke",
+        "x": 364.8,
+        "z": 107.3,
+        "district": "business"
+      }
+    ]
+  },
+  {
+    "id": "room_key_7",
+    "name": "Zimmerschlüssel 7",
+    "nameOriginal": "Room Key #7",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "Cottage_04",
+        "name": "Landhaus",
+        "x": -310.2,
+        "z": 479.9,
+        "district": "dormitory"
+      }
+    ]
+  },
+  {
+    "id": "room_key_2",
+    "name": "Zimmerschlüssel 2",
+    "nameOriginal": "Room Key #2",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "EquipShop_01",
+        "name": "Ausrüstungsladen West",
+        "x": -307.5,
+        "z": 74.6,
+        "district": "resort"
+      }
+    ]
+  },
+  {
+    "id": "safe_key_11",
+    "name": "Tresorschlüssel 11",
+    "nameOriginal": "Safe Key #11",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "Cafe_01",
+        "name": "Rusty-Burgers-Café",
+        "x": 242.4,
+        "z": 37.4,
+        "district": "business"
+      }
+    ]
+  },
+  {
+    "id": "safe_key_3",
+    "name": "Tresorschlüssel 3",
+    "nameOriginal": "Safe Key #3",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "StripClub_01",
+        "name": "Stripclub",
+        "x": -467,
+        "z": -15.4,
+        "district": "resort"
+      }
+    ]
+  },
+  {
+    "id": "room_key_13",
+    "name": "Zimmerschlüssel 13",
+    "nameOriginal": "Room Key #13",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "StripClub_01",
+        "name": "Stripclub",
+        "x": -467,
+        "z": -15.4,
+        "district": "resort"
+      }
+    ]
+  },
+  {
+    "id": "safe_key_2",
+    "name": "Tresorschlüssel 2",
+    "nameOriginal": "Safe Key #2",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "Hotel_02",
+        "name": "Reef Hotel",
+        "x": -369.2,
+        "z": -30.4,
+        "district": "resort"
+      }
+    ]
+  },
+  {
+    "id": "safe_key_8",
+    "name": "Tresorschlüssel 8",
+    "nameOriginal": "Safe Key #8",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "MiniMarket_03",
+        "name": "Minimarkt",
+        "x": 462.4,
+        "z": 102.7,
+        "district": "business"
+      }
+    ]
+  },
+  {
+    "id": "vip_key_5",
+    "name": "Ausweiskarte 5",
+    "nameOriginal": "ID Card",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "Bank",
+        "name": "Bank von Looty Bay",
+        "x": 341.5,
+        "z": 381,
+        "district": "business"
+      }
+    ]
+  },
+  {
+    "id": "room_key_4",
+    "name": "Zimmerschlüssel 4",
+    "nameOriginal": "Room Key #4",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "EquipShop_02",
+        "name": "Ausrüstungsladen Ost",
+        "x": 319.3,
+        "z": -122.5,
+        "district": "business"
+      }
+    ]
+  },
+  {
+    "id": "room_key_3",
+    "name": "Zimmerschlüssel 3",
+    "nameOriginal": "Room Key #3",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "WeaponShop_02",
+        "name": "Waffenladen Ost",
+        "x": 434.7,
+        "z": -108.9,
+        "district": "business"
+      }
+    ]
+  },
+  {
+    "id": "safe_key_5",
+    "name": "Tresorschlüssel 5",
+    "nameOriginal": "Safe Key #5",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "Pharmacy_01",
+        "name": "Apotheke",
+        "x": -271.6,
+        "z": 53.8,
+        "district": "resort"
+      }
+    ]
+  },
+  {
+    "id": "room_key_9",
+    "name": "Zimmerschlüssel 9",
+    "nameOriginal": "Room Key #9",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "Pharmacy_01",
+        "name": "Apotheke",
+        "x": -271.6,
+        "z": 53.8,
+        "district": "resort"
+      }
+    ]
+  },
+  {
+    "id": "safe_key_13",
+    "name": "Tresorschlüssel 13",
+    "nameOriginal": "Safe Key #13",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "ElectronicsStore",
+        "name": "Elektronikgeschäft",
+        "x": -254.1,
+        "z": 47.9,
+        "district": "resort"
+      }
+    ]
+  },
+  {
+    "id": "safe_key_6",
+    "name": "Tresorschlüssel 6",
+    "nameOriginal": "Safe Key #6",
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "locations": [
+      {
+        "id": "Cafe_02",
+        "name": "Ocean-Breeze-Café",
+        "x": -326.9,
+        "z": -236.5,
+        "district": "resort"
+      }
+    ]
+  }
+]
