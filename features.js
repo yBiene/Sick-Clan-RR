@@ -267,12 +267,12 @@ export function createFeatures(context) {
   const generation=renderGeneration;
   container.innerHTML='<div class="panel" role="status">Karte wird geladen …</div>';
   const [world, city, robberyKeys] = await Promise.all(['map-world', 'map-city', 'robbery-keys'].map(async file => {
-   const response = await fetch('data/' + file + '.json?v=0.4',{cache:'no-cache'});
+   const response = await fetch('data/' + file + '.json?v=0.4.1',{cache:'no-cache'});
    if (!response.ok) throw Error('Kartendaten konnten nicht geladen werden.');
    return response.json();
   }));
   if (!container.isConnected || generation!==renderGeneration || context.currentPage!=='Stadtkarte') return;
-  container.innerHTML = `<div class="panel"><div class="toolbar"><select id="map-view" aria-label="Kartenansicht"><option value="world">Weltkarte · Original-Spielbild</option><option value="city">Looty Bay · Stadtkoordinaten</option></select><input id="map-search" type="search" placeholder="Ort, Fund oder Schlüssel suchen" aria-label="Karte durchsuchen"><select id="map-type" aria-label="Ortsart"><option value="all">Alle Orte</option><option value="building">Gebäude</option><option value="poi">Fundorte und Dienste</option></select></div><p id="map-description"></p></div><div class="map-tools"><button id="map-plus" aria-label="Karte vergrößern">+</button><button id="map-minus" aria-label="Karte verkleinern">−</button><button id="map-home">Gesamtansicht</button></div><div id="map-viewport" class="interactive-map" tabindex="0" aria-label="Interaktive Karte. Ziehen zum Verschieben, Mausrad zum Zoomen."><div id="map-canvas" class="map-canvas"></div></div><div id="map-info" class="panel"></div><div id="map-results" class="map-results"></div><p class="muted" id="map-source"></p>`;
+  container.innerHTML = `<div class="panel"><div class="toolbar"><select id="map-view" aria-label="Kartenansicht"><option value="city">Looty Bay · Stadtplan</option><option value="world">Weltkarte · Original-Spielbild</option></select><input id="map-search" type="search" placeholder="Ort, Fund oder Schlüssel suchen" aria-label="Karte durchsuchen"><select id="map-type" aria-label="Ortsart"><option value="all">Alle Orte</option><option value="building">Gebäude</option><option value="poi">Fundorte und Dienste</option></select></div><p id="map-description"></p></div><div class="map-tools"><button id="map-plus" aria-label="Karte vergrößern">+</button><button id="map-minus" aria-label="Karte verkleinern">−</button><button id="map-home">Gesamtansicht</button></div><div id="map-viewport" class="interactive-map" tabindex="0" aria-label="Interaktive Karte. Ziehen zum Verschieben, Mausrad zum Zoomen."><div id="map-canvas" class="map-canvas"></div></div><div id="map-info" class="panel"></div><div id="map-results" class="map-results"></div><p class="muted" id="map-source"></p>`;
   const viewport = $('#map-viewport');
   const canvas = $('#map-canvas');
   let scale = 1;
@@ -288,7 +288,7 @@ export function createFeatures(context) {
   function location(point) {
    if ($('#map-view').value === 'world') return [point.x, point.y];
    const bounds = city.bounds;
-   return [20 + (point.x - bounds.minX) / (bounds.maxX - bounds.minX) * 1160, 20 + (bounds.maxZ - point.z) / (bounds.maxZ - bounds.minZ) * 860];
+   return [20 + (point.x - bounds.minX) / (bounds.maxX - bounds.minX) * (city.width - 40), 20 + (bounds.maxZ - point.z) / (bounds.maxZ - bounds.minZ) * (city.height - 40)];
   }
   function transform() { canvas.style.transform = `translate(${panX}px,${panY}px) scale(${scale})`; }
   function home() {
@@ -306,6 +306,7 @@ export function createFeatures(context) {
   }
   function show(point, center = false) {
    const [x, y] = location(point);
+   for(const marker of canvas.querySelectorAll('[data-map-id]'))marker.classList.toggle('is-selected',marker.dataset.mapId===point.key);
    if (center) { scale = Math.max(scale, 1); panX = viewport.clientWidth / 2 - x * scale; panY = viewport.clientHeight / 2 - y * scale; transform(); }
    const loot = (point.lootIds || []).map(id => context.catalog.find(item => item.id === id)).filter(Boolean);
    const photo=point.type==='building'&&city.buildings.filter(p=>p.name===point.name).length===1?context.places.find(p=>p.name===point.name):null;
@@ -315,19 +316,19 @@ export function createFeatures(context) {
   }
   function draw(reset = false) {
    const isWorld = $('#map-view').value === 'world';
-   width = isWorld ? world.width : 1200;
-   height = isWorld ? world.height : 900;
+   width = isWorld ? world.width : city.width;
+   height = isWorld ? world.height : city.height;
    canvas.style.width = width + 'px';
    canvas.style.height = height + 'px';
-   canvas.classList.toggle('coordinate-grid', !isWorld);
+   canvas.classList.remove('coordinate-grid');
    const query = $('#map-search').value.toLowerCase();
    points = (isWorld ? world.points.map(p => ({ ...p, key: p.id })) : cityPoints).filter(p => {
     const kind = $('#map-type').value;
     const associated = [...(p.lootIds || []), ...(p.keyIds || [])].map(id => robberyKeys.find(item => item.id === id)?.name || context.catalog.find(item => item.id === id)?.name || '').join(' ');
     return (isWorld || kind === 'all' || p.type === kind) && (p.name + ' ' + (p.nameOriginal || '') + ' ' + associated).toLowerCase().includes(query);
    });
-   canvas.innerHTML = (isWorld ? `<img class="original-map" src="${world.image}" alt="Offizielle ROB-RUN-Weltkarte">` : `<div class="district-labels">${city.districts.map(p => { const [x,y] = location(p); return `<span style="left:${x}px;top:${y}px">${esc(p.name)}</span>`; }).join('')}</div>`) + points.map(p => { const [x,y] = location(p); return `<button class="map-marker ${p.type || 'district'}" style="left:${x}px;top:${y}px" data-map-id="${esc(p.key)}" aria-label="${esc(p.name)}" title="${esc(p.name)}">${p.type === 'poi' ? '•' : p.name.slice(0,1)}</button>`; }).join('');
-   $('#map-description').textContent = isWorld ? 'Originale Weltkarte von Kefir. Distrikte anklicken oder suchen, mit Mausrad und Schaltflächen zoomen und die Karte ziehen.' : '29 Gebäude und 144 Fundorte oder Dienste an ihren tatsächlichen Spielkoordinaten. Die Koordinatenansicht zeigt Orte, Beute und Schlüssel. Straßenverläufe sind in diesen Daten nicht enthalten.';
+   canvas.innerHTML = (isWorld ? `<img class="original-map" src="${world.image}" alt="Offizielle ROB-RUN-Weltkarte">` : `<img class="original-map" src="${esc(city.image)}" alt="Looty-Bay-Stadtplan mit Straßen, Küsten und Gebäuden"><div class="district-labels">${city.districts.map(p => { const [x,y] = location(p); return `<span style="left:${x}px;top:${y}px">${esc(p.name)}</span>`; }).join('')}</div>`) + points.map(p => { const [x,y] = location(p); return `<button class="map-marker ${p.type || 'district'}" style="left:${x}px;top:${y}px" data-map-id="${esc(p.key)}" aria-label="${esc(p.name)}" title="${esc(p.name)}">${p.type === 'poi' ? '•' : p.name.slice(0,1)}</button>`; }).join('');
+   $('#map-description').textContent = isWorld ? 'Originale Weltkarte von Kefir. Distrikte anklicken oder suchen, mit Mausrad und Schaltflächen zoomen und die Karte ziehen.' : 'Looty Bay mit Küsten, Straßen und Gebäuden aus den veröffentlichten Spielgeometrien. 29 Gebäude und 144 Fundorte oder Dienste sind an ihren tatsächlichen Positionen markiert. Anklicken, ziehen oder zoomen; über die Ortsart lassen sich Gebäude und Fundorte filtern.';
    $('#map-source').innerHTML=esc(isWorld?world.attribution:city.attribution)+' · <a target="_blank" rel="noopener" href="'+esc(isWorld?world.sourcePage:city.sourcePage)+'">Quelle öffnen</a>';
    $('#map-results').innerHTML = points.map(p => `<button data-map-id="${esc(p.key)}">${esc(p.name)}</button>`).join('') || '<p>Keine passenden Orte gefunden.</p>';
    for (const button of container.querySelectorAll('[data-map-id]')) button.onclick = () => show(points.find(p => p.key === button.dataset.mapId), button.closest('#map-results') !== null);
@@ -348,8 +349,8 @@ export function createFeatures(context) {
   observer.observe(viewport);
   draw(true);
   if(pendingMapTarget){const target=cityPoints.find(point=>point.id===pendingMapTarget);pendingMapTarget=null;if(target){targetToCenter=target;$('#map-view').value='city';draw(true);requestAnimationFrame(()=>show(target,true));}}
-  const image=canvas.querySelector('.original-map');if(image)image.onerror=()=>{$('#map-description').textContent='Das Kartenbild konnte nicht geladen werden. Bitte Gesamtansicht oder Stadtkoordinaten auswählen.';};
-  if($('#map-view').value==='world')requestAnimationFrame(home);
+  const image=canvas.querySelector('.original-map');if(image)image.onerror=()=>{$('#map-description').textContent='Das Kartenbild konnte nicht geladen werden. Bitte die Seite aktualisieren oder die andere Kartenansicht auswählen.';};
+  if(!targetToCenter)requestAnimationFrame(home);
  }
  async function disablePush() {
   if (!('serviceWorker' in navigator)) return;
@@ -438,7 +439,7 @@ export function createFeatures(context) {
  async function keysPage(container){
   const generation=renderGeneration;
   container.innerHTML='<div class="panel" role="status">Raubschlüssel werden geladen …</div>';
-  const response=await fetch('data/robbery-keys.json?v=0.4',{cache:'no-cache'});
+  const response=await fetch('data/robbery-keys.json?v=0.4.1',{cache:'no-cache'});
   if(!response.ok)throw Error('Die Schlüsselübersicht konnte nicht geladen werden.');
   const keys=await response.json();
   if(generation!==renderGeneration)return;

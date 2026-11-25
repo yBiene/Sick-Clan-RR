@@ -1,4 +1,4 @@
-import { createFeatures } from './features.js?v=0.4';
+import { createFeatures } from './features.js?v=0.4.1';
 const URL='https://piklnvlswdwxpmnpliwn.supabase.co';
 const KEY='sb_publishable_8fA_DM-Yw5qWqzXNQn-YLA_MWtxpoS6';
 const $=id=>document.getElementById(id);
@@ -116,7 +116,7 @@ async function page(name){
   c.innerHTML='<div class="panel tablewrap"><table><tr><th>Zeit</th><th>Mitglied</th><th>Aktion</th><th>Eintrag</th></tr>'+data.map(r=>`<tr><td>${date(r.created_at)}</td><td>${esc(memberName(r.actor))}</td><td>${esc(r.action)}</td><td>${esc(r.entity)}</td></tr>`).join('')+'</table></div>';return;
  }
  if(name==='Update- und Versionsübersicht'){
-  c.innerHTML='<div class="panel"><h2>Version 0.4 · 25.11.2026</h2><p>Neues ROB-RUN-Dashboard mit SICK-Logo, Datum und Uhrzeit sowie einstellbarem Server-Ende. Vereinfachte Navigation, 33 Raubschlüssel mit Kartenverknüpfung, überarbeitete Wiki-Kategorien und Accountverwaltung unter Clan → Einstellen.</p><p>Spieldatenstand und Quellen stehen bei den jeweiligen Einträgen. Spielupdates können Preise verändern.</p></div>';return;
+  c.innerHTML='<div class="panel"><h2>Version 0.4.1 · 25.11.2026</h2><p>Looty-Bay-Stadtplan mit Küsten, Straßen und Gebäuden als Standardansicht. Neues ROB-RUN-Dashboard mit SICK-Logo, Datum und Uhrzeit sowie einstellbarem Server-Ende. Vereinfachte Navigation, 33 Raubschlüssel mit Kartenverknüpfung, überarbeitete Wiki-Kategorien und Accountverwaltung unter Clan → Einstellen.</p><p>Spieldatenstand und Quellen stehen bei den jeweiligen Einträgen. Spielupdates können Preise verändern.</p></div>';return;
  }
  if(name==='Spieldaten bearbeiten'){return editCatalog(c);}
  return catalogPage(name,c);

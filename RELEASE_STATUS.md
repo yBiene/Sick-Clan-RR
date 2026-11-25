@@ -1,4 +1,4 @@
-# Sick-Clan-RR 0.4
+# Sick-Clan-RR 0.4.1
 
 Stand 25. November 2026
 
@@ -34,9 +34,11 @@ Version 0.4 wurde gezielt mit isolierten Browser-Testantworten geprüft. Dashboa
 
 Inventar, Lager, Aufgaben, Ziele, Spezialisierungen, Fuhrpark, Handel, Leihen, Preisvergleich, Überfallplanung, Timer, Beuterechner und eigene Herstellungsrezepte sind aus Navigation und Suche entfernt; alte direkte Routen führen zum Dashboard. Gespeicherte Daten bleiben für die Datensicherung erhalten.
 
+Version 0.4.1 ergänzt den sichtbaren Stadtplan. Geprüft wurden alle 173 Positionen innerhalb der Kartenfläche, identischer Maßstab, geladenes SVG im Browser, 29 Gebäude im Filter, Bank-Auswahl mit Beutedetails und Zoom sowie die mobile Stadtkarte bei 375 CSS-Pixeln ohne horizontalen Überlauf.
+
 ## Quellenentscheidungen und Grenzen
 
-Die Stadtansicht stellt tatsächliche Spielkoordinaten dar. Der verfügbare Datensatz enthält keine nachweislich frei nutzbare vollständige Stadtgrafik oder Straßenverläufe. Die interne Original-Weltkarte und die Koordinatenkarte sind eigenständig bedienbar. Die Weltkarte wird als sichtbares Originalbild zuerst geöffnet; verknüpfte Schlüssel öffnen die Stadtkoordinaten am zugehörigen Gebäude. Die Schlüsselbilder zeigen ausdrücklich den originalen Schlüsseltyp, da der verfügbare Inventarkatalog kein einzelnes Bild für jede Nummer enthält.
+Seit Version 0.4.1 zeigt die Stadtansicht Looty Bay mit Küsten, Straßen, Brücken und Gebäuden. Die zuvor ungenutzten 13 Geometrieebenen aus den veröffentlichten ROB-RUN-Spieldaten werden als eigene SVG-Darstellung lokal ausgeliefert. Es handelt sich um einen datenbasierten Stadtplan mit eigenem Farbschema. Positionen und Hintergrund verwenden denselben Maßstab auf beiden Achsen. Der Stadtplan ist die Standardansicht. Die offizielle Weltkarte bleibt als zweite Ansicht auswählbar; Schlüssel öffnen das zugehörige Gebäude im Stadtplan. Der reproduzierbare Aufbau steht in scripts/build-city-map.py. Drittanbieter-Websitecode wurde nicht übernommen. Die Schlüsselbilder zeigen ausdrücklich den originalen Schlüsseltyp, da der verfügbare Inventarkatalog kein einzelnes Bild für jede Nummer enthält.
 
 Pflanzenzeiten werden mit der mehrfach als im Spiel gemessen beschriebenen Communityformel berechnet. 60 Minuten Grundzeit geteilt durch die Summe aus 1 und den Ausrüstungsboni ergeben 40 Minuten mit allen drei Upgrades. Eine andere, ausdrücklich ungemessene Interpretation des Spielcodes ergibt 30 Minuten. Eine offizielle Bestätigung fehlt. Eigene Messzeiten können pro Tisch verwendet werden.
 

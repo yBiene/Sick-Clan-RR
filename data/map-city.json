@@ -2,7 +2,7 @@
   "name": "Looty Bay",
   "source": "https://robrun.fun/js/data-start-en.js",
   "sourcePage": "https://robrun.fun/en/faq/",
-  "attribution": "Koordinaten aus veröffentlichten ROB-RUN-Spieldaten · Quelle Voorhu / robrun.fun · Spielmaterial © Kefir.",
+  "attribution": "Stadtplan und Positionen aus veröffentlichten ROB-RUN-Spielgeometrien · Datenquelle Voorhu / robrun.fun · Spielmaterial © Kefir · Darstellung SICK CLAN.",
   "coordinateSystem": {
     "axes": [
       "x",
@@ -1834,9 +1834,12 @@
   ],
   "checkedAt": "2026-11-25",
   "bounds": {
-    "minX": -705,
-    "maxX": 674,
-    "minZ": -261.1,
-    "maxZ": 540.5
-  }
+    "minX": -730,
+    "maxX": 700,
+    "minZ": -280,
+    "maxZ": 700
+  },
+  "width": 1200,
+  "height": 834.9650349650349,
+  "image": "assets/looty-bay-map.svg"
 }
