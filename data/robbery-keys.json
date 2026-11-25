@@ -12,7 +12,9 @@
         "z": 540.5,
         "district": "dormitory"
       }
-    ]
+    ],
+    "description": "Öffnet einen verschlossenen Raum in einem Landhaus in Loraine Hills.",
+    "kind": "keycard"
   },
   {
     "id": "vip_key_6",
@@ -27,11 +29,13 @@
         "z": -119.4,
         "district": "central"
       }
-    ]
+    ],
+    "description": "Öffnet den Tresorraum der Kunstgalerie.",
+    "kind": "keycard"
   },
   {
     "id": "vip_key_2",
-    "name": "Schlüsselkarte 2",
+    "name": "Kellerschlüssel Nr. 2",
     "nameOriginal": "Basement Key #2",
     "source": "https://robrun.fun/js/data-start-en.js",
     "locations": [
@@ -42,7 +46,9 @@
         "z": -1.5,
         "district": "central"
       }
-    ]
+    ],
+    "description": "Öffnet die Gittertür zum Kellerabgang in der Polizeiwache.",
+    "kind": "room_key"
   },
   {
     "id": "vip_key_4",
@@ -57,7 +63,9 @@
         "z": -1.5,
         "district": "central"
       }
-    ]
+    ],
+    "description": "Öffnet die Waffenkammer der Polizeiwache. Bei Lenny an der verdächtigen Tür seines Motels gegen Beweismaterial eintauschbar.",
+    "kind": "keycard"
   },
   {
     "id": "safe_key_1",
@@ -72,7 +80,9 @@
         "z": -28.9,
         "district": "resort"
       }
-    ]
+    ],
+    "description": "Öffnet den Tresor bei Seasons Hotel in Sunny Beach.",
+    "kind": "safe_key"
   },
   {
     "id": "room_key_12",
@@ -94,7 +104,9 @@
         "z": -30.4,
         "district": "resort"
       }
-    ]
+    ],
+    "description": "Öffnet einen verschlossenen Raum in einem Hotel in Sunny Beach.",
+    "kind": "room_key"
   },
   {
     "id": "safe_key_14",
@@ -116,7 +128,9 @@
         "z": 538.1,
         "district": "dormitory"
       }
-    ]
+    ],
+    "description": "Öffnet den Tresor bei einem Landhaus in Loraine Hills.",
+    "kind": "safe_key"
   },
   {
     "id": "safe_key_4",
@@ -131,7 +145,9 @@
         "z": 270.2,
         "district": "business"
       }
-    ]
+    ],
+    "description": "Öffnet den Tresor bei Minimarkt im Norden von Downtown.",
+    "kind": "safe_key"
   },
   {
     "id": "room_key_10",
@@ -153,7 +169,9 @@
         "z": 102.7,
         "district": "business"
       }
-    ]
+    ],
+    "description": "Öffnet den verschlossenen Raum im Minimarkt in Downtown.",
+    "kind": "room_key"
   },
   {
     "id": "vip_key_1",
@@ -168,7 +186,9 @@
         "z": 219,
         "district": "resort"
       }
-    ]
+    ],
+    "description": "Öffnet das geheime Lager im Grand Hotel in Sunny Beach.",
+    "kind": "keycard"
   },
   {
     "id": "safe_key_12",
@@ -183,7 +203,9 @@
         "z": 124,
         "district": "business"
       }
-    ]
+    ],
+    "description": "Öffnet den Tresor bei Tankstelle in Downtown.",
+    "kind": "safe_key"
   },
   {
     "id": "room_key_5",
@@ -198,7 +220,9 @@
         "z": 124,
         "district": "business"
       }
-    ]
+    ],
+    "description": "Öffnet den linken Geheimraum der Tankstelle in Downtown.",
+    "kind": "room_key"
   },
   {
     "id": "room_key_6",
@@ -213,7 +237,9 @@
         "z": 124,
         "district": "business"
       }
-    ]
+    ],
+    "description": "Öffnet den rechten Geheimraum der Tankstelle in Downtown.",
+    "kind": "room_key"
   },
   {
     "id": "safe_key_9",
@@ -228,7 +254,9 @@
         "z": 89.5,
         "district": "resort"
       }
-    ]
+    ],
+    "description": "Öffnet den Tresor bei Minimarkt in Sunny Beach.",
+    "kind": "safe_key"
   },
   {
     "id": "room_key_11",
@@ -243,7 +271,9 @@
         "z": 89.5,
         "district": "resort"
       }
-    ]
+    ],
+    "description": "Öffnet den verschlossenen Raum im Minimarkt in Sunny Beach.",
+    "kind": "room_key"
   },
   {
     "id": "safe_key_7",
@@ -258,7 +288,9 @@
         "z": 500.9,
         "district": "dormitory"
       }
-    ]
+    ],
+    "description": "Öffnet den Tresor bei der Villa in Loraine Hills.",
+    "kind": "safe_key"
   },
   {
     "id": "room_key_1",
@@ -273,7 +305,9 @@
         "z": 38.1,
         "district": "resort"
       }
-    ]
+    ],
+    "description": "Öffnet den verschlossenen Raum im Waffenladen in Sunny Beach.",
+    "kind": "room_key"
   },
   {
     "id": "safe_key_10",
@@ -288,7 +322,9 @@
         "z": 107.3,
         "district": "business"
       }
-    ]
+    ],
+    "description": "Öffnet den Tresor bei Apotheke in Downtown.",
+    "kind": "safe_key"
   },
   {
     "id": "room_key_8",
@@ -303,7 +339,9 @@
         "z": 107.3,
         "district": "business"
       }
-    ]
+    ],
+    "description": "Öffnet den verschlossenen Raum in der Apotheke in Downtown.",
+    "kind": "room_key"
   },
   {
     "id": "room_key_7",
@@ -318,7 +356,9 @@
         "z": 479.9,
         "district": "dormitory"
       }
-    ]
+    ],
+    "description": "Öffnet einen verschlossenen Raum in einem Landhaus in Loraine Hills.",
+    "kind": "room_key"
   },
   {
     "id": "room_key_2",
@@ -333,7 +373,9 @@
         "z": 74.6,
         "district": "resort"
       }
-    ]
+    ],
+    "description": "Öffnet den verschlossenen Raum im Ausrüstungsladen in Sunny Beach.",
+    "kind": "room_key"
   },
   {
     "id": "safe_key_11",
@@ -348,7 +390,9 @@
         "z": 37.4,
         "district": "business"
       }
-    ]
+    ],
+    "description": "Öffnet den Tresor bei Café in Downtown.",
+    "kind": "safe_key"
   },
   {
     "id": "safe_key_3",
@@ -363,7 +407,9 @@
         "z": -15.4,
         "district": "resort"
       }
-    ]
+    ],
+    "description": "Öffnet den Tresor bei Stripclub.",
+    "kind": "safe_key"
   },
   {
     "id": "room_key_13",
@@ -378,7 +424,9 @@
         "z": -15.4,
         "district": "resort"
       }
-    ]
+    ],
+    "description": "Öffnet den VIP-Raum im Stripclub.",
+    "kind": "room_key"
   },
   {
     "id": "safe_key_2",
@@ -393,7 +441,9 @@
         "z": -30.4,
         "district": "resort"
       }
-    ]
+    ],
+    "description": "Öffnet den Tresor bei Reef Hotel in Sunny Beach.",
+    "kind": "safe_key"
   },
   {
     "id": "safe_key_8",
@@ -408,7 +458,9 @@
         "z": 102.7,
         "district": "business"
       }
-    ]
+    ],
+    "description": "Öffnet den Tresor bei Minimarkt im Zentrum von Downtown.",
+    "kind": "safe_key"
   },
   {
     "id": "vip_key_5",
@@ -423,7 +475,9 @@
         "z": 381,
         "district": "business"
       }
-    ]
+    ],
+    "description": "Öffnet den Goldtresor in der Bank.",
+    "kind": "keycard"
   },
   {
     "id": "room_key_4",
@@ -438,7 +492,9 @@
         "z": -122.5,
         "district": "business"
       }
-    ]
+    ],
+    "description": "Öffnet den verschlossenen Raum im Ausrüstungsladen in Downtown.",
+    "kind": "room_key"
   },
   {
     "id": "room_key_3",
@@ -453,7 +509,9 @@
         "z": -108.9,
         "district": "business"
       }
-    ]
+    ],
+    "description": "Öffnet den verschlossenen Raum im Waffenladen in Downtown.",
+    "kind": "room_key"
   },
   {
     "id": "safe_key_5",
@@ -468,7 +526,9 @@
         "z": 53.8,
         "district": "resort"
       }
-    ]
+    ],
+    "description": "Öffnet den Tresor bei Apotheke in Sunny Beach.",
+    "kind": "safe_key"
   },
   {
     "id": "room_key_9",
@@ -483,7 +543,9 @@
         "z": 53.8,
         "district": "resort"
       }
-    ]
+    ],
+    "description": "Öffnet den verschlossenen Raum in der Apotheke in Sunny Beach.",
+    "kind": "room_key"
   },
   {
     "id": "safe_key_13",
@@ -498,7 +560,9 @@
         "z": 47.9,
         "district": "resort"
       }
-    ]
+    ],
+    "description": "Öffnet den Tresor bei Elektronikgeschäft in Sunny Beach.",
+    "kind": "safe_key"
   },
   {
     "id": "safe_key_6",
@@ -513,6 +577,8 @@
         "z": -236.5,
         "district": "resort"
       }
-    ]
+    ],
+    "description": "Öffnet den Tresor bei Café am Pier in Sunny Beach.",
+    "kind": "safe_key"
   }
 ]

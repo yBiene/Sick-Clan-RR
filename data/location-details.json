@@ -1,0 +1,2516 @@
+{
+  "Cottage_02": {
+    "summary": {
+      "loot": [
+        {
+          "label": "Substanzen",
+          "count": 4
+        },
+        {
+          "label": "Substanzenregal im Nebenraum",
+          "count": 2
+        },
+        {
+          "label": "Ersatzteilregal",
+          "count": 2
+        },
+        {
+          "label": "Bargeldstapel",
+          "count": 1
+        }
+      ],
+      "container": [
+        {
+          "label": "Schrank",
+          "count": 6
+        },
+        {
+          "label": "Tresor",
+          "count": 2
+        },
+        {
+          "label": "Küchenschrank",
+          "count": 1
+        },
+        {
+          "label": "Schreibtisch",
+          "count": 1
+        },
+        {
+          "label": "Kühlschrank",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Telefone",
+          "count": 3
+        },
+        {
+          "label": "Substanzen",
+          "count": 2
+        },
+        {
+          "label": "Einfache Gemälde",
+          "count": 2
+        },
+        {
+          "label": "Alkohol",
+          "count": 2
+        },
+        {
+          "label": "Bündel",
+          "count": 1
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 1
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 5
+        },
+        {
+          "label": "Tür mit Schlüsselzugang",
+          "count": 1
+        },
+        {
+          "label": "Mit Dietrich zu öffnende Tür",
+          "count": 1
+        }
+      ],
+      "hack": [
+        {
+          "label": "Gesicherter Computer",
+          "count": 1
+        }
+      ]
+    },
+    "tools": [
+      {
+        "id": "lockpick_1",
+        "purpose": "Für die im Datensatz als mit Dietrich zu öffnen markierten Türen."
+      }
+    ],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      -1,
+      0
+    ]
+  },
+  "Jewelry_02": {
+    "summary": {
+      "container": [
+        {
+          "label": "Schrank",
+          "count": 4
+        }
+      ],
+      "loot": [
+        {
+          "label": "Schmuck",
+          "count": 8
+        },
+        {
+          "label": "Geldkassette",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Schmuck an Büsten",
+          "count": 8
+        },
+        {
+          "label": "Schmuck",
+          "count": 6
+        },
+        {
+          "label": "Bündel",
+          "count": 1
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 1
+        },
+        {
+          "label": "Einfache Waffenauslage",
+          "count": 1
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 4
+        },
+        {
+          "label": "Mit Dietrich zu öffnende Tür",
+          "count": 1
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "detector": [
+        {
+          "label": "Metalldetektor",
+          "count": 1
+        }
+      ],
+      "box": [
+        {
+          "label": "Kiste",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 4
+        }
+      ]
+    },
+    "tools": [
+      {
+        "id": "lockpick_1",
+        "purpose": "Für die im Datensatz als mit Dietrich zu öffnen markierten Türen."
+      }
+    ],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "Gallery": {
+    "summary": {
+      "obj": [
+        {
+          "label": "Drogenbündel",
+          "count": 20
+        },
+        {
+          "label": "Gemälde",
+          "count": 19
+        },
+        {
+          "label": "Figuren",
+          "count": 16
+        },
+        {
+          "label": "Antiquitäten",
+          "count": 9
+        },
+        {
+          "label": "Gemälde im verschlossenen Raum",
+          "count": 4
+        },
+        {
+          "label": "Schutzwesten",
+          "count": 2
+        },
+        {
+          "label": "BIG EGG Nr. 53",
+          "count": 1
+        },
+        {
+          "label": "Telefone",
+          "count": 1
+        },
+        {
+          "label": "Epische Schrotflinten im verschlossenen Raum",
+          "count": 1
+        },
+        {
+          "label": "Epische Maschinenpistolen im verschlossenen Raum",
+          "count": 1
+        }
+      ],
+      "loot": [
+        {
+          "label": "Figuren",
+          "count": 18
+        },
+        {
+          "label": "Figuren im Nebenraum",
+          "count": 5
+        },
+        {
+          "label": "Substanzen im Nebenraum",
+          "count": 3
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 1
+        },
+        {
+          "label": "Tür mit Schlüsselzugang",
+          "count": 1
+        }
+      ],
+      "hack": [
+        {
+          "label": "Gesicherter Computer",
+          "count": 1
+        }
+      ],
+      "container": [
+        {
+          "label": "Tresor",
+          "count": 2
+        }
+      ],
+      "box": [
+        {
+          "label": "Kiste",
+          "count": 3
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 4
+        }
+      ]
+    },
+    "tools": [],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0,
+      1
+    ]
+  },
+  "ElectronicStore_02": {
+    "summary": {
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "container": [
+        {
+          "label": "Schrank",
+          "count": 2
+        },
+        {
+          "label": "Kommode",
+          "count": 2
+        }
+      ],
+      "obj": [
+        {
+          "label": "Telefone",
+          "count": 3
+        },
+        {
+          "label": "Spielkonsolen",
+          "count": 1
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 1
+        },
+        {
+          "label": "Laptops",
+          "count": 1
+        }
+      ],
+      "loot": [
+        {
+          "label": "Elektronikauslage",
+          "count": 2
+        },
+        {
+          "label": "Elektroniktisch",
+          "count": 2
+        },
+        {
+          "label": "Geldkassette",
+          "count": 1
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 3
+        },
+        {
+          "label": "Mit Dietrich zu öffnende Tür",
+          "count": 2
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 2
+        }
+      ]
+    },
+    "tools": [
+      {
+        "id": "lockpick_1",
+        "purpose": "Für die im Datensatz als mit Dietrich zu öffnen markierten Türen."
+      }
+    ],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "PoliceStation": {
+    "summary": {
+      "cargo": [
+        {
+          "label": "Kiste mit Waffenteilen",
+          "count": 3
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 10
+        },
+        {
+          "label": "Tür mit Schlüsselzugang",
+          "count": 1
+        }
+      ],
+      "loot": [
+        {
+          "label": "Granaten",
+          "count": 6
+        },
+        {
+          "label": "Substanzen im Nebenraum",
+          "count": 4
+        },
+        {
+          "label": "Ausrüstungsregal im Nebenraum",
+          "count": 3
+        },
+        {
+          "label": "Substanzenregal",
+          "count": 3
+        },
+        {
+          "label": "Bargeldstapel",
+          "count": 2
+        },
+        {
+          "label": "Substanzenregal im Nebenraum",
+          "count": 1
+        }
+      ],
+      "container": [
+        {
+          "label": "Kommode",
+          "count": 1
+        },
+        {
+          "label": "Tresor",
+          "count": 3
+        }
+      ],
+      "obj": [
+        {
+          "label": "Polizeiwaffen",
+          "count": 8
+        },
+        {
+          "label": "Epische Waffen im Waffenlager",
+          "count": 4
+        },
+        {
+          "label": "Granaten im Waffenlager",
+          "count": 4
+        },
+        {
+          "label": "Legendäre Polizeiwaffen",
+          "count": 2
+        },
+        {
+          "label": "Pistolen im Waffenlager",
+          "count": 1
+        },
+        {
+          "label": "Einfache Waffenauslage",
+          "count": 1
+        },
+        {
+          "label": "Schutzwesten",
+          "count": 1
+        },
+        {
+          "label": "Reliktwaffen",
+          "count": 1
+        }
+      ],
+      "hack": [
+        {
+          "label": "Gesicherter Computer",
+          "count": 1
+        }
+      ],
+      "service": [
+        {
+          "label": "Munition nachfüllen",
+          "count": 1
+        }
+      ],
+      "holding": [
+        {
+          "label": "Arrestzelle",
+          "count": 1
+        }
+      ],
+      "box": [
+        {
+          "label": "Kiste",
+          "count": 3
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 4
+        }
+      ]
+    },
+    "tools": [],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      -1,
+      0
+    ]
+  },
+  "Hotel_01": {
+    "summary": {
+      "container": [
+        {
+          "label": "Kommode",
+          "count": 2
+        },
+        {
+          "label": "Schrank",
+          "count": 2
+        },
+        {
+          "label": "Tresor",
+          "count": 1
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 3
+        },
+        {
+          "label": "Mit Dietrich zu öffnende Tür",
+          "count": 3
+        }
+      ],
+      "obj": [
+        {
+          "label": "Einfache Gemälde",
+          "count": 3
+        },
+        {
+          "label": "Zigarren",
+          "count": 3
+        },
+        {
+          "label": "Bündel",
+          "count": 2
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 1
+        }
+      ],
+      "loot": [
+        {
+          "label": "Geldkassette",
+          "count": 1
+        },
+        {
+          "label": "Alkoholschrank",
+          "count": 1
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 1
+        }
+      ]
+    },
+    "tools": [
+      {
+        "id": "lockpick_1",
+        "purpose": "Für die im Datensatz als mit Dietrich zu öffnen markierten Türen."
+      }
+    ],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "Cottage_05": {
+    "summary": {
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 3
+        }
+      ],
+      "container": [
+        {
+          "label": "Kommode",
+          "count": 2
+        },
+        {
+          "label": "Schrank",
+          "count": 1
+        },
+        {
+          "label": "Schreibtisch",
+          "count": 1
+        },
+        {
+          "label": "Küchenschrank",
+          "count": 1
+        },
+        {
+          "label": "Tresor",
+          "count": 1
+        },
+        {
+          "label": "Kühlschrank",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Einfache Gemälde",
+          "count": 3
+        },
+        {
+          "label": "Telefone",
+          "count": 1
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 1
+        },
+        {
+          "label": "Medikamente",
+          "count": 1
+        },
+        {
+          "label": "Spielkonsolen",
+          "count": 1
+        },
+        {
+          "label": "Haartrockner",
+          "count": 1
+        },
+        {
+          "label": "Alkohol",
+          "count": 1
+        },
+        {
+          "label": "Toaster",
+          "count": 1
+        },
+        {
+          "label": "Laptops",
+          "count": 1
+        }
+      ],
+      "loot": [
+        {
+          "label": "Ersatzteilregal",
+          "count": 1
+        },
+        {
+          "label": "Ersatzteile",
+          "count": 1
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 1
+        }
+      ]
+    },
+    "tools": [],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "MiniMarket_02": {
+    "summary": {
+      "container": [
+        {
+          "label": "Tresor",
+          "count": 2
+        },
+        {
+          "label": "Kommode",
+          "count": 2
+        },
+        {
+          "label": "Schrank",
+          "count": 2
+        },
+        {
+          "label": "Nebenraum des Minimarkts",
+          "count": 2
+        }
+      ],
+      "loot": [
+        {
+          "label": "Alkoholflaschen",
+          "count": 4
+        },
+        {
+          "label": "Aufbrechbare Alkoholkiste",
+          "count": 2
+        },
+        {
+          "label": "Geldkassette",
+          "count": 1
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 3
+        },
+        {
+          "label": "Mit Dietrich zu öffnende Tür",
+          "count": 1
+        },
+        {
+          "label": "Tür mit Schlüsselzugang",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Alkohol",
+          "count": 3
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 1
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "hack": [
+        {
+          "label": "Gesicherter Computer",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 1
+        }
+      ]
+    },
+    "tools": [
+      {
+        "id": "lockpick_1",
+        "purpose": "Für die im Datensatz als mit Dietrich zu öffnen markierten Türen."
+      }
+    ],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "GrandHotel": {
+    "summary": {
+      "loot": [
+        {
+          "label": "Schmuck",
+          "count": 22
+        },
+        {
+          "label": "Alkoholschrank im Nebenraum",
+          "count": 4
+        },
+        {
+          "label": "Geldkassette",
+          "count": 2
+        },
+        {
+          "label": "Bargeldstapel",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Gemälde",
+          "count": 6
+        },
+        {
+          "label": "Schmuck",
+          "count": 5
+        },
+        {
+          "label": "Substanzen",
+          "count": 3
+        },
+        {
+          "label": "Hochwertiger Alkohol im Nebenraum",
+          "count": 3
+        },
+        {
+          "label": "Schmuck an Büsten",
+          "count": 2
+        },
+        {
+          "label": "Buletti Soltempra · Ausstellungsfahrzeug",
+          "count": 1
+        }
+      ],
+      "hack": [
+        {
+          "label": "Gesicherter Computer",
+          "count": 1
+        }
+      ],
+      "container": [
+        {
+          "label": "Schrank im Pokerraum",
+          "count": 2
+        },
+        {
+          "label": "Tresor",
+          "count": 2
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 1
+        },
+        {
+          "label": "Tür mit Schlüsselzugang",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 5
+        }
+      ]
+    },
+    "tools": [],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0,
+      1
+    ]
+  },
+  "GasStation": {
+    "summary": {
+      "container": [
+        {
+          "label": "Tresor",
+          "count": 4
+        },
+        {
+          "label": "Schreibtisch",
+          "count": 4
+        },
+        {
+          "label": "Schrank",
+          "count": 4
+        },
+        {
+          "label": "Kommode",
+          "count": 1
+        }
+      ],
+      "loot": [
+        {
+          "label": "Ersatzteile im Nebenraum",
+          "count": 5
+        },
+        {
+          "label": "Ersatzteilregal",
+          "count": 5
+        },
+        {
+          "label": "Alkoholflaschen",
+          "count": 4
+        },
+        {
+          "label": "Aufbrechbare Alkoholkiste",
+          "count": 1
+        },
+        {
+          "label": "Substanzen",
+          "count": 1
+        },
+        {
+          "label": "Bargeldstapel",
+          "count": 1
+        },
+        {
+          "label": "Geldkassette",
+          "count": 1
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 5
+        },
+        {
+          "label": "Tür mit Schlüsselzugang",
+          "count": 2
+        },
+        {
+          "label": "Mit Dietrich zu öffnende Tür",
+          "count": 2
+        }
+      ],
+      "hack": [
+        {
+          "label": "Gesicherter Computer",
+          "count": 2
+        }
+      ],
+      "obj": [
+        {
+          "label": "Alkohol",
+          "count": 1
+        },
+        {
+          "label": "Schutzwesten",
+          "count": 1
+        },
+        {
+          "label": "Gewöhnliche Waffen",
+          "count": 1
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 1
+        }
+      ],
+      "box": [
+        {
+          "label": "Kiste",
+          "count": 5
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 1
+        }
+      ]
+    },
+    "tools": [
+      {
+        "id": "lockpick_1",
+        "purpose": "Für die im Datensatz als mit Dietrich zu öffnen markierten Türen."
+      }
+    ],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      -1,
+      0
+    ]
+  },
+  "MiniMarket_01": {
+    "summary": {
+      "container": [
+        {
+          "label": "Tresor",
+          "count": 2
+        },
+        {
+          "label": "Kommode",
+          "count": 2
+        },
+        {
+          "label": "Schrank",
+          "count": 2
+        },
+        {
+          "label": "Nebenraum des Minimarkts",
+          "count": 2
+        }
+      ],
+      "loot": [
+        {
+          "label": "Alkoholflaschen",
+          "count": 4
+        },
+        {
+          "label": "Aufbrechbare Alkoholkiste",
+          "count": 2
+        },
+        {
+          "label": "Geldkassette",
+          "count": 1
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 3
+        },
+        {
+          "label": "Mit Dietrich zu öffnende Tür",
+          "count": 1
+        },
+        {
+          "label": "Tür mit Schlüsselzugang",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Alkohol",
+          "count": 3
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 1
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "hack": [
+        {
+          "label": "Gesicherter Computer",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 1
+        }
+      ]
+    },
+    "tools": [
+      {
+        "id": "lockpick_1",
+        "purpose": "Für die im Datensatz als mit Dietrich zu öffnen markierten Türen."
+      }
+    ],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "Cottage_01": {
+    "summary": {
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 5
+        },
+        {
+          "label": "Mit Dietrich zu öffnende Tür",
+          "count": 3
+        }
+      ],
+      "obj": [
+        {
+          "label": "Einfache Gemälde",
+          "count": 4
+        },
+        {
+          "label": "Bündel",
+          "count": 3
+        },
+        {
+          "label": "Bargeld",
+          "count": 3
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 2
+        },
+        {
+          "label": "Alkohol",
+          "count": 2
+        },
+        {
+          "label": "Gemälde",
+          "count": 1
+        },
+        {
+          "label": "Laptops",
+          "count": 1
+        },
+        {
+          "label": "Toaster",
+          "count": 1
+        }
+      ],
+      "container": [
+        {
+          "label": "Kommode",
+          "count": 2
+        },
+        {
+          "label": "Schrank",
+          "count": 1
+        },
+        {
+          "label": "Kühlschrank",
+          "count": 1
+        },
+        {
+          "label": "Küchenschrank",
+          "count": 1
+        },
+        {
+          "label": "Eingebauter Tresor",
+          "count": 1
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "loot": [
+        {
+          "label": "Ersatzteilregal",
+          "count": 2
+        },
+        {
+          "label": "Ersatzteile",
+          "count": 1
+        }
+      ],
+      "box": [
+        {
+          "label": "Kiste",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 4
+        }
+      ]
+    },
+    "tools": [
+      {
+        "id": "lockpick_1",
+        "purpose": "Für die im Datensatz als mit Dietrich zu öffnen markierten Türen."
+      }
+    ],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0,
+      1
+    ]
+  },
+  "WeaponShop_01": {
+    "summary": {
+      "container": [
+        {
+          "label": "Kommode",
+          "count": 3
+        },
+        {
+          "label": "Waffenschrank",
+          "count": 2
+        },
+        {
+          "label": "Tresor",
+          "count": 2
+        },
+        {
+          "label": "Schrank",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Sturmgewehre im verschlossenen Raum",
+          "count": 4
+        },
+        {
+          "label": "Epische Maschinenpistolen im verschlossenen Raum",
+          "count": 2
+        },
+        {
+          "label": "Maschinenpistolen im verschlossenen Raum",
+          "count": 2
+        },
+        {
+          "label": "Granaten",
+          "count": 1
+        },
+        {
+          "label": "Schrotflinten im verschlossenen Raum",
+          "count": 1
+        },
+        {
+          "label": "Einfache Waffenauslage",
+          "count": 1
+        },
+        {
+          "label": "Pistolen im verschlossenen Raum",
+          "count": 1
+        },
+        {
+          "label": "Epische Schrotflinten im verschlossenen Raum",
+          "count": 1
+        }
+      ],
+      "loot": [
+        {
+          "label": "Ausrüstung",
+          "count": 5
+        },
+        {
+          "label": "Geldkassette",
+          "count": 1
+        }
+      ],
+      "detector": [
+        {
+          "label": "Metalldetektor",
+          "count": 2
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 1
+        },
+        {
+          "label": "Tür mit Schlüsselzugang",
+          "count": 1
+        }
+      ],
+      "hack": [
+        {
+          "label": "Gesicherter Computer",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 1
+        }
+      ]
+    },
+    "tools": [],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "Hospital": {
+    "summary": {},
+    "tools": [],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": []
+  },
+  "Pharmacy_02": {
+    "summary": {
+      "loot": [
+        {
+          "label": "Medikamentenschrank",
+          "count": 7
+        },
+        {
+          "label": "Medikamentenregal im Nebenraum",
+          "count": 1
+        },
+        {
+          "label": "Geldkassette",
+          "count": 1
+        }
+      ],
+      "container": [
+        {
+          "label": "Kühlschrank",
+          "count": 3
+        },
+        {
+          "label": "Kommode",
+          "count": 3
+        },
+        {
+          "label": "Tresor",
+          "count": 2
+        },
+        {
+          "label": "Schrank",
+          "count": 1
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "hack": [
+        {
+          "label": "Gesicherter Computer",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Medikamente",
+          "count": 4
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 1
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 3
+        },
+        {
+          "label": "Mit Dietrich zu öffnende Tür",
+          "count": 1
+        },
+        {
+          "label": "Tür mit Schlüsselzugang",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 1
+        }
+      ]
+    },
+    "tools": [
+      {
+        "id": "lockpick_1",
+        "purpose": "Für die im Datensatz als mit Dietrich zu öffnen markierten Türen."
+      }
+    ],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "Cottage_04": {
+    "summary": {
+      "container": [
+        {
+          "label": "Schrank",
+          "count": 5
+        },
+        {
+          "label": "Kommode",
+          "count": 2
+        },
+        {
+          "label": "Tresor",
+          "count": 1
+        },
+        {
+          "label": "Kühlschrank",
+          "count": 1
+        },
+        {
+          "label": "Küchenschrank",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Bündel",
+          "count": 6
+        },
+        {
+          "label": "Einfache Gemälde",
+          "count": 3
+        },
+        {
+          "label": "Substanzen",
+          "count": 2
+        },
+        {
+          "label": "Figuren",
+          "count": 1
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 1
+        },
+        {
+          "label": "Telefone",
+          "count": 1
+        },
+        {
+          "label": "Gemälde",
+          "count": 1
+        },
+        {
+          "label": "Alkohol",
+          "count": 1
+        },
+        {
+          "label": "Toaster",
+          "count": 1
+        }
+      ],
+      "loot": [
+        {
+          "label": "Figuren",
+          "count": 3
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 4
+        },
+        {
+          "label": "Mit Dietrich zu öffnende Tür",
+          "count": 2
+        },
+        {
+          "label": "Tür mit Schlüsselzugang",
+          "count": 1
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "hack": [
+        {
+          "label": "Gesicherter Computer",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 1
+        }
+      ]
+    },
+    "tools": [
+      {
+        "id": "lockpick_1",
+        "purpose": "Für die im Datensatz als mit Dietrich zu öffnen markierten Türen."
+      }
+    ],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "Jewelry_01": {
+    "summary": {
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 4
+        },
+        {
+          "label": "Mit Dietrich zu öffnende Tür",
+          "count": 1
+        }
+      ],
+      "container": [
+        {
+          "label": "Schrank",
+          "count": 4
+        }
+      ],
+      "loot": [
+        {
+          "label": "Schmuck",
+          "count": 8
+        },
+        {
+          "label": "Geldkassette",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Schmuck an Büsten",
+          "count": 8
+        },
+        {
+          "label": "Schmuck",
+          "count": 6
+        },
+        {
+          "label": "Einfache Waffenauslage",
+          "count": 1
+        },
+        {
+          "label": "Bündel",
+          "count": 1
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 1
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "detector": [
+        {
+          "label": "Metalldetektor",
+          "count": 1
+        }
+      ],
+      "box": [
+        {
+          "label": "Kiste",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 4
+        }
+      ]
+    },
+    "tools": [
+      {
+        "id": "lockpick_1",
+        "purpose": "Für die im Datensatz als mit Dietrich zu öffnen markierten Türen."
+      }
+    ],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "EquipShop_01": {
+    "summary": {
+      "container": [
+        {
+          "label": "Kommode",
+          "count": 2
+        },
+        {
+          "label": "Tresor",
+          "count": 2
+        },
+        {
+          "label": "Waffenschrank",
+          "count": 2
+        },
+        {
+          "label": "Schrank",
+          "count": 1
+        }
+      ],
+      "loot": [
+        {
+          "label": "Ausrüstung",
+          "count": 7
+        },
+        {
+          "label": "Geldkassette",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Schutzwesten",
+          "count": 2
+        }
+      ],
+      "hack": [
+        {
+          "label": "Gesicherter Computer",
+          "count": 1
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 1
+        },
+        {
+          "label": "Tür mit Schlüsselzugang",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 1
+        }
+      ]
+    },
+    "tools": [],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "Cottage_03": {
+    "summary": {
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 5
+        },
+        {
+          "label": "Mit Dietrich zu öffnende Tür",
+          "count": 1
+        }
+      ],
+      "container": [
+        {
+          "label": "Kommode",
+          "count": 2
+        },
+        {
+          "label": "Schreibtisch",
+          "count": 1
+        },
+        {
+          "label": "Kühlschrank",
+          "count": 1
+        },
+        {
+          "label": "Eingebauter Tresor",
+          "count": 1
+        },
+        {
+          "label": "Küchenschrank",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Einfache Gemälde",
+          "count": 5
+        },
+        {
+          "label": "Gemälde",
+          "count": 2
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 2
+        },
+        {
+          "label": "Spielkonsolen",
+          "count": 1
+        },
+        {
+          "label": "Bündel",
+          "count": 1
+        },
+        {
+          "label": "Toaster",
+          "count": 1
+        },
+        {
+          "label": "Laptops",
+          "count": 1
+        },
+        {
+          "label": "Alkohol",
+          "count": 1
+        }
+      ],
+      "loot": [
+        {
+          "label": "Ersatzteilregal",
+          "count": 2
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 2
+        }
+      ]
+    },
+    "tools": [
+      {
+        "id": "lockpick_1",
+        "purpose": "Für die im Datensatz als mit Dietrich zu öffnen markierten Türen."
+      }
+    ],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "Cafe_01": {
+    "summary": {
+      "loot": [
+        {
+          "label": "Aufbrechbare Alkoholkiste",
+          "count": 3
+        },
+        {
+          "label": "Geldkassette",
+          "count": 2
+        }
+      ],
+      "obj": [
+        {
+          "label": "Telefone",
+          "count": 4
+        },
+        {
+          "label": "Laptops",
+          "count": 1
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 1
+        },
+        {
+          "label": "Alkohol",
+          "count": 1
+        }
+      ],
+      "container": [
+        {
+          "label": "Kommode",
+          "count": 4
+        },
+        {
+          "label": "Tresor",
+          "count": 1
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 2
+        },
+        {
+          "label": "Mit Dietrich zu öffnende Tür",
+          "count": 2
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 1
+        }
+      ]
+    },
+    "tools": [
+      {
+        "id": "lockpick_1",
+        "purpose": "Für die im Datensatz als mit Dietrich zu öffnen markierten Türen."
+      }
+    ],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "StripClub_01": {
+    "summary": {
+      "container": [
+        {
+          "label": "Kommode",
+          "count": 5
+        },
+        {
+          "label": "Tresor",
+          "count": 2
+        },
+        {
+          "label": "Hotelschrank",
+          "count": 1
+        },
+        {
+          "label": "Schrank",
+          "count": 1
+        },
+        {
+          "label": "Eingebauter Tresor",
+          "count": 1
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 4
+        },
+        {
+          "label": "Tür mit Schlüsselzugang",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Bargeld",
+          "count": 9
+        },
+        {
+          "label": "Hochwertiger Alkohol im Nebenraum",
+          "count": 4
+        },
+        {
+          "label": "Substanzen",
+          "count": 4
+        },
+        {
+          "label": "Alkohol",
+          "count": 3
+        },
+        {
+          "label": "Telefone",
+          "count": 3
+        },
+        {
+          "label": "Zigarren im Nebenraum",
+          "count": 2
+        },
+        {
+          "label": "Bündel",
+          "count": 1
+        },
+        {
+          "label": "Gemälde",
+          "count": 1
+        },
+        {
+          "label": "DP9-Pistole",
+          "count": 1
+        },
+        {
+          "label": "Laptops",
+          "count": 1
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 1
+        }
+      ],
+      "loot": [
+        {
+          "label": "Alkoholschrank",
+          "count": 3
+        },
+        {
+          "label": "Substanzen",
+          "count": 1
+        },
+        {
+          "label": "Geldkassette",
+          "count": 1
+        },
+        {
+          "label": "Bargeldstapel",
+          "count": 1
+        }
+      ],
+      "hack": [
+        {
+          "label": "Gesicherter Computer",
+          "count": 1
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 3
+        }
+      ]
+    },
+    "tools": [],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0,
+      1
+    ]
+  },
+  "Hotel_02": {
+    "summary": {
+      "loot": [
+        {
+          "label": "Alkoholschrank",
+          "count": 1
+        },
+        {
+          "label": "Geldkassette",
+          "count": 1
+        }
+      ],
+      "container": [
+        {
+          "label": "Kommode",
+          "count": 5
+        },
+        {
+          "label": "Tresor",
+          "count": 3
+        },
+        {
+          "label": "Hotelschrank",
+          "count": 2
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 2
+        },
+        {
+          "label": "Tür mit Schlüsselzugang",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Einfache Gemälde",
+          "count": 4
+        },
+        {
+          "label": "Zigarren",
+          "count": 3
+        },
+        {
+          "label": "Telefone",
+          "count": 2
+        },
+        {
+          "label": "Bündel",
+          "count": 1
+        },
+        {
+          "label": "Alkohol",
+          "count": 1
+        }
+      ],
+      "hack": [
+        {
+          "label": "Gesicherter Computer",
+          "count": 1
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 2
+        }
+      ]
+    },
+    "tools": [],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "MiniMarket_03": {
+    "summary": {
+      "loot": [
+        {
+          "label": "Alkoholschrank",
+          "count": 5
+        },
+        {
+          "label": "Geldkassette",
+          "count": 1
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 2
+        },
+        {
+          "label": "Mit Dietrich zu öffnende Tür",
+          "count": 1
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Alkohol",
+          "count": 2
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 1
+        }
+      ],
+      "container": [
+        {
+          "label": "Kommode",
+          "count": 2
+        },
+        {
+          "label": "Nebenraum des Minimarkts",
+          "count": 2
+        },
+        {
+          "label": "Tresor",
+          "count": 1
+        }
+      ]
+    },
+    "tools": [
+      {
+        "id": "lockpick_1",
+        "purpose": "Für die im Datensatz als mit Dietrich zu öffnen markierten Türen."
+      }
+    ],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "Bank": {
+    "summary": {
+      "loot": [
+        {
+          "label": "Goldstapel",
+          "count": 7
+        },
+        {
+          "label": "Bargeldstapel",
+          "count": 6
+        }
+      ],
+      "container": [
+        {
+          "label": "Bankschließfach",
+          "count": 12
+        },
+        {
+          "label": "Banktresor",
+          "count": 3
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 1
+        }
+      ],
+      "cargo": [
+        {
+          "label": "Geldsack der Bank",
+          "count": 5
+        }
+      ],
+      "obj": [
+        {
+          "label": "Goldbarren",
+          "count": 1
+        }
+      ],
+      "detector": [
+        {
+          "label": "Metalldetektor",
+          "count": 2
+        }
+      ],
+      "atm": [
+        {
+          "label": "Bankier · Geld abheben",
+          "count": 1
+        }
+      ],
+      "vault": [
+        {
+          "label": "Tür zum Banktresor",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 4
+        }
+      ]
+    },
+    "tools": [
+      {
+        "id": "drill_1",
+        "purpose": "Zum Aufbohren von Banktresoren. Laut Gegenstandsbeschreibung laut und zeitaufwendig."
+      }
+    ],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "EquipShop_02": {
+    "summary": {
+      "container": [
+        {
+          "label": "Waffenschrank",
+          "count": 2
+        },
+        {
+          "label": "Tresor",
+          "count": 2
+        },
+        {
+          "label": "Kommode",
+          "count": 2
+        },
+        {
+          "label": "Schrank",
+          "count": 1
+        }
+      ],
+      "loot": [
+        {
+          "label": "Ausrüstung",
+          "count": 7
+        },
+        {
+          "label": "Geldkassette",
+          "count": 1
+        }
+      ],
+      "hack": [
+        {
+          "label": "Gesicherter Computer",
+          "count": 1
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 1
+        },
+        {
+          "label": "Tür mit Schlüsselzugang",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Schutzwesten",
+          "count": 2
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 1
+        }
+      ]
+    },
+    "tools": [],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "WeaponShop_02": {
+    "summary": {
+      "container": [
+        {
+          "label": "Kommode",
+          "count": 3
+        },
+        {
+          "label": "Tresor",
+          "count": 2
+        },
+        {
+          "label": "Waffenschrank",
+          "count": 2
+        },
+        {
+          "label": "Schrank",
+          "count": 1
+        }
+      ],
+      "loot": [
+        {
+          "label": "Ausrüstung",
+          "count": 5
+        },
+        {
+          "label": "Geldkassette",
+          "count": 1
+        }
+      ],
+      "hack": [
+        {
+          "label": "Gesicherter Computer",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Sturmgewehre im verschlossenen Raum",
+          "count": 4
+        },
+        {
+          "label": "Maschinenpistolen im verschlossenen Raum",
+          "count": 2
+        },
+        {
+          "label": "Epische Maschinenpistolen im verschlossenen Raum",
+          "count": 2
+        },
+        {
+          "label": "Pistolen im verschlossenen Raum",
+          "count": 1
+        },
+        {
+          "label": "Einfache Waffenauslage",
+          "count": 1
+        },
+        {
+          "label": "Epische Schrotflinten im verschlossenen Raum",
+          "count": 1
+        },
+        {
+          "label": "Schrotflinten im verschlossenen Raum",
+          "count": 1
+        },
+        {
+          "label": "Granaten",
+          "count": 1
+        }
+      ],
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 1
+        },
+        {
+          "label": "Tür mit Schlüsselzugang",
+          "count": 1
+        }
+      ],
+      "detector": [
+        {
+          "label": "Metalldetektor",
+          "count": 2
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 1
+        }
+      ]
+    },
+    "tools": [],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "Pharmacy_01": {
+    "summary": {
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 3
+        },
+        {
+          "label": "Mit Dietrich zu öffnende Tür",
+          "count": 1
+        },
+        {
+          "label": "Tür mit Schlüsselzugang",
+          "count": 1
+        }
+      ],
+      "loot": [
+        {
+          "label": "Medikamentenschrank",
+          "count": 7
+        },
+        {
+          "label": "Geldkassette",
+          "count": 1
+        },
+        {
+          "label": "Medikamentenregal im Nebenraum",
+          "count": 1
+        }
+      ],
+      "container": [
+        {
+          "label": "Kommode",
+          "count": 3
+        },
+        {
+          "label": "Kühlschrank",
+          "count": 3
+        },
+        {
+          "label": "Tresor",
+          "count": 2
+        },
+        {
+          "label": "Schrank",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Medikamente",
+          "count": 4
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 1
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ],
+      "hack": [
+        {
+          "label": "Gesicherter Computer",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 1
+        }
+      ]
+    },
+    "tools": [
+      {
+        "id": "lockpick_1",
+        "purpose": "Für die im Datensatz als mit Dietrich zu öffnen markierten Türen."
+      }
+    ],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "ElectronicsStore": {
+    "summary": {
+      "loot": [
+        {
+          "label": "Elektronikauslage",
+          "count": 2
+        },
+        {
+          "label": "Elektroniktisch",
+          "count": 2
+        },
+        {
+          "label": "Geldkassette",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Telefone am Aufsteller",
+          "count": 13
+        }
+      ],
+      "container": [
+        {
+          "label": "Kommode",
+          "count": 1
+        },
+        {
+          "label": "Schrank",
+          "count": 1
+        },
+        {
+          "label": "Tresor",
+          "count": 1
+        }
+      ],
+      "camera": [
+        {
+          "label": "Überwachungskamera",
+          "count": 1
+        }
+      ]
+    },
+    "tools": [],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  },
+  "Cafe_02": {
+    "summary": {
+      "door": [
+        {
+          "label": "Interaktive Türen",
+          "count": 2
+        },
+        {
+          "label": "Mit Dietrich zu öffnende Tür",
+          "count": 1
+        }
+      ],
+      "obj": [
+        {
+          "label": "Telefone",
+          "count": 4
+        },
+        {
+          "label": "Alkohol",
+          "count": 3
+        },
+        {
+          "label": "Waffenauslage",
+          "count": 1
+        },
+        {
+          "label": "Laptops",
+          "count": 1
+        }
+      ],
+      "container": [
+        {
+          "label": "Kommode",
+          "count": 2
+        },
+        {
+          "label": "Tresor",
+          "count": 1
+        }
+      ],
+      "loot": [
+        {
+          "label": "Alkoholschrank",
+          "count": 3
+        },
+        {
+          "label": "Geldkassette",
+          "count": 2
+        },
+        {
+          "label": "Alkoholregal",
+          "count": 2
+        }
+      ],
+      "alarm": [
+        {
+          "label": "Alarmanlage",
+          "count": 1
+        }
+      ]
+    },
+    "tools": [
+      {
+        "id": "lockpick_1",
+        "purpose": "Für die im Datensatz als mit Dietrich zu öffnen markierten Türen."
+      }
+    ],
+    "source": "https://robrun.fun/js/data-start-en.js",
+    "floors": [
+      0
+    ]
+  }
+}

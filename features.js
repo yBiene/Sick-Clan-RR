@@ -1,3 +1,4 @@
+import { createLocations } from './locations.js?v=0.5';
 export function createFeatures(context) {
  const { esc, api, guarded, saveRecord, loadRecords, money, memberName, own, showImage } = context;
  const $ = selector => selector.startsWith('#') ? document.querySelector(selector) : context.$(selector);
@@ -8,6 +9,7 @@ export function createFeatures(context) {
  let observer = null;
  let polling = false;
  const signedImages = new Map();
+ const locations=createLocations({...context,get catalog(){return context.catalog;},icon,showOnMap(id){pendingMapTarget=id;context.go('Stadtkarte');}});
  const selected = { recipient: null };
  const visibleRecords = () => context.records;
  const receipts = new Map();
@@ -192,8 +194,7 @@ export function createFeatures(context) {
  }
  function researchPage(name, container) {
   const categories = [...new Set(context.research.map(r => r.categoryId))];
-  container.innerHTML = `<div class="panel"><h2>Forschungsbaum</h2><p>Verbindungen zeigen die tatsächlichen Voraussetzungen aus den Spieldaten. Wähle eine Kategorie und markiere deinen Fortschritt.</p><div class="toolbar"><select id="research-category" aria-label="Forschungskategorie">${categories.map(id => `<option value="${esc(id)}">${esc(context.research.find(r => r.categoryId === id).category)}</option>`).join('')}</select><input id="research-search" type="search" placeholder="Freischaltung suchen" aria-label="Forschung suchen"><button id="original-tree">Spielübersicht anzeigen</button></div></div><div class="research-viewport"><div id="research-graph" class="research-graph"></div></div>`;
-  $('#original-tree').onclick = () => showImage('assets/skilltree-0.png');
+  container.innerHTML = `<div class="panel"><h2>Forschungsbaum</h2><p>Verbindungen zeigen die tatsächlichen Voraussetzungen aus den Spieldaten. Wähle eine Kategorie und markiere deinen Fortschritt.</p><div class="toolbar"><select id="research-category" aria-label="Forschungskategorie">${categories.map(id => `<option value="${esc(id)}">${esc(context.research.find(r => r.categoryId === id).category)}</option>`).join('')}</select><input id="research-search" type="search" placeholder="Freischaltung suchen" aria-label="Forschung suchen"></div></div><div class="research-viewport"><div id="research-graph" class="research-graph"></div></div>`;
   function draw() {
    const category = $('#research-category').value;
    const allNodes = context.research.filter(r => r.categoryId === category);
@@ -266,13 +267,10 @@ export function createFeatures(context) {
  async function mapPage(container) {
   const generation=renderGeneration;
   container.innerHTML='<div class="panel" role="status">Karte wird geladen …</div>';
-  const [world, city, robberyKeys] = await Promise.all(['map-world', 'map-city', 'robbery-keys'].map(async file => {
-   const response = await fetch('data/' + file + '.json?v=0.4.1',{cache:'no-cache'});
-   if (!response.ok) throw Error('Kartendaten konnten nicht geladen werden.');
-   return response.json();
-  }));
+  const bundle=await locations.load();
+  const {world,city,robberyKeys}=bundle;
   if (!container.isConnected || generation!==renderGeneration || context.currentPage!=='Stadtkarte') return;
-  container.innerHTML = `<div class="panel"><div class="toolbar"><select id="map-view" aria-label="Kartenansicht"><option value="city">Looty Bay · Stadtplan</option><option value="world">Weltkarte · Original-Spielbild</option></select><input id="map-search" type="search" placeholder="Ort, Fund oder Schlüssel suchen" aria-label="Karte durchsuchen"><select id="map-type" aria-label="Ortsart"><option value="all">Alle Orte</option><option value="building">Gebäude</option><option value="poi">Fundorte und Dienste</option></select></div><p id="map-description"></p></div><div class="map-tools"><button id="map-plus" aria-label="Karte vergrößern">+</button><button id="map-minus" aria-label="Karte verkleinern">−</button><button id="map-home">Gesamtansicht</button></div><div id="map-viewport" class="interactive-map" tabindex="0" aria-label="Interaktive Karte. Ziehen zum Verschieben, Mausrad zum Zoomen."><div id="map-canvas" class="map-canvas"></div></div><div id="map-info" class="panel"></div><div id="map-results" class="map-results"></div><p class="muted" id="map-source"></p>`;
+  container.innerHTML = `<div class="panel"><div class="toolbar"><select id="map-view" aria-label="Kartenansicht"><option value="city">Looty Bay · Stadtplan</option><option value="world">Weltkarte · Original-Spielbild</option></select><input id="map-search" type="search" placeholder="Ort, Fund oder Schlüssel suchen" aria-label="Karte durchsuchen"><select id="map-type" aria-label="Ortsart"><option value="building">Gebäude</option><option value="all">Alle Orte</option><option value="poi">Fundorte und Dienste</option></select></div><p id="map-description"></p></div><div class="map-tools"><button id="map-plus" aria-label="Karte vergrößern">+</button><button id="map-minus" aria-label="Karte verkleinern">−</button><button id="map-home">Gesamtansicht</button></div><div class="map-layout"><div id="map-viewport" class="interactive-map" tabindex="0" aria-label="Interaktive Karte. Ziehen zum Verschieben, Mausrad zum Zoomen."><div id="map-canvas" class="map-canvas"></div></div><div id="map-info" class="panel map-detail"></div></div><div id="map-results" class="map-results"></div><p class="muted" id="map-source"></p>`;
   const viewport = $('#map-viewport');
   const canvas = $('#map-canvas');
   let scale = 1;
@@ -308,12 +306,10 @@ export function createFeatures(context) {
    const [x, y] = location(point);
    for(const marker of canvas.querySelectorAll('[data-map-id]'))marker.classList.toggle('is-selected',marker.dataset.mapId===point.key);
    if (center) { scale = Math.max(scale, 1); panX = viewport.clientWidth / 2 - x * scale; panY = viewport.clientHeight / 2 - y * scale; transform(); }
-   const loot = (point.lootIds || []).map(id => context.catalog.find(item => item.id === id)).filter(Boolean);
-   const photo=point.type==='building'&&city.buildings.filter(p=>p.name===point.name).length===1?context.places.find(p=>p.name===point.name):null;
-   const keys = (point.keyIds || []).map(id => robberyKeys.find(item => item.id === id)||context.catalog.find(item => item.id === id)).filter(Boolean);
-   $('#map-info').innerHTML = `<h2>${esc(point.name)}</h2>${photo?.image?`<button class="original-place-image"><img src="${esc(photo.image)}" alt="Spielansicht ${esc(point.name)}"></button>`:''}<p>${esc(point.categoryName || (point.type === 'poi' ? 'Fundort / Dienst' : 'Distrikt'))}</p>${point.z !== undefined ? `<small>Spielkoordinaten · X ${point.x} · Z ${point.z}</small>` : '<small>Markierung der Beschriftung im offiziellen Spielbild</small>'}${loot.length ? '<h3>Mögliche Beute</h3><div class="loot-strip">' + loot.map(item => `<div>${icon(item)}<span>${esc(item.name)}</span>${item.price != null ? '<small>' + money(item.price) + '</small>' : ''}</div>`).join('') + '</div>' : ''}${keys.length ? '<h3>Schlüssel</h3><p>' + keys.map(item => esc(item.name)).join(', ') + '</p>' : ''}`;
-   if(photo?.image)$('#map-info .original-place-image').onclick=()=>showImage(photo.image);
+   $('#map-info').innerHTML=point.z!==undefined?locations.detail(point,bundle):`<h2>${esc(point.name)}</h2><p>Distrikt auf der offiziellen Weltkarte. Wechsle zu Looty Bay für Gebäude, Schlüssel und Beute.</p>`;
+   if(window.innerWidth<=800)$('#map-info').scrollIntoView({behavior:'auto',block:'nearest'});
   }
+
   function draw(reset = false) {
    const isWorld = $('#map-view').value === 'world';
    width = isWorld ? world.width : city.width;
@@ -332,7 +328,7 @@ export function createFeatures(context) {
    $('#map-source').innerHTML=esc(isWorld?world.attribution:city.attribution)+' · <a target="_blank" rel="noopener" href="'+esc(isWorld?world.sourcePage:city.sourcePage)+'">Quelle öffnen</a>';
    $('#map-results').innerHTML = points.map(p => `<button data-map-id="${esc(p.key)}">${esc(p.name)}</button>`).join('') || '<p>Keine passenden Orte gefunden.</p>';
    for (const button of container.querySelectorAll('[data-map-id]')) button.onclick = () => show(points.find(p => p.key === button.dataset.mapId), button.closest('#map-results') !== null);
-   if (reset) { home(); $('#map-info').innerHTML = '<p>Wähle einen Ort auf der Karte oder in der Liste.</p>'; }
+   if (reset) { home(); $('#map-info').innerHTML = '<div class="map-empty"><span class="eyebrow">DEIN NÄCHSTES ZIEL</span><h2>Ort auswählen</h2><p>Klicke direkt auf einen Kartenpunkt. Hier erscheinen Schlüssel, Werkzeuge, Sicherheit und mögliche Beute.</p></div>'; }
   }
   $('#map-view').onchange = () => {targetToCenter=null;draw(true);};
   $('#map-type').onchange = () => draw();
@@ -439,7 +435,7 @@ export function createFeatures(context) {
  async function keysPage(container){
   const generation=renderGeneration;
   container.innerHTML='<div class="panel" role="status">Raubschlüssel werden geladen …</div>';
-  const response=await fetch('data/robbery-keys.json?v=0.4.1',{cache:'no-cache'});
+  const response=await fetch('data/robbery-keys.json?v=0.5',{cache:'no-cache'});
   if(!response.ok)throw Error('Die Schlüsselübersicht konnte nicht geladen werden.');
   const keys=await response.json();
   if(generation!==renderGeneration)return;
@@ -447,12 +443,13 @@ export function createFeatures(context) {
   function draw(){
    const query=$('#key-search').value.toLowerCase();
    $('#key-list').innerHTML=keys.filter(key=>(key.name+' '+key.locations.map(p=>p.name+' '+p.district).join(' ')).toLowerCase().includes(query)).map(key=>{
-    const generic=context.catalog.find(item=>item.id===(key.id.startsWith('safe_')?'safe_key_1':key.id.startsWith('room_')?'room_key_1':'vip_key_1'));
-    return `<div class="panel card">${icon(generic)}<small>Schlüsseltyp</small><h2>${esc(key.name)}</h2>${key.locations.map(place=>`<p><strong>${esc(place.name)}</strong><br>Spielkoordinaten · X ${place.x} · Z ${place.z}</p><button data-key-place="${esc(place.id)}">Ort auf der Karte zeigen</button>`).join('')}<p><a href="${esc(key.source)}" target="_blank" rel="noopener">Zuordnung aus den Spieldaten</a></p></div>`;
+    const generic=context.catalog.find(item=>item.id===(key.kind==='safe_key'?'safe_key_1':key.kind==='room_key'?'room_key_1':'vip_key_1'));
+    return `<div class="panel card">${icon(generic)}<small>Schlüsseltyp</small><h2>${esc(key.name)}</h2><p>${esc(key.description)}</p>${key.locations.map(place=>`<p><strong>${esc(place.name)}</strong><br>Spielkoordinaten · X ${place.x} · Z ${place.z}</p><button data-key-place="${esc(place.id)}">Ort auf der Karte zeigen</button>`).join('')}<p><a href="${esc(key.source)}" target="_blank" rel="noopener">Zuordnung aus den Spieldaten</a></p></div>`;
    }).join('')||'<div class="panel">Keine passenden Schlüssel gefunden.</div>';
    container.querySelectorAll('[data-key-place]').forEach(button=>button.onclick=()=>{pendingMapTarget=button.dataset.keyPlace;context.go('Stadtkarte');});
   }
   $('#key-search').oninput=draw;draw();
  }
- return { cleanup, chatPage, backupPage, researchPage, mapPage, keysPage, notificationsPage, disablePush, farmPage, icon };
+ async function locationsPage(container){const generation=renderGeneration;return locations.page(container,()=>generation===renderGeneration&&container.isConnected);}
+ return { cleanup, locationsPage, chatPage, backupPage, researchPage, mapPage, keysPage, notificationsPage, disablePush, farmPage, icon };
 }

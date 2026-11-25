@@ -1,4 +1,4 @@
-import { createFeatures } from './features.js?v=0.4.1';
+import { createFeatures } from './features.js?v=0.5';
 const URL='https://piklnvlswdwxpmnpliwn.supabase.co';
 const KEY='sb_publishable_8fA_DM-Yw5qWqzXNQn-YLA_MWtxpoS6';
 const $=id=>document.getElementById(id);
@@ -37,7 +37,7 @@ const configs={
  'Herstellungsrezepte':['recipe',{title:'Erzeugnis',quantity:['Ausgabemenge','number'],cost:['Materialkosten $','number'],minutes:['Produktionsdauer Minuten','number'],price:['Verkaufspreis $','number'],note:['Zutaten und Mengen','textarea']}],
  'Systemeinstellungen':['setting',{title:'Einstellung',note:'Wert'}]
 };
-const groups={Start:['Dashboard','Herstellungsrechner'],Persönlich:['Mein Profil','Meine Basis','Meine Plantage','Mein Skilltree','Meine Wunschliste'],Clan:['Mitglieder','Gemeinsame Forschung','Clan-Finanzen','Schwarzes Brett','Einstellen'],Kommunikation:['Clan-Chat','Private Nachrichten','Benachrichtigungen'],Aktivitäten:['Stadtkarte','Schlüsselübersicht'],Wiki:['Waffen','Munition','Ausrüstung','Gegenstände','Fahrzeuge','Basis & Einrichtung','Produktion','Händler & Kontakte','Forschungsdatenbank'],Verwaltung:['Rollen & Rechte','Spieldaten bearbeiten','Änderungsverlauf','Datensicherung','Fehler- und Verbesserungsvorschläge','Update- und Versionsübersicht']};
+const groups={Start:['Dashboard','Herstellungsrechner'],Persönlich:['Meine Finanzen','Mein Profil','Meine Basis','Meine Plantage','Mein Skilltree','Meine Wunschliste'],Clan:['Mitglieder','Gemeinsame Forschung','Clan-Finanzen','Schwarzes Brett','Einstellen'],Kommunikation:['Clan-Chat','Private Nachrichten','Benachrichtigungen'],Aktivitäten:['Stadtkarte','Locations','Schlüsselübersicht'],Wiki:['Waffen','Munition','Ausrüstung','Gegenstände','Fahrzeuge','Basis & Einrichtung','Produktion','Händler & Kontakte','Forschungsdatenbank'],Verwaltung:['Rollen & Rechte','Spieldaten bearbeiten','Änderungsverlauf','Datensicherung','Fehler- und Verbesserungsvorschläge','Update- und Versionsübersicht']};
 const removedPages=new Set(['Mein Inventar','Clan-Lager','Clan-Ziele','Clan-Spezialisierungen','Fuhrparkverwaltung','Aufgabenverwaltung','Handelsplatz','Leihsystem','Preisvergleich','Beuterechner','Timer-Zentrale','Überfallplanung','Herstellungsrezepte','Systemeinstellungen']);
 function navigation(){
  $('nav').innerHTML=Object.entries(groups).filter(([g])=>g!=='Verwaltung'||leader()).map(([group,names])=>`<details ${(group==='Start'||(group==='Persönlich'&&window.innerWidth>800))?'open':''}><summary>${esc(group)}</summary>${names.filter(n=>n!=='Einstellen'||leader()).map(n=>`<button data-page="${esc(n)}">${esc(n)}</button>`).join('')}</details>`).join('');
@@ -90,6 +90,9 @@ window.addEventListener('hashchange',()=>guarded(()=>page(decodeURIComponent(loc
 async function page(name){
  if(removedPages.has(name))name='Dashboard';if(name==='Accountverwaltung')name='Einstellen';
  const sequence=++pageSequence;current=name;status('');$('heading').textContent=name;
+ const group=Object.entries(groups).find(([,pages])=>pages.includes(name))?.[0]||'Clan';
+ const pagehead=document.querySelector('.pagehead');pagehead.dataset.group=group;pagehead.classList.toggle('dashboard-head',name==='Dashboard');$('category-label').textContent='SICK CLAN / '+group.toUpperCase();
+ document.querySelector('article').scrollTop=0;
  document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
  features.cleanup();const c=$('content');c.oninput=null;c.replaceChildren();
  if(configs[name])return recordPage(name,c);
@@ -97,14 +100,14 @@ async function page(name){
  if(['Mein Profil','Meine Basis'].includes(name))return profilePage(name,c);
  if(name==='Meine Plantage')return features.farmPage(c);
  if(['Mein Skilltree','Gemeinsame Forschung','Forschungsdatenbank'].includes(name))return features.researchPage(name,c);
- if(name==='Mitglieder'){
-  c.innerHTML='<div class="grid">'+members.map(p=>`<div class="panel"><h2>${esc(p.name)}</h2><span class="pill">${esc(p.role)}</span><p>${esc(p.specialization)}</p><p>${esc(p.bio)}</p><small>${esc(p.settlement)} · Basis ${esc(p.base_number)} · ${p.active?'Aktiv':'Gesperrt'}</small></div>`).join('')+'</div>';return;
- }
+ if(name==='Mitglieder')return membersPage(c);
+ if(name==='Meine Finanzen')return walletPage(c);
  if(['Clan-Chat','Private Nachrichten'].includes(name))return features.chatPage(name,c);
  if(name==='Benachrichtigungen')return features.notificationsPage(c);
  if(name==='Einstellen')return settingsPage(c);
  if(name==='Datensicherung')return features.backupPage(c);
  if(name==='Stadtkarte')return features.mapPage(c);
+ if(name==='Locations')return features.locationsPage(c);
  if(name==='Schlüsselübersicht')return features.keysPage(c);
  if(name==='Herstellungsrechner')return craftPage(c);
  if(name==='Beuterechner')return lootPage(c);
@@ -116,14 +119,50 @@ async function page(name){
   c.innerHTML='<div class="panel tablewrap"><table><tr><th>Zeit</th><th>Mitglied</th><th>Aktion</th><th>Eintrag</th></tr>'+data.map(r=>`<tr><td>${date(r.created_at)}</td><td>${esc(memberName(r.actor))}</td><td>${esc(r.action)}</td><td>${esc(r.entity)}</td></tr>`).join('')+'</table></div>';return;
  }
  if(name==='Update- und Versionsübersicht'){
-  c.innerHTML='<div class="panel"><h2>Version 0.4.2 · 25.11.2026</h2><p>Accountanlage im Browser korrigiert. Looty-Bay-Stadtplan mit Küsten, Straßen und Gebäuden als Standardansicht. Neues ROB-RUN-Dashboard mit SICK-Logo, Datum und Uhrzeit sowie einstellbarem Server-Ende. Vereinfachte Navigation, 33 Raubschlüssel mit Kartenverknüpfung, überarbeitete Wiki-Kategorien und Accountverwaltung unter Clan → Einstellen.</p><p>Spieldatenstand und Quellen stehen bei den jeweiligen Einträgen. Spielupdates können Preise verändern.</p></div>';return;
+  c.innerHTML='<div class="panel"><h2>Version 0.5 · 25.11.2026</h2><p>Neues Clan-Design mit deinem Banner, getrennte Scrollbereiche, persönliche Geldstände, ausführliche Mitgliederprofile und deutsche Location-Details. Accountanlage im Browser korrigiert. Looty-Bay-Stadtplan mit Küsten, Straßen und Gebäuden als Standardansicht. Neues ROB-RUN-Dashboard mit SICK-Logo, Datum und Uhrzeit sowie einstellbarem Server-Ende. Vereinfachte Navigation, 33 Raubschlüssel mit Kartenverknüpfung, überarbeitete Wiki-Kategorien und Accountverwaltung unter Clan → Einstellen.</p><p>Spieldatenstand und Quellen stehen bei den jeweiligen Einträgen. Spielupdates können Preise verändern.</p></div>';return;
  }
  if(name==='Spieldaten bearbeiten'){return editCatalog(c);}
  return catalogPage(name,c);
 }
+function plantCounts(member){
+ const data=rows('plant').find(r=>r.owner_id===member.id)?.data;
+ if(data?.tables)return ['green','purple','gold'].map(key=>data.tables.reduce((sum,t)=>sum+(Number(t[key])||0),0));
+ return member.plant_counts||[0,0,0];
+}
+const balanceText=value=>value===null||value===undefined?'Nicht eingetragen':money(value);
+function memberFacts(member){
+ const counts=plantCounts(member);
+ return `<div class="member-money"><div><small>Schwarzgeld</small><strong>${balanceText(member.dirty_cash)}</strong></div><div><small>Gewaschenes Geld</small><strong>${balanceText(member.clean_cash)}</strong></div></div><div class="plant-pills"><span>Grün <b>${counts[0]}</b></span><span>Lila <b>${counts[1]}</b></span><span>Gold <b>${counts[2]}</b></span></div>`;
+}
+function membersPage(c){
+ c.innerHTML='<div class="toolbar"><input id="member-search" type="search" aria-label="Mitglieder suchen" placeholder="Mitglied suchen"></div><div id="member-grid" class="grid"></div>';
+ function draw(){
+  const query=$('member-search').value.toLowerCase();
+  $('member-grid').innerHTML=members.filter(p=>(p.name+' '+p.role).toLowerCase().includes(query)).map(p=>`<button class="panel member-card" data-member="${esc(p.id)}"><span class="member-avatar">${esc(p.name.slice(0,2).toUpperCase())}</span><span class="pill">${esc(p.role)}</span><h2>${esc(p.name)}</h2>${memberFacts(p)}<small>${p.active?'Aktiv':'Gesperrt'} · Profil öffnen</small></button>`).join('')||'<p>Kein Mitglied gefunden.</p>';
+  c.querySelectorAll('[data-member]').forEach(button=>button.onclick=()=>showMember(members.find(p=>p.id===button.dataset.member),c));
+ }
+ $('member-search').oninput=draw;draw();
+}
+function showMember(member,c){
+ const counts=plantCounts(member),done=rows('research').filter(r=>r.owner_id===member.id&&r.data.complete).length;
+ c.innerHTML=`<button id="members-back" class="quiet">Mitgliederübersicht</button><div class="panel member-profile"><span class="member-avatar large">${esc(member.name.slice(0,2).toUpperCase())}</span><span class="pill">${esc(member.role)} · ${member.active?'Aktiv':'Gesperrt'}</span><h2>${esc(member.name)}</h2><p>${esc(member.bio||'Noch keine Beschreibung eingetragen.')}</p>${memberFacts(member)}<small>${member.money_updated_at?'Geldstand aktualisiert · '+date(member.money_updated_at):'Geldstand noch nicht eingetragen.'}</small></div><div class="grid"><div class="panel stat"><small>Pflanzen insgesamt</small><strong>${counts.reduce((a,b)=>a+Number(b||0),0)}</strong></div><div class="panel stat"><small>Persönliche Forschungen</small><strong>${done}</strong></div><div class="panel"><h2>Basis & Kontakt</h2><dl class="facts"><dt>Siedlung</dt><dd>${esc(member.settlement||'Nicht eingetragen')}</dd><dt>Siedlungsnummer</dt><dd>${esc(member.settlement_number||'—')}</dd><dt>Basisnummer</dt><dd>${esc(member.base_number||'—')}</dd><dt>Discord</dt><dd>${esc(member.discord||'Nicht eingetragen')}</dd><dt>Spezialisierung</dt><dd>${esc(member.specialization||'Nicht eingetragen')}</dd></dl></div></div>`;
+ $('members-back').onclick=()=>membersPage(c);
+}
+function walletPage(c){
+ c.innerHTML='<div class="panel"><h2>Dein Geldstand</h2><p>Trage deine aktuellen Spielbestände ein. Dein Clan kann diese Werte in deinem Mitgliederprofil sehen.</p></div>'+formHTML({dirty_cash:['Schwarzgeld $','number'],clean_cash:['Gewaschenes Geld $','number']},me,'Geldstand speichern')+'<div class="panel">'+memberFacts(me)+'</div>';
+ for(const input of c.querySelectorAll('input')){input.step='0.01';input.max='99999999999999.99';input.required=true;}
+ bindForm(c.querySelector('form'),async fd=>{
+  const data=Object.fromEntries(['dirty_cash','clean_cash'].map(key=>[key,Number(fd.get(key))]));
+  if(Object.values(data).some(value=>!Number.isFinite(value)||value<0||value>99999999999999.99))throw Error('Bitte gültige Geldbeträge ab 0 eingeben.');
+  const result=await api('/rest/v1/profiles?id=eq.'+me.id,'PATCH',data);if(!result?.length)throw Error('Geldstand konnte nicht gespeichert werden.');
+  await reload();walletPage(c);status('Geldstand gespeichert.');
+ });
+}
 function dashboard(c){
  const balance=rows('finance').reduce((sum,r)=>sum+Number(r.data.income||0)-Number(r.data.expense||0),0);
- c.innerHTML=`<figure class="dashboard-hero"><img src="assets/rob-run-dashboard.jpg" alt="Offizielles ROB-RUN-Spielmotiv"><figcaption><span class="sick-emblem">S</span><strong>SICK</strong><span>CLAN</span></figcaption></figure><div class="grid"><div class="panel stat"><small>Aktive Mitglieder</small><strong>${members.filter(m=>m.active).length}</strong></div><div class="panel stat"><small>Clan-Kasse</small><strong>${money(balance)}</strong></div></div><div class="panel"><h2>Schwarzes Brett</h2>${rows('board').slice(0,4).map(r=>`<p><strong>${esc(r.title)}</strong><br>${esc(r.data.note)}</p>`).join('')||'<p>Aktuell gibt es keine Mitteilungen.</p>'}</div>`;
+ const plants=plantCounts(me).reduce((sum,n)=>sum+Number(n||0),0);
+ c.innerHTML=`<figure class="dashboard-hero"><img src="assets/sick-clan-banner.jpg" alt="Dein SICK-Clan-Banner für ROB RUN"></figure><div class="dashboard-intro"><div><span class="eyebrow">DEIN CLAN. DEIN REVIER.</span><h2>Willkommen, ${esc(me.name)}.</h2><p>Alles für deinen nächsten Run.</p></div><span class="pill">${esc(me.role)}</span></div><div class="grid dashboard-stats">${[[members.filter(m=>m.active).length,'Aktive Mitglieder'],[balanceText(me.dirty_cash),'Dein Schwarzgeld'],[balanceText(me.clean_cash),'Dein gewaschenes Geld'],[plants,'Deine Pflanzen']].map(([value,label])=>`<div class="panel stat"><small>${label}</small><strong>${value}</strong></div>`).join('')}</div><div class="dashboard-columns"><div class="panel"><span class="eyebrow">CLAN-NEWS</span><h2>Schwarzes Brett</h2>${rows('board').slice(0,4).map(r=>`<div class="board-item"><strong>${esc(r.title)}</strong><p>${esc(r.data.note)}</p></div>`).join('')||'<p>Aktuell gibt es keine Mitteilungen.</p>'}</div><div class="panel"><span class="eyebrow">GEMEINSAM WEITER</span><h2>Deine Zentrale</h2><p>Geldstände und Pflanzen pflegen, Mitglieder ansehen oder den nächsten Ort erkunden.</p><div class="quick-links">${['Meine Finanzen','Meine Plantage','Mitglieder','Stadtkarte'].map(name=>`<button data-quick="${esc(name)}">${esc(name)}</button>`).join('')}</div><small>Clan-Kasse · ${money(balance)}</small></div></div>`;
+ c.querySelectorAll('[data-quick]').forEach(button=>button.onclick=()=>go(button.dataset.quick));
 }
 function settingsPage(c){
  if(!leader())throw Error('Clan-Leitung erforderlich');
@@ -230,7 +269,7 @@ async function enter(){
  const profiles=await api('/rest/v1/profiles?select=*');me=profiles.find(p=>p.id===session.user.id);if(!me?.active)throw Error('Account ist nicht freigeschaltet.');members=profiles;
  await loadRecords();
  [catalog,research,places,recipes]=await Promise.all(['catalog','research','places','recipes'].map(async n=>{const r=await fetch('data/'+n+'.json',{cache:'no-cache'});if(!r.ok)throw Error('Spieldaten konnten nicht geladen werden');return r.json();}));
- catalog=catalog.filter(item=>item.id!=='vendor_tree_unknown_item');applyCorrections();$('login').hidden=true;$('app').hidden=false;navigation();await page(decodeURIComponent(location.hash.slice(1))||'Dashboard');
+ catalog=catalog.filter(item=>item.id!=='vendor_tree_unknown_item');recipes=recipes.filter(recipe=>recipe.available!==false);applyCorrections();$('login').hidden=true;$('app').hidden=false;navigation();await page(decodeURIComponent(location.hash.slice(1))||'Dashboard');
 }
 $('login').onsubmit=e=>{e.preventDefault();guarded(async()=>{const b=e.target.querySelector('button');b.disabled=true;try{const username=e.target.username.value.trim().toLowerCase();session=await api('/auth/v1/token?grant_type=password','POST',{email:username+'@sick-clan.invalid',password:e.target.password.value});sessionStorage.setItem('sick-session',JSON.stringify(session));await enter();e.target.reset();}finally{b.disabled=false;}});};
 const features=createFeatures({ $,esc,api,guarded,saveRecord,loadRecords,money,memberName,own,showImage,status,
@@ -238,7 +277,7 @@ const features=createFeatures({ $,esc,api,guarded,saveRecord,loadRecords,money,m
 try{session=JSON.parse(sessionStorage.getItem('sick-session'));if(session)await enter();}catch(e){session=null;sessionStorage.removeItem('sick-session');status(e.message);}
 function editCatalog(c){
  if(!leader())throw Error('Clan-Leitung erforderlich');
- c.innerHTML=formHTML({item:['Gegenstand',catalog.map(x=>[x.id,x.name+' · '+x.rarity])],price:['Belegter Preis $','number'],source:'Quellen-URL',note:['Beleg / Spielversion','textarea']},{},'Spielwert speichern')+'<div class="panel"><p>Gespeicherte Korrekturen werden für alle Mitglieder im Katalog und Beuterechner verwendet. Die ursprünglichen Daten bleiben im Quellenarchiv erhalten.</p></div>';
+ c.innerHTML=formHTML({item:['Gegenstand',catalog.map(x=>[x.id,x.name+' · '+x.rarity])],price:['Belegter Preis $','number'],source:'Quellen-URL',note:['Beleg / Spielversion','textarea']},{},'Spielwert speichern')+'<div class="panel"><p>Gespeicherte Korrekturen werden für alle Mitglieder im Katalog und in Ortsdetails verwendet. Die ursprünglichen Daten bleiben im Quellenarchiv erhalten.</p></div>';
  bindForm(c.querySelector('form'),async fd=>{const d=Object.fromEntries(fd);const item=catalog.find(x=>x.id===d.item);const u=new window.URL(d.source);if(u.protocol!=='https:')throw Error('HTTPS-Quellenadresse erforderlich');if(!(Number(d.price)>=0))throw Error('Ungültiger Preis');const prior=rows('setting').find(r=>r.title==='catalog:'+item.id);await saveRecord('setting','catalog:'+item.id,{price:Number(d.price),source:d.source,note:d.note},prior?.id);applyCorrections();status('Spielwert gespeichert.');});
 }
 function applyCorrections(){for(const r of rows('setting').filter(r=>r.title.startsWith('catalog:'))){const item=catalog.find(x=>x.id===r.title.slice(8));if(item&&Number.isFinite(r.data.price)&&/^https:\/\//.test(r.data.source||'')){item.price=r.data.price;item.source=r.data.source;}}}
