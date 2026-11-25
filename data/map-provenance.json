@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-11-25",
+  "worldMap": {
+    "file": "assets/rob-run-world-official.jpg",
+    "source": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4262460/7197f6af9de1f0a0c5bf5d31b807957131782a2a/ss_7197f6af9de1f0a0c5bf5d31b807957131782a2a.1920x1080.jpg",
+    "publisher": "Kefir / Steam",
+    "content": "Unverändertes offizielles In-Game-Weltkartenbild aus dem Steam-Presse-/Screenshotmaterial.",
+    "rights": "Urheberrecht Kefir. Keine Behauptung einer freien Lizenz. Verwendung als zugeordnetes Original-Spielmaterial in der nicht kommerziellen Clanreferenz, entsprechend dem ausdrücklichen Wunsch nach Originalbildern."
+  },
+  "cityMap": {
+    "status": "Keine belegte freigegebene Vollstadtkarte gefunden.",
+    "restriction": "ROB RUN Wiki erlaubt seine Datentabellen mit Quellenlink, untersagt jedoch das Kopieren oder Einbetten seiner interaktiven Karte und seines Websitecodes.",
+    "source": "https://robrunwiki.com/en/data/",
+    "otherSources": [
+      "https://robrun.fun/en/about/",
+      "https://www.robrun.space/map/"
+    ],
+    "otherSourceStatus": "Keine ausdrückliche Wiederverwendungs- oder Einbettungslizenz gefunden.",
+    "allowedAlternative": "Externer Kartenlink oder eine eigenständig erstellte Ansicht auf Basis von vom Nutzer bereitgestelltem originalem Vollkartenbild."
+  },
+  "research": {
+    "source": "https://robrunwiki.com/en/items/codex-catalog.json",
+    "nodeCount": 171,
+    "explicitPrerequisiteEdges": 142,
+    "danglingPrerequisiteEdges": 0,
+    "prerequisiteField": "requires",
+    "note": "Nur requires-Kanten verwenden. customParentGuid beschreibt zusätzliche Layout-Gruppen und wurde hier nicht als erfundene Voraussetzung interpretiert."
+  }
+}

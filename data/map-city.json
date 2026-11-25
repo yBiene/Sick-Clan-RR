@@ -1,0 +1,1842 @@
+{
+  "name": "Looty Bay",
+  "source": "https://robrun.fun/js/data-start-en.js",
+  "sourcePage": "https://robrun.fun/en/faq/",
+  "attribution": "Koordinaten aus veröffentlichten ROB-RUN-Spieldaten · Quelle Voorhu / robrun.fun · Spielmaterial © Kefir.",
+  "coordinateSystem": {
+    "axes": [
+      "x",
+      "z"
+    ],
+    "screenY": "-z",
+    "units": "Originale Spielweltkoordinaten"
+  },
+  "districts": [
+    {
+      "id": "business",
+      "name": "Downtown",
+      "x": 365,
+      "z": 86
+    },
+    {
+      "id": "dormitory",
+      "name": "Loraine Hills",
+      "x": -301,
+      "z": 514
+    },
+    {
+      "id": "central",
+      "name": "Palmside",
+      "x": -18.5,
+      "z": -47.8
+    },
+    {
+      "id": "resort",
+      "name": "Sunny Beach",
+      "x": -367,
+      "z": 150
+    }
+  ],
+  "buildings": [
+    {
+      "id": "Cottage_02",
+      "name": "Landhaus",
+      "nameOriginal": "Cottage",
+      "category": "cottage",
+      "x": -251.5,
+      "z": 540.5,
+      "district": "dormitory",
+      "lootIds": [
+        "perfume_2",
+        "comics_2",
+        "drugs_1",
+        "journal_4"
+      ],
+      "keyIds": [
+        "vip_key_3"
+      ],
+      "floors": [
+        -1,
+        0
+      ],
+      "categoryName": "Wohnhaus"
+    },
+    {
+      "id": "Jewelry_02",
+      "name": "Juwelier West",
+      "nameOriginal": "Jewelry Store: West",
+      "category": "jewelry",
+      "x": -423.3,
+      "z": 113.6,
+      "district": "resort",
+      "lootIds": [
+        "necklace_2",
+        "watch_4",
+        "ring_5",
+        "earrings_2"
+      ],
+      "keyIds": [],
+      "floors": [
+        0
+      ],
+      "categoryName": "Juwelier"
+    },
+    {
+      "id": "Gallery",
+      "name": "Kunstgalerie",
+      "nameOriginal": "Art Gallery",
+      "category": "gallery",
+      "x": -11.1,
+      "z": -119.4,
+      "district": "central",
+      "lootIds": [
+        "antique_1",
+        "antique_2",
+        "antique_4",
+        "picture_tube_3"
+      ],
+      "keyIds": [
+        "vip_key_6"
+      ],
+      "floors": [
+        0,
+        1
+      ],
+      "categoryName": "Kunstgalerie"
+    },
+    {
+      "id": "ElectronicStore_02",
+      "name": "Elektronikgeschäft",
+      "nameOriginal": "Electronics Store",
+      "category": "electronics",
+      "x": 220,
+      "z": 257.8,
+      "district": "business",
+      "lootIds": [
+        "headphones_1",
+        "phone_4",
+        "console_4",
+        "laptop_4"
+      ],
+      "keyIds": [],
+      "floors": [
+        0
+      ],
+      "categoryName": "Elektronikgeschäft"
+    },
+    {
+      "id": "PoliceStation",
+      "name": "Polizeiwache",
+      "nameOriginal": "Police Station",
+      "category": "police",
+      "x": -64.8,
+      "z": -1.5,
+      "district": "central",
+      "lootIds": [
+        "cash_1",
+        "drugs_1",
+        "rc556_m3"
+      ],
+      "keyIds": [
+        "vip_key_2",
+        "vip_key_4"
+      ],
+      "floors": [
+        -1,
+        0
+      ],
+      "categoryName": "Polizeiwache"
+    },
+    {
+      "id": "Hotel_01",
+      "name": "Seasons Hotel",
+      "nameOriginal": "Seasons Hotel",
+      "category": "hotel",
+      "x": -283.8,
+      "z": -28.9,
+      "district": "resort",
+      "lootIds": [
+        "toy_2",
+        "lighter_3",
+        "poker_cards_3",
+        "vinyl_1"
+      ],
+      "keyIds": [
+        "safe_key_1",
+        "room_key_12"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Hotel"
+    },
+    {
+      "id": "Cottage_05",
+      "name": "Landhaus",
+      "nameOriginal": "Cottage",
+      "category": "cottage",
+      "x": -263.1,
+      "z": 465.7,
+      "district": "dormitory",
+      "lootIds": [
+        "perfume_2",
+        "baseball_card_5",
+        "comics_3",
+        "journal_5"
+      ],
+      "keyIds": [
+        "safe_key_14"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Wohnhaus"
+    },
+    {
+      "id": "MiniMarket_02",
+      "name": "Minimarkt",
+      "nameOriginal": "Convenience Store",
+      "category": "market",
+      "x": 505.4,
+      "z": 270.2,
+      "district": "business",
+      "lootIds": [
+        "alcohol_3",
+        "alcohol_1",
+        "alcohol_2",
+        "alcohol_5"
+      ],
+      "keyIds": [
+        "safe_key_4",
+        "room_key_10"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Minimarkt"
+    },
+    {
+      "id": "GrandHotel",
+      "name": "Grand Hotel",
+      "nameOriginal": "Grand Hotel",
+      "category": "hotel",
+      "x": -338.4,
+      "z": 219,
+      "district": "resort",
+      "lootIds": [
+        "necklace_6",
+        "watch_5",
+        "ring_6",
+        "earrings_2"
+      ],
+      "keyIds": [
+        "vip_key_1"
+      ],
+      "floors": [
+        0,
+        1
+      ],
+      "categoryName": "Hotel"
+    },
+    {
+      "id": "GasStation",
+      "name": "Tankstelle",
+      "nameOriginal": "Gas Station",
+      "category": "gas",
+      "x": 239.7,
+      "z": 124,
+      "district": "business",
+      "lootIds": [
+        "alcohol_1",
+        "car_device_2",
+        "car_parts_5",
+        "car_parts_8"
+      ],
+      "keyIds": [
+        "safe_key_12",
+        "room_key_5",
+        "room_key_6"
+      ],
+      "floors": [
+        -1,
+        0
+      ],
+      "categoryName": "Tankstelle"
+    },
+    {
+      "id": "MiniMarket_01",
+      "name": "Minimarkt",
+      "nameOriginal": "Convenience Store",
+      "category": "market",
+      "x": -390.6,
+      "z": 89.5,
+      "district": "resort",
+      "lootIds": [
+        "alcohol_3",
+        "alcohol_1",
+        "alcohol_2",
+        "alcohol_5"
+      ],
+      "keyIds": [
+        "safe_key_9",
+        "room_key_11"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Minimarkt"
+    },
+    {
+      "id": "Cottage_01",
+      "name": "Aristokratenvilla",
+      "nameOriginal": "Noble's Mansion",
+      "category": "cottage",
+      "x": -369.1,
+      "z": 500.9,
+      "district": "dormitory",
+      "lootIds": [
+        "perfume_2",
+        "baseball_card_5",
+        "comics_3",
+        "journal_5"
+      ],
+      "keyIds": [
+        "safe_key_7"
+      ],
+      "floors": [
+        0,
+        1
+      ],
+      "categoryName": "Wohnhaus"
+    },
+    {
+      "id": "WeaponShop_01",
+      "name": "Waffenladen West",
+      "nameOriginal": "Gun Shop: West",
+      "category": "weapons",
+      "x": -316.6,
+      "z": 38.1,
+      "district": "resort",
+      "lootIds": [
+        "rifle_ammo_1",
+        "weapon_cleaning_2",
+        "rc556_m3",
+        "weapon_trinket_3"
+      ],
+      "keyIds": [
+        "room_key_1"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Waffenladen"
+    },
+    {
+      "id": "Hospital",
+      "name": "Krankenhaus",
+      "nameOriginal": "Hospital",
+      "category": "hospital",
+      "x": 31.2,
+      "z": 9.4,
+      "district": "central",
+      "lootIds": [],
+      "keyIds": [],
+      "floors": [],
+      "categoryName": "Krankenhaus"
+    },
+    {
+      "id": "Pharmacy_02",
+      "name": "Apotheke",
+      "nameOriginal": "Pharmacy",
+      "category": "pharmacy",
+      "x": 364.8,
+      "z": 107.3,
+      "district": "business",
+      "lootIds": [
+        "painkiller_1",
+        "condoms_3",
+        "pharma_tools_4",
+        "vial_6"
+      ],
+      "keyIds": [
+        "safe_key_10",
+        "room_key_8"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Apotheke"
+    },
+    {
+      "id": "Cottage_04",
+      "name": "Landhaus",
+      "nameOriginal": "Cottage",
+      "category": "cottage",
+      "x": -310.2,
+      "z": 479.9,
+      "district": "dormitory",
+      "lootIds": [
+        "perfume_2",
+        "baseball_card_5",
+        "comics_3",
+        "journal_5"
+      ],
+      "keyIds": [
+        "room_key_7"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Wohnhaus"
+    },
+    {
+      "id": "Jewelry_01",
+      "name": "Juwelier Ost",
+      "nameOriginal": "Jewelry Store: East",
+      "category": "jewelry",
+      "x": 364.3,
+      "z": 41.8,
+      "district": "business",
+      "lootIds": [
+        "necklace_2",
+        "watch_4",
+        "ring_5",
+        "earrings_2"
+      ],
+      "keyIds": [],
+      "floors": [
+        0
+      ],
+      "categoryName": "Juwelier"
+    },
+    {
+      "id": "EquipShop_01",
+      "name": "Ausrüstungsladen West",
+      "nameOriginal": "Equipment Store: West",
+      "category": "equipment",
+      "x": -307.5,
+      "z": 74.6,
+      "district": "resort",
+      "lootIds": [
+        "equipment_2",
+        "burner_2",
+        "equipment_11",
+        "vest3_m3"
+      ],
+      "keyIds": [
+        "room_key_2"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Ausrüstungsladen"
+    },
+    {
+      "id": "Cottage_03",
+      "name": "Luxuslandhaus",
+      "nameOriginal": "Elite Cottage",
+      "category": "cottage",
+      "x": -304.9,
+      "z": 538.1,
+      "district": "dormitory",
+      "lootIds": [
+        "perfume_2",
+        "baseball_card_5",
+        "comics_3",
+        "journal_5"
+      ],
+      "keyIds": [
+        "safe_key_14"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Wohnhaus"
+    },
+    {
+      "id": "Cafe_01",
+      "name": "Rusty-Burgers-Café",
+      "nameOriginal": "Rusty Burgers Café",
+      "category": "cafe",
+      "x": 242.4,
+      "z": 37.4,
+      "district": "business",
+      "lootIds": [
+        "alcohol_3",
+        "alcohol_1",
+        "alcohol_2",
+        "alcohol_5"
+      ],
+      "keyIds": [
+        "safe_key_11"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Café"
+    },
+    {
+      "id": "StripClub_01",
+      "name": "Stripclub",
+      "nameOriginal": "Strip Club",
+      "category": "club",
+      "x": -467,
+      "z": -15.4,
+      "district": "resort",
+      "lootIds": [
+        "cash_1",
+        "poker_cards_2",
+        "condoms_4",
+        "alcohol_5"
+      ],
+      "keyIds": [
+        "safe_key_3",
+        "room_key_13"
+      ],
+      "floors": [
+        0,
+        1
+      ],
+      "categoryName": "Club"
+    },
+    {
+      "id": "Hotel_02",
+      "name": "Reef Hotel",
+      "nameOriginal": "Reef Hotel",
+      "category": "hotel",
+      "x": -369.2,
+      "z": -30.4,
+      "district": "resort",
+      "lootIds": [
+        "toy_2",
+        "lighter_3",
+        "poker_cards_3",
+        "vinyl_1"
+      ],
+      "keyIds": [
+        "safe_key_2",
+        "room_key_12"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Hotel"
+    },
+    {
+      "id": "MiniMarket_03",
+      "name": "Minimarkt",
+      "nameOriginal": "Convenience Store",
+      "category": "market",
+      "x": 462.4,
+      "z": 102.7,
+      "district": "business",
+      "lootIds": [
+        "alcohol_3",
+        "alcohol_1",
+        "alcohol_2",
+        "alcohol_5"
+      ],
+      "keyIds": [
+        "safe_key_8",
+        "room_key_10"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Minimarkt"
+    },
+    {
+      "id": "Bank",
+      "name": "Bank von Looty Bay",
+      "nameOriginal": "Looty Bay Bank",
+      "category": "bank",
+      "x": 341.5,
+      "z": 381,
+      "district": "business",
+      "lootIds": [
+        "cash_1",
+        "gemstone_3",
+        "gold_bar_1"
+      ],
+      "keyIds": [
+        "vip_key_5"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Bank"
+    },
+    {
+      "id": "EquipShop_02",
+      "name": "Ausrüstungsladen Ost",
+      "nameOriginal": "Equipment Store: East",
+      "category": "equipment",
+      "x": 319.3,
+      "z": -122.5,
+      "district": "business",
+      "lootIds": [
+        "equipment_2",
+        "burner_2",
+        "equipment_11",
+        "vest3_m3"
+      ],
+      "keyIds": [
+        "room_key_4"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Ausrüstungsladen"
+    },
+    {
+      "id": "WeaponShop_02",
+      "name": "Waffenladen Ost",
+      "nameOriginal": "Gun Shop: East",
+      "category": "weapons",
+      "x": 434.7,
+      "z": -108.9,
+      "district": "business",
+      "lootIds": [
+        "rifle_ammo_1",
+        "weapon_cleaning_2",
+        "rc556_m3",
+        "weapon_trinket_3"
+      ],
+      "keyIds": [
+        "room_key_3"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Waffenladen"
+    },
+    {
+      "id": "Pharmacy_01",
+      "name": "Apotheke",
+      "nameOriginal": "Pharmacy",
+      "category": "pharmacy",
+      "x": -271.6,
+      "z": 53.8,
+      "district": "resort",
+      "lootIds": [
+        "painkiller_1",
+        "condoms_3",
+        "pharma_tools_4",
+        "vial_5"
+      ],
+      "keyIds": [
+        "safe_key_5",
+        "room_key_9"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Apotheke"
+    },
+    {
+      "id": "ElectronicsStore",
+      "name": "Elektronikgeschäft",
+      "nameOriginal": "Electronics Store",
+      "category": "electronics",
+      "x": -254.1,
+      "z": 47.9,
+      "district": "resort",
+      "lootIds": [
+        "headphones_1",
+        "phone_4",
+        "console_4",
+        "laptop_4"
+      ],
+      "keyIds": [
+        "safe_key_13"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Elektronikgeschäft"
+    },
+    {
+      "id": "Cafe_02",
+      "name": "Ocean-Breeze-Café",
+      "nameOriginal": "Ocean Breeze Café",
+      "category": "cafe",
+      "x": -326.9,
+      "z": -236.5,
+      "district": "resort",
+      "lootIds": [
+        "alcohol_3",
+        "alcohol_1",
+        "alcohol_2",
+        "alcohol_5"
+      ],
+      "keyIds": [
+        "safe_key_6"
+      ],
+      "floors": [
+        0
+      ],
+      "categoryName": "Café"
+    }
+  ],
+  "pois": [
+    {
+      "id": "0",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -401.5,
+      "z": 79.2
+    },
+    {
+      "id": "1",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -298.2,
+      "z": 510.9
+    },
+    {
+      "id": "2",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 224.1,
+      "z": -2.1
+    },
+    {
+      "id": "3",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": 15.3,
+      "z": -35.7
+    },
+    {
+      "id": "4",
+      "kind": "event",
+      "name": "Geldautomat mit Bargeldpaket (Ereignis)",
+      "nameOriginal": "ATM with a cash batch (event)",
+      "x": -283.7,
+      "z": 82
+    },
+    {
+      "id": "5",
+      "kind": "atm",
+      "name": "Geldautomat",
+      "nameOriginal": "ATM",
+      "x": -215.9,
+      "z": 309.4
+    },
+    {
+      "id": "6",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 519.2,
+      "z": 276.4
+    },
+    {
+      "id": "7",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -481.6,
+      "z": 7.6
+    },
+    {
+      "id": "8",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -60.2,
+      "z": 42.3
+    },
+    {
+      "id": "9",
+      "kind": "event",
+      "name": "Geldautomat mit Bargeldpaket (Ereignis)",
+      "nameOriginal": "ATM with a cash batch (event)",
+      "x": 4.1,
+      "z": -99.1
+    },
+    {
+      "id": "10",
+      "kind": "atm",
+      "name": "Geldautomat",
+      "nameOriginal": "ATM",
+      "x": 521.8,
+      "z": 49.6
+    },
+    {
+      "id": "11",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 409.7,
+      "z": 178.7
+    },
+    {
+      "id": "12",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 445.2,
+      "z": 95.4
+    },
+    {
+      "id": "13",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 356.5,
+      "z": -2.9
+    },
+    {
+      "id": "14",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": -453.8,
+      "z": 255.5
+    },
+    {
+      "id": "15",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 349.2,
+      "z": 13.5
+    },
+    {
+      "id": "16",
+      "kind": "smuggler",
+      "name": "Schmugglerwagen",
+      "nameOriginal": "Smuggler's Van",
+      "x": 436.2,
+      "z": 167.8
+    },
+    {
+      "id": "17",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 456.4,
+      "z": -151.7
+    },
+    {
+      "id": "18",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 180.4,
+      "z": -80.5
+    },
+    {
+      "id": "19",
+      "kind": "event",
+      "name": "Geldautomat mit Bargeldpaket (Ereignis)",
+      "nameOriginal": "ATM with a cash batch (event)",
+      "x": 29.7,
+      "z": 120.4
+    },
+    {
+      "id": "20",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 226.4,
+      "z": 136.5
+    },
+    {
+      "id": "21",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 259.5,
+      "z": 46
+    },
+    {
+      "id": "22",
+      "kind": "event",
+      "name": "Geldautomat mit Bargeldpaket (Ereignis)",
+      "nameOriginal": "ATM with a cash batch (event)",
+      "x": -344.4,
+      "z": 238.5
+    },
+    {
+      "id": "23",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": 254.4,
+      "z": 384.6
+    },
+    {
+      "id": "24",
+      "kind": "atm",
+      "name": "Geldautomat",
+      "nameOriginal": "ATM",
+      "x": 4.2,
+      "z": -99.1
+    },
+    {
+      "id": "25",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 257.1,
+      "z": 46.1
+    },
+    {
+      "id": "26",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 406,
+      "z": 380.5
+    },
+    {
+      "id": "27",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -51.3,
+      "z": 154.3
+    },
+    {
+      "id": "28",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 519.8,
+      "z": 274.2
+    },
+    {
+      "id": "29",
+      "kind": "event",
+      "name": "Geldautomat mit Bargeldpaket (Ereignis)",
+      "nameOriginal": "ATM with a cash batch (event)",
+      "x": 374.6,
+      "z": 30.4
+    },
+    {
+      "id": "30",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 538.3,
+      "z": 62.8
+    },
+    {
+      "id": "31",
+      "kind": "atm",
+      "name": "Geldautomat",
+      "nameOriginal": "ATM",
+      "x": 503.8,
+      "z": 262
+    },
+    {
+      "id": "32",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 341.4,
+      "z": 78.1
+    },
+    {
+      "id": "33",
+      "kind": "event",
+      "name": "Waffenteilekiste (Ereignis)",
+      "nameOriginal": "Weapon Parts Box (event)",
+      "x": 436,
+      "z": 169.2
+    },
+    {
+      "id": "34",
+      "kind": "event",
+      "name": "Geldautomat mit Bargeldpaket (Ereignis)",
+      "nameOriginal": "ATM with a cash batch (event)",
+      "x": 503.8,
+      "z": 262
+    },
+    {
+      "id": "35",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": 522.5,
+      "z": 90.1
+    },
+    {
+      "id": "36",
+      "kind": "atm",
+      "name": "Geldautomat",
+      "nameOriginal": "ATM",
+      "x": -309.7,
+      "z": -201.5
+    },
+    {
+      "id": "37",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 19.2,
+      "z": -134.1
+    },
+    {
+      "id": "38",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -373.5,
+      "z": 9.1
+    },
+    {
+      "id": "39",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": 493.1,
+      "z": 254.4
+    },
+    {
+      "id": "40",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -74.4,
+      "z": 107.4
+    },
+    {
+      "id": "41",
+      "kind": "event",
+      "name": "Waffenteilekiste (Ereignis)",
+      "nameOriginal": "Weapon Parts Box (event)",
+      "x": -124.3,
+      "z": 465.7
+    },
+    {
+      "id": "42",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 316.8,
+      "z": 119.5
+    },
+    {
+      "id": "43",
+      "kind": "atm",
+      "name": "Geldautomat",
+      "nameOriginal": "ATM",
+      "x": 29.7,
+      "z": 120.4
+    },
+    {
+      "id": "44",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 319.1,
+      "z": 119.5
+    },
+    {
+      "id": "45",
+      "kind": "event",
+      "name": "Waffenteilekiste (Ereignis)",
+      "nameOriginal": "Weapon Parts Box (event)",
+      "x": 87.9,
+      "z": 84.8
+    },
+    {
+      "id": "46",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -371.1,
+      "z": 9.2
+    },
+    {
+      "id": "47",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 294.4,
+      "z": 462.9
+    },
+    {
+      "id": "48",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -385.4,
+      "z": -8.3
+    },
+    {
+      "id": "49",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 302.1,
+      "z": 409
+    },
+    {
+      "id": "50",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -264.5,
+      "z": 63.2
+    },
+    {
+      "id": "51",
+      "kind": "event",
+      "name": "Waffenteilekiste (Ereignis)",
+      "nameOriginal": "Weapon Parts Box (event)",
+      "x": 172.4,
+      "z": 46.1
+    },
+    {
+      "id": "52",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": -383.7,
+      "z": 108.1
+    },
+    {
+      "id": "53",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 310.9,
+      "z": 346.5
+    },
+    {
+      "id": "54",
+      "kind": "event",
+      "name": "Geldautomat mit Bargeldpaket (Ereignis)",
+      "nameOriginal": "ATM with a cash batch (event)",
+      "x": -309.7,
+      "z": -201.5
+    },
+    {
+      "id": "55",
+      "kind": "event",
+      "name": "Waffenteilekiste (Ereignis)",
+      "nameOriginal": "Weapon Parts Box (event)",
+      "x": -380.6,
+      "z": 57.2
+    },
+    {
+      "id": "56",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": 252.8,
+      "z": 81.8
+    },
+    {
+      "id": "57",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": -280.2,
+      "z": -159.1
+    },
+    {
+      "id": "58",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": -220.8,
+      "z": 302.1
+    },
+    {
+      "id": "59",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": -195.4,
+      "z": 524.6
+    },
+    {
+      "id": "60",
+      "kind": "event",
+      "name": "Waffenteilekiste (Ereignis)",
+      "nameOriginal": "Weapon Parts Box (event)",
+      "x": -462,
+      "z": -110.9
+    },
+    {
+      "id": "61",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 201.2,
+      "z": 246.7
+    },
+    {
+      "id": "62",
+      "kind": "exit",
+      "name": "Stadtausfahrt",
+      "nameOriginal": "Town exit",
+      "x": -705,
+      "z": -58.6
+    },
+    {
+      "id": "63",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": 322.3,
+      "z": 40.5
+    },
+    {
+      "id": "64",
+      "kind": "atm",
+      "name": "Geldautomat",
+      "nameOriginal": "ATM",
+      "x": 374.6,
+      "z": 30.4
+    },
+    {
+      "id": "65",
+      "kind": "event",
+      "name": "Geldautomat mit Bargeldpaket (Ereignis)",
+      "nameOriginal": "ATM with a cash batch (event)",
+      "x": -473.5,
+      "z": -22.2
+    },
+    {
+      "id": "66",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -300.8,
+      "z": -22.3
+    },
+    {
+      "id": "67",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -265.6,
+      "z": 500.7
+    },
+    {
+      "id": "68",
+      "kind": "atm",
+      "name": "Geldautomat",
+      "nameOriginal": "ATM",
+      "x": 225.2,
+      "z": 264.6
+    },
+    {
+      "id": "69",
+      "kind": "buyer",
+      "name": "Hehler",
+      "nameOriginal": "Fence",
+      "x": -105.3,
+      "z": 474.4
+    },
+    {
+      "id": "70",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": -72.4,
+      "z": 132.4
+    },
+    {
+      "id": "71",
+      "kind": "event",
+      "name": "Waffenteilekiste (Ereignis)",
+      "nameOriginal": "Weapon Parts Box (event)",
+      "x": 488.8,
+      "z": -147.4
+    },
+    {
+      "id": "72",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -280.8,
+      "z": -164.2
+    },
+    {
+      "id": "73",
+      "kind": "event",
+      "name": "Geldautomat mit Bargeldpaket (Ereignis)",
+      "nameOriginal": "ATM with a cash batch (event)",
+      "x": -215.9,
+      "z": 309.4
+    },
+    {
+      "id": "74",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -298.4,
+      "z": -261.1
+    },
+    {
+      "id": "75",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Hubschrauber",
+      "nameOriginal": "Parking meter: helicopter",
+      "x": -108.6,
+      "z": 179.3
+    },
+    {
+      "id": "76",
+      "kind": "atm",
+      "name": "Geldautomat",
+      "nameOriginal": "ATM",
+      "x": 387.2,
+      "z": -102.4
+    },
+    {
+      "id": "77",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 439.9,
+      "z": 130
+    },
+    {
+      "id": "78",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -441.2,
+      "z": 88.4
+    },
+    {
+      "id": "79",
+      "kind": "atm",
+      "name": "Geldautomat",
+      "nameOriginal": "ATM",
+      "x": -344.4,
+      "z": 238.5
+    },
+    {
+      "id": "80",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 458.7,
+      "z": -151.6
+    },
+    {
+      "id": "81",
+      "kind": "event",
+      "name": "Waffenteilekiste (Ereignis)",
+      "nameOriginal": "Weapon Parts Box (event)",
+      "x": -26.8,
+      "z": 196.3
+    },
+    {
+      "id": "82",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -60.1,
+      "z": 40
+    },
+    {
+      "id": "83",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": 367.4,
+      "z": -127.9
+    },
+    {
+      "id": "84",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": -15,
+      "z": -99.6
+    },
+    {
+      "id": "85",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 237.8,
+      "z": 91.2
+    },
+    {
+      "id": "86",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Hubschrauber",
+      "nameOriginal": "Parking meter: helicopter",
+      "x": -118.4,
+      "z": 25.3
+    },
+    {
+      "id": "87",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -49.6,
+      "z": 155.9
+    },
+    {
+      "id": "88",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": 412.9,
+      "z": 177.1
+    },
+    {
+      "id": "89",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 235,
+      "z": 15.4
+    },
+    {
+      "id": "90",
+      "kind": "event",
+      "name": "Geldautomat mit Bargeldpaket (Ereignis)",
+      "nameOriginal": "ATM with a cash batch (event)",
+      "x": 350.8,
+      "z": 373
+    },
+    {
+      "id": "91",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 223.5,
+      "z": 403.6
+    },
+    {
+      "id": "92",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -481.7,
+      "z": 5.2
+    },
+    {
+      "id": "93",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": -357.7,
+      "z": 56.4
+    },
+    {
+      "id": "94",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -370,
+      "z": 79.7
+    },
+    {
+      "id": "95",
+      "kind": "event",
+      "name": "Waffenteilekiste (Ereignis)",
+      "nameOriginal": "Weapon Parts Box (event)",
+      "x": -229,
+      "z": 280.8
+    },
+    {
+      "id": "96",
+      "kind": "atm",
+      "name": "Geldautomat",
+      "nameOriginal": "ATM",
+      "x": -283.7,
+      "z": 82
+    },
+    {
+      "id": "97",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -342.6,
+      "z": -233.3
+    },
+    {
+      "id": "98",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 336.7,
+      "z": 32.6
+    },
+    {
+      "id": "99",
+      "kind": "atm",
+      "name": "Geldautomat",
+      "nameOriginal": "ATM",
+      "x": -473.5,
+      "z": -22.2
+    },
+    {
+      "id": "100",
+      "kind": "event",
+      "name": "Waffenteilekiste (Ereignis)",
+      "nameOriginal": "Weapon Parts Box (event)",
+      "x": -289.6,
+      "z": -164.4
+    },
+    {
+      "id": "101",
+      "kind": "buyer",
+      "name": "Hehler",
+      "nameOriginal": "Fence",
+      "x": -289.6,
+      "z": -180.1
+    },
+    {
+      "id": "102",
+      "kind": "event",
+      "name": "Geldautomat mit Bargeldpaket (Ereignis)",
+      "nameOriginal": "ATM with a cash batch (event)",
+      "x": 225.2,
+      "z": 264.6
+    },
+    {
+      "id": "103",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 176.9,
+      "z": 30.2
+    },
+    {
+      "id": "104",
+      "kind": "buyer",
+      "name": "Hehler",
+      "nameOriginal": "Fence",
+      "x": 387.6,
+      "z": 239.4
+    },
+    {
+      "id": "105",
+      "kind": "buyer",
+      "name": "Hehler",
+      "nameOriginal": "Fence",
+      "x": 328.6,
+      "z": -24.5
+    },
+    {
+      "id": "106",
+      "kind": "smuggler",
+      "name": "Schmugglerwagen",
+      "nameOriginal": "Smuggler's Van",
+      "x": -380.6,
+      "z": 54.8
+    },
+    {
+      "id": "107",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": -475.5,
+      "z": 22.2
+    },
+    {
+      "id": "108",
+      "kind": "event",
+      "name": "Waffenteilekiste (Ereignis)",
+      "nameOriginal": "Weapon Parts Box (event)",
+      "x": 414.4,
+      "z": 430.6
+    },
+    {
+      "id": "109",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 381.4,
+      "z": -138.5
+    },
+    {
+      "id": "110",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": 379.1,
+      "z": -139.1
+    },
+    {
+      "id": "111",
+      "kind": "event",
+      "name": "Waffenteilekiste (Ereignis)",
+      "nameOriginal": "Weapon Parts Box (event)",
+      "x": 306.9,
+      "z": 214.7
+    },
+    {
+      "id": "112",
+      "kind": "event",
+      "name": "Geldautomat mit Bargeldpaket (Ereignis)",
+      "nameOriginal": "ATM with a cash batch (event)",
+      "x": 521.8,
+      "z": 49.6
+    },
+    {
+      "id": "113",
+      "kind": "atm",
+      "name": "Geldautomat",
+      "nameOriginal": "ATM",
+      "x": 350.8,
+      "z": 373.1
+    },
+    {
+      "id": "114",
+      "kind": "exit",
+      "name": "Stadtausfahrt",
+      "nameOriginal": "Town exit",
+      "x": 674,
+      "z": -58.7
+    },
+    {
+      "id": "115",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": -59.2,
+      "z": -24.4
+    },
+    {
+      "id": "116",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -305.9,
+      "z": 5.1
+    },
+    {
+      "id": "117",
+      "kind": "event",
+      "name": "Geldautomat mit Bargeldpaket (Ereignis)",
+      "nameOriginal": "ATM with a cash batch (event)",
+      "x": 387.2,
+      "z": -102.4
+    },
+    {
+      "id": "118",
+      "kind": "vehicle",
+      "name": "Fahrzeugterminal für Autos",
+      "nameOriginal": "Parking meter: car",
+      "x": -270.1,
+      "z": -39.5
+    },
+    {
+      "id": "119",
+      "kind": "dumpster",
+      "name": "Müllcontainer",
+      "nameOriginal": "Dumpster",
+      "x": -439.3,
+      "z": 87.1
+    },
+    {
+      "id": "120",
+      "kind": "event",
+      "name": "Waffenteilekiste (Ereignis)",
+      "nameOriginal": "Weapon Parts Box (event)",
+      "x": -492.4,
+      "z": 22.6
+    },
+    {
+      "id": "121",
+      "kind": "event",
+      "name": "Waffenteilekiste (Ereignis)",
+      "nameOriginal": "Weapon Parts Box (event)",
+      "x": 263,
+      "z": 471.6
+    },
+    {
+      "id": "122",
+      "kind": "business",
+      "name": "Geschäft · Elektronikgeschäft",
+      "nameOriginal": "Business: Electronics Store",
+      "x": -243.4,
+      "z": 53.8
+    },
+    {
+      "id": "123",
+      "kind": "business",
+      "name": "Geschäft · Bank von Looty Bay",
+      "nameOriginal": "Business: Looty Bay Bank",
+      "x": 356.1,
+      "z": 366.6
+    },
+    {
+      "id": "124",
+      "kind": "business",
+      "name": "Geschäft · Kunstgalerie",
+      "nameOriginal": "Business: Art Gallery",
+      "x": -6.9,
+      "z": -103.5
+    },
+    {
+      "id": "125",
+      "kind": "business",
+      "name": "Geschäft · Tankstelle",
+      "nameOriginal": "Business: Gas Station",
+      "x": 244.9,
+      "z": 130.1
+    },
+    {
+      "id": "126",
+      "kind": "business",
+      "name": "Geschäft · Juwelier Ost",
+      "nameOriginal": "Business: Jewelry Store: East",
+      "x": 373.6,
+      "z": 48.1
+    },
+    {
+      "id": "127",
+      "kind": "business",
+      "name": "Geschäft · Minimarkt",
+      "nameOriginal": "Business: Convenience Store",
+      "x": 498.4,
+      "z": 273.5
+    },
+    {
+      "id": "128",
+      "kind": "business",
+      "name": "Geschäft · Apotheke",
+      "nameOriginal": "Business: Pharmacy",
+      "x": -276.2,
+      "z": 60.9
+    },
+    {
+      "id": "129",
+      "kind": "business",
+      "name": "Geschäft · Stripclub",
+      "nameOriginal": "Business: Strip Club",
+      "x": -480.1,
+      "z": -36.9
+    },
+    {
+      "id": "130",
+      "kind": "business",
+      "name": "Geschäft · Minimarkt",
+      "nameOriginal": "Business: Convenience Store",
+      "x": -390.9,
+      "z": 98.1
+    },
+    {
+      "id": "131",
+      "kind": "business",
+      "name": "Geschäft · Ocean-Breeze-Café",
+      "nameOriginal": "Business: Ocean Breeze Café",
+      "x": -329.5,
+      "z": -226
+    },
+    {
+      "id": "132",
+      "kind": "business",
+      "name": "Geschäft · Elektronikgeschäft",
+      "nameOriginal": "Business: Electronics Store",
+      "x": 230.7,
+      "z": 267.3
+    },
+    {
+      "id": "133",
+      "kind": "business",
+      "name": "Geschäft · Seasons Hotel",
+      "nameOriginal": "Business: Seasons Hotel",
+      "x": -281.2,
+      "z": -43.3
+    },
+    {
+      "id": "134",
+      "kind": "business",
+      "name": "Geschäft · Apotheke",
+      "nameOriginal": "Business: Pharmacy",
+      "x": 372.4,
+      "z": 111.1
+    },
+    {
+      "id": "135",
+      "kind": "business",
+      "name": "Geschäft · Ausrüstungsladen Ost",
+      "nameOriginal": "Business: Equipment Store: East",
+      "x": 308.6,
+      "z": -125.7
+    },
+    {
+      "id": "136",
+      "kind": "business",
+      "name": "Geschäft · Minimarkt",
+      "nameOriginal": "Business: Convenience Store",
+      "x": 468.6,
+      "z": 108.2
+    },
+    {
+      "id": "137",
+      "kind": "business",
+      "name": "Geschäft · Rusty-Burgers-Café",
+      "nameOriginal": "Business: Rusty Burgers Café",
+      "x": 232.8,
+      "z": 45.3
+    },
+    {
+      "id": "138",
+      "kind": "business",
+      "name": "Geschäft · Grand Hotel",
+      "nameOriginal": "Business: Grand Hotel",
+      "x": -345.2,
+      "z": 199.5
+    },
+    {
+      "id": "139",
+      "kind": "business",
+      "name": "Geschäft · Ausrüstungsladen West",
+      "nameOriginal": "Business: Equipment Store: West",
+      "x": -309.4,
+      "z": 88.3
+    },
+    {
+      "id": "140",
+      "kind": "business",
+      "name": "Geschäft · Juwelier West",
+      "nameOriginal": "Business: Jewelry Store: West",
+      "x": -421.1,
+      "z": 124.6
+    },
+    {
+      "id": "141",
+      "kind": "business",
+      "name": "Geschäft · Waffenladen West",
+      "nameOriginal": "Business: Gun Shop: West",
+      "x": -327.5,
+      "z": 32.3
+    },
+    {
+      "id": "142",
+      "kind": "business",
+      "name": "Geschäft · Waffenladen Ost",
+      "nameOriginal": "Business: Gun Shop: East",
+      "x": 445.6,
+      "z": -105.7
+    },
+    {
+      "id": "143",
+      "kind": "business",
+      "name": "Geschäft · Reef Hotel",
+      "nameOriginal": "Business: Reef Hotel",
+      "x": -373.4,
+      "z": -42.7
+    }
+  ],
+  "checkedAt": "2026-11-25",
+  "bounds": {
+    "minX": -705,
+    "maxX": 674,
+    "minZ": -261.1,
+    "maxZ": 540.5
+  }
+}

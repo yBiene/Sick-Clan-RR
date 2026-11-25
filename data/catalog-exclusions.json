@@ -1,0 +1,10 @@
+{
+  "source": "https://robrunwiki.com/en/items/codex-catalog.json",
+  "checkedAt": "2026-11-25",
+  "ids": [
+    "vendor_tree_unknown_item"
+  ],
+  "reasons": {
+    "vendor_tree_unknown_item": "Technischer Unbekannt-Eintrag mit Originalname Unknown Item. Kein bestimmter dokumentierter Gegenstand. Wird aus der Spieleransicht ausgeblendet, während der importierte Ursprungsdatensatz erhalten bleibt."
+  }
+}

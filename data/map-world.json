@@ -1,0 +1,123 @@
+{
+  "id": "official-world",
+  "name": "Weltkarte",
+  "image": "assets/rob-run-world-official.jpg",
+  "width": 1920,
+  "height": 1080,
+  "source": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4262460/7197f6af9de1f0a0c5bf5d31b807957131782a2a/ss_7197f6af9de1f0a0c5bf5d31b807957131782a2a.1920x1080.jpg",
+  "sourcePage": "https://store.steampowered.com/app/4262460/ROB_RUN/",
+  "attribution": "Offizielles ROB-RUN-Spielmaterial © Kefir.",
+  "coordinateBasis": "Beschriftungspositionen im offiziellen Screenshot, manuell aus dem Bild abgelesen. Die Punkte markieren die Distriktbeschriftungen und den Stadtmarker, keine exakten Einfahrtspunkte.",
+  "points": [
+    {
+      "id": "highlands",
+      "name": "Highlands",
+      "level": 3,
+      "x": 925,
+      "y": 575,
+      "xPercent": 48.177,
+      "yPercent": 53.241,
+      "kind": "district"
+    },
+    {
+      "id": "rivertown",
+      "name": "Rivertown",
+      "level": 2,
+      "x": 925,
+      "y": 430,
+      "xPercent": 48.177,
+      "yPercent": 39.815,
+      "kind": "district"
+    },
+    {
+      "id": "fallrock",
+      "name": "Fallrock",
+      "level": 2,
+      "x": 730,
+      "y": 550,
+      "xPercent": 38.021,
+      "yPercent": 50.926,
+      "kind": "district"
+    },
+    {
+      "id": "el-peso",
+      "name": "El Peso",
+      "level": 2,
+      "x": 1080,
+      "y": 600,
+      "xPercent": 56.25,
+      "yPercent": 55.556,
+      "kind": "district"
+    },
+    {
+      "id": "dustbowl",
+      "name": "Dustbowl",
+      "level": 1,
+      "x": 830,
+      "y": 255,
+      "xPercent": 43.229,
+      "yPercent": 23.611,
+      "kind": "district"
+    },
+    {
+      "id": "redstone",
+      "name": "Redstone",
+      "level": 1,
+      "x": 1140,
+      "y": 320,
+      "xPercent": 59.375,
+      "yPercent": 29.63,
+      "kind": "district"
+    },
+    {
+      "id": "fairfield",
+      "name": "Fairfield",
+      "level": 1,
+      "x": 515,
+      "y": 480,
+      "xPercent": 26.823,
+      "yPercent": 44.444,
+      "kind": "district"
+    },
+    {
+      "id": "loneford",
+      "name": "Loneford",
+      "level": 1,
+      "x": 1340,
+      "y": 525,
+      "xPercent": 69.792,
+      "yPercent": 48.611,
+      "kind": "district"
+    },
+    {
+      "id": "rustvale",
+      "name": "Rustvale",
+      "level": 1,
+      "x": 590,
+      "y": 730,
+      "xPercent": 30.729,
+      "yPercent": 67.593,
+      "kind": "district"
+    },
+    {
+      "id": "cascadas",
+      "name": "Cascadas",
+      "level": 1,
+      "x": 1295,
+      "y": 790,
+      "xPercent": 67.448,
+      "yPercent": 73.148,
+      "kind": "district"
+    },
+    {
+      "id": "looty-bay",
+      "name": "Looty Bay",
+      "level": null,
+      "x": 1740,
+      "y": 790,
+      "xPercent": 90.625,
+      "yPercent": 73.148,
+      "kind": "city"
+    }
+  ]
+}

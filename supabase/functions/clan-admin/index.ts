@@ -35,9 +35,22 @@ Deno.serve(async req=>{
    if(typeof body.password!=='string'||body.password.length<6)return reply({message:'Passwort zu kurz'},400);
    const {error}=await admin.auth.admin.updateUserById(target.id,{password:body.password});if(error)throw error;
   } else if(body.action==='update'){
-   if(!['Leitung','Stellvertreter','Mitglied'].includes(body.role)||typeof body.active!=='boolean')return reply({message:'Ungültige Angaben'},400);
-   if(actor.role!=='Leitung'&&body.role!=='Mitglied')return reply({message:'Rolle geschützt'},403);
-   const {error}=await admin.from('profiles').update({role:body.role,active:body.active}).eq('id',target.id);if(error)throw error;
+   const changes: Record<string, unknown> = {};
+   if ('role' in body) {
+    if (!['Leitung','Stellvertreter','Mitglied'].includes(body.role)) return reply({message:'Ungültige Rolle'},400);
+    if (actor.role!=='Leitung' && body.role!=='Mitglied') return reply({message:'Rolle geschützt'},403);
+    changes.role=body.role;
+   }
+   if ('active' in body) {
+    if (typeof body.active!=='boolean') return reply({message:'Ungültiger Accountstatus'},400);
+    changes.active=body.active;
+   }
+   if ('name' in body) {
+    if (typeof body.name!=='string' || body.name.trim().length<1 || body.name.trim().length>80) return reply({message:'Spielername muss 1–80 Zeichen enthalten'},400);
+    changes.name=body.name.trim();
+   }
+   if (!Object.keys(changes).length) return reply({message:'Keine Änderungen angegeben'},400);
+   const {error}=await admin.from('profiles').update(changes).eq('id',target.id);if(error)throw error;
   } else return reply({message:'Unbekannte Aktion'},400);
   await admin.from('clan_audit').insert({actor:user.id,action:body.action,entity:'account:'+target.id});
   return reply({ok:true});
