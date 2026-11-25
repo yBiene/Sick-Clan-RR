@@ -13,7 +13,7 @@ async function api(path,method='GET',body,prefer='return=representation'){
   const r=await fetch(URL+'/auth/v1/token?grant_type=refresh_token',{method:'POST',headers:{apikey:KEY,'Content-Type':'application/json'},body:JSON.stringify({refresh_token:session.refresh_token})});
   const d=await r.json();if(!r.ok)throw Error('Sitzung abgelaufen. Bitte erneut anmelden.');session=d;sessionStorage.setItem('sick-session',JSON.stringify(d));
  }
- const r=await fetch(URL+path,{method,headers:{apikey:KEY,Authorization:'Bearer '+(session?.access_token||KEY),'Content-Type':'application/json',Prefer:prefer},...(body!==undefined?{body:JSON.stringify(body)}:{})});
+ const r=await fetch(URL+path,{method,headers:{apikey:KEY,Authorization:'Bearer '+(session?.access_token||KEY),'Content-Type':'application/json',...(path.startsWith('/rest/v1/')?{Prefer:prefer}:{})},...(body!==undefined?{body:JSON.stringify(body)}:{})});
  const data=await r.json().catch(()=>null);
  if(!r.ok)throw Error(data?.message||data?.msg||data?.error_description||'Anfrage fehlgeschlagen ('+r.status+')');return data;
 }
@@ -116,7 +116,7 @@ async function page(name){
   c.innerHTML='<div class="panel tablewrap"><table><tr><th>Zeit</th><th>Mitglied</th><th>Aktion</th><th>Eintrag</th></tr>'+data.map(r=>`<tr><td>${date(r.created_at)}</td><td>${esc(memberName(r.actor))}</td><td>${esc(r.action)}</td><td>${esc(r.entity)}</td></tr>`).join('')+'</table></div>';return;
  }
  if(name==='Update- und Versionsübersicht'){
-  c.innerHTML='<div class="panel"><h2>Version 0.4.1 · 25.11.2026</h2><p>Looty-Bay-Stadtplan mit Küsten, Straßen und Gebäuden als Standardansicht. Neues ROB-RUN-Dashboard mit SICK-Logo, Datum und Uhrzeit sowie einstellbarem Server-Ende. Vereinfachte Navigation, 33 Raubschlüssel mit Kartenverknüpfung, überarbeitete Wiki-Kategorien und Accountverwaltung unter Clan → Einstellen.</p><p>Spieldatenstand und Quellen stehen bei den jeweiligen Einträgen. Spielupdates können Preise verändern.</p></div>';return;
+  c.innerHTML='<div class="panel"><h2>Version 0.4.2 · 25.11.2026</h2><p>Accountanlage im Browser korrigiert. Looty-Bay-Stadtplan mit Küsten, Straßen und Gebäuden als Standardansicht. Neues ROB-RUN-Dashboard mit SICK-Logo, Datum und Uhrzeit sowie einstellbarem Server-Ende. Vereinfachte Navigation, 33 Raubschlüssel mit Kartenverknüpfung, überarbeitete Wiki-Kategorien und Accountverwaltung unter Clan → Einstellen.</p><p>Spieldatenstand und Quellen stehen bei den jeweiligen Einträgen. Spielupdates können Preise verändern.</p></div>';return;
  }
  if(name==='Spieldaten bearbeiten'){return editCatalog(c);}
  return catalogPage(name,c);

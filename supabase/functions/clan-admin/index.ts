@@ -1,5 +1,5 @@
 import {createClient} from 'https://esm.sh/@supabase/supabase-js@2.86.0';
-const cors={'Access-Control-Allow-Origin':'https://ybiene.github.io','Access-Control-Allow-Headers':'authorization, apikey, content-type','Access-Control-Allow-Methods':'POST, OPTIONS','Content-Type':'application/json'};
+const cors={'Access-Control-Allow-Origin':'https://ybiene.github.io','Access-Control-Allow-Headers':'authorization, apikey, content-type, prefer','Access-Control-Allow-Methods':'POST, OPTIONS','Content-Type':'application/json'};
 Deno.serve(async req=>{
  if(req.method==='OPTIONS')return new Response(null,{headers:cors});
  const reply=(body:unknown,status=200)=>new Response(JSON.stringify(body),{status,headers:cors});

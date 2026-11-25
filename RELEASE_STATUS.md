@@ -1,4 +1,4 @@
-# Sick-Clan-RR 0.4.1
+# Sick-Clan-RR 0.4.2
 
 Stand 25. November 2026
 
@@ -35,6 +35,8 @@ Version 0.4 wurde gezielt mit isolierten Browser-Testantworten geprüft. Dashboa
 Inventar, Lager, Aufgaben, Ziele, Spezialisierungen, Fuhrpark, Handel, Leihen, Preisvergleich, Überfallplanung, Timer, Beuterechner und eigene Herstellungsrezepte sind aus Navigation und Suche entfernt; alte direkte Routen führen zum Dashboard. Gespeicherte Daten bleiben für die Datensicherung erhalten.
 
 Version 0.4.1 ergänzt den sichtbaren Stadtplan. Geprüft wurden alle 173 Positionen innerhalb der Kartenfläche, identischer Maßstab, geladenes SVG im Browser, 29 Gebäude im Filter, Bank-Auswahl mit Beutedetails und Zoom sowie die mobile Stadtkarte bei 375 CSS-Pixeln ohne horizontalen Überlauf.
+
+Version 0.4.2 behebt die Accountanlage im echten Browser. Der gemeinsame API-Client sendete den PostgREST-Header Prefer auch an Edge Functions. Die CORS-Freigabe erlaubte diesen Header nicht, sodass der Browser nach OPTIONS keine POST-Anfrage ausführte. Clan-admin erlaubt den Header jetzt für bereits geladene Clients; der aktualisierte Client sendet Prefer ausschließlich an REST-Routen. Anmeldung und Leitungsrechte bleiben verpflichtend. Die produktive Prüfung umfasst Preflight mit bisherigen Browser-Headern, Anlage eines temporären Mitgliedsaccounts, Anmeldung, aktives Mitgliedsprofil und Ablehnung der Accountanlage durch ein Mitglied. Der Testaccount wurde anschließend entfernt.
 
 ## Quellenentscheidungen und Grenzen
 
